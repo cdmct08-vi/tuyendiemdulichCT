@@ -50,7 +50,7 @@
         margin: 0;
       }
       /* NAV */
-       .navbar {
+      .navbar {
         position: sticky;
         top: 0;
         z-index: 60;
@@ -58,10 +58,6 @@
         backdrop-filter: blur(6px);
         transition: box-shadow 0.25s ease;
       }
-
-
-
-
       .navbar.scrolled {
         box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
       }
@@ -80,30 +76,31 @@
       }
 
       .logo {
-  width: 60px;
-  height: 60px; 
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+        width: 56px;
+        height: auto;
+        display: flex;
+        align-items: center;
+      }
 
-.logo img {
-  
-  max-width: 100%;    
-  max-height: 100%;   
-  width: auto;        
-  height: auto;      
-  object-fit: contain; 
-}
+      .logo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
 
       .site-name {
-        font-family: Playfair Display;
-        font-size: 16px;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 600;
         color: var(--blue-deep);
+        line-height: 1.4;
+        margin-bottom: 4px;
+      }
+      .site-sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-family: "Inter", system-ui, sans-serif;
       }
       .menu {
         display: flex;
@@ -137,7 +134,6 @@
         transform: translateY(-3px);
         filter: brightness(1.02);
       }
-
       /* Main */
       main {
         max-width: var(--container);
@@ -260,6 +256,12 @@
     transform: translate(-50%, 8px);
   }
 }
+.page-hero {
+  position: relative;
+}
+.hero-content h1 {
+  font-family: "Playfair Display", serif;
+}
 
 
 
@@ -268,53 +270,44 @@
     
   </head>
   <body>
-    <a href="/index.html" ></a>
     <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
         <div class="brand">
-
           <div class="logo">
             <img src="./image/Logo HCMUE.png" alt="HCMUE" />
           </div>
 
           <div>
-            <div class="site-name">Dự án nghiên cứu khoa học kỹ thuật</div>
-            <div style="font-size: 12px; color: var(--muted)">
-              Lĩnh vực Phần mềm hệ thống
-            </div>
+            <div class="site-name">Ngành Địa lý học, khoá 34 (2023 - 2025)</div>
+<div class="site-sub">
+  Học viên: Nguyễn Thành Đạt (DLHO834004)
+</div>
+
           </div>
-
-
         </div>
+<nav class="menu" aria-label="Main navigation">
+  <a href="#gioithieu">Trang chủ</a>
+  <a href="diemdulich.html">Điểm tham quan</a>
+  <a href="solieu.html">Số liệu</a>
+  <a href="tintuc.html">Tin tức</a>
+  <a href="bando.html">Bản đồ</a>
 
-        <nav class="menu" aria-label="Main navigation">
-          
-          <a href="index.html#gioithieu">Trang chủ</a>
-          <a href="index.html#diemdi">Điểm du lịch</a>
-          <a href="solieu.html" target="_blank">Số liệu</a>
-          <a href="tintuc.html"target="_blank">Tin tức</a>
-          <a href="bando.html"target="_blank">Bản đồ</a>
-
-
-          
-          <button
-            class="cta-primary"
-            onclick="window.open('gopy.html', '_blank')"
-          >
-            Liên hệ - góp ý
-          </button>
-        </nav> 
-
+  <button
+    class="cta-primary"
+    onclick="window.open('gopy.html', '_blank')"
+  >
+    Liên hệ - góp ý
+  </button>
+</nav>
 
       </div>
     </header>
 
-
     <!-- HERO MINI -->
     <section class="page-hero">
     <div class="hero-content">
-    <h1 style="font-family:'Times New Roman', Times, serif;">Số liệu du lịch thành phố Cần Thơ</h1>
+    <h1>Số liệu du lịch thành phố Cần Thơ</h1>
     </div>
 
     <!-- GỢI Ý KÉO XUỐNG -->

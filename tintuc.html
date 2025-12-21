@@ -54,8 +54,8 @@
         position: sticky;
         top: 0;
         z-index: 60;
-        background: rgba(255, 255, 255, 0.92);
-        
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(6px);
         transition: box-shadow 0.25s ease;
       }
       .navbar.scrolled {
@@ -76,30 +76,31 @@
       }
 
       .logo {
-  width: 60px;
-  height: 60px; 
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+        width: 56px;
+        height: auto;
+        display: flex;
+        align-items: center;
+      }
 
-.logo img {
-  
-  max-width: 100%;    
-  max-height: 100%;   
-  width: auto;        
-  height: auto;      
-  object-fit: contain; 
-}
+      .logo img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
 
       .site-name {
-        font-family: Playfair Display;
-        font-size: 16px;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        font-size: 14px;
+        font-weight: 600;
         color: var(--blue-deep);
+        line-height: 1.4;
+        margin-bottom: 4px;
+      }
+      .site-sub {
+        font-size: 12px;
+        color: var(--muted);
+        font-family: "Inter", system-ui, sans-serif;
       }
       .menu {
         display: flex;
@@ -133,7 +134,6 @@
         transform: translateY(-3px);
         filter: brightness(1.02);
       }
-
       /* Main */
       main {
         max-width: var(--container);
@@ -165,6 +165,250 @@
         height: 100%;
         object-fit: cover;
       }
+
+
+      .news-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  margin: 40px auto;
+}
+
+/* Tin tức */
+/* ===== TIN TỨC CÓ ẢNH ===== */
+.news-card {
+  display: flex;
+  gap: 18px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(16, 24, 40, 0.1);
+}
+
+/* Ảnh bài báo */
+.news-thumb {
+  flex-shrink: 0;
+  width: 180px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.news-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nội dung bài báo */
+.news-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.news-content h3 a {
+  color: var(--blue-deep);
+  text-decoration: none;
+}
+
+.news-content h3 a:hover {
+  color: var(--green-fresh);
+}
+
+.news-content p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+/* Thời gian */
+.news-meta {
+  font-size: 12px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+
+.news-column {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.news-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(16,24,40,0.06);
+}
+
+.news-card h3 {
+  font-size: 18px;
+  color: var(--blue-deep);
+  margin-bottom: 8px;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.news-meta {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 10px;
+}
+
+/* Video */
+.video-column {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.video-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(16,24,40,0.06);
+}
+
+.video-box h4 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: var(--blue-deep);
+}
+
+.video-placeholder {
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #e5e7eb, #f9fafb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.video-info {
+  margin-top: 10px;
+}
+
+.video-info p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.video-info span {
+  font-size: 12px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* HERO MINI */
+.page-hero {
+  height: 335px;               
+  background:
+    linear-gradient(
+      rgba(0, 77, 64, 0.55),
+      rgba(0, 77, 64, 0.55)
+    ),
+    url("./image/dbscl-4604.jpg") center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+}
+
+/* Nội dung trong hero */
+.hero-content h1 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.page-hero {
+  animation: fadeDown 0.8s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.page-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.85);
+
+  animation: bounce 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+.page-hero {
+  position: relative;
+}
+.hero-content h1 {
+  font-family: "Playfair Display", serif;
+}
+
+
+
     </style>
   </head>
   <body>
@@ -177,30 +421,626 @@
           </div>
 
           <div>
-            <div class="site-name">Dự án nghiên cứu khoa học kỹ thuật</div>
-            <div style="font-size: 12px; color: var(--muted)">
-              Lĩnh vực Phần mềm hệ thống
+            <div class="site-name">Ngành Địa lý học, khoá 34 (2023 - 2025)</div>
+            <div class="site-sub">
+              Học viên: Nguyễn Thành Đạt (DLHO834004)
             </div>
           </div>
         </div>
 
         <nav class="menu" aria-label="Main navigation">
-          
-  <a href="index.html#gioithieu">Trang chủ</a>
-  <a href="index.html#diemdi">Điểm du lịch</a>
-  <a href="solieu.html" target="_blank">Số liệu</a>
-  <a href="tintuc.html"target="_blank">Tin tức</a>
-  <a href="bando.html"target="_blank">Bản đồ</a>
+  <a href="index.html">Trang chủ</a>
+  <a href="diemdulich.html">Điểm tham quan</a>
+  <a href="solieu.html">Số liệu</a>
+  <a href="tintuc.html">Tin tức</a>
+  <a href="bando.html">Bản đồ</a>
+
+  <button
+    class="cta-primary"
+    onclick="window.open('gopy.html', '_blank')"
+  >
+    Liên hệ - góp ý
+  </button>
+</nav>
+
+      </header>
+
+       <!-- HERO MINI -->
+    <section class="page-hero">
+    <div class="hero-content">
+    <h1>Tin tức du lịch thành phố Cần Thơ</h1>
+    </div>
+
+    <!-- GỢI Ý KÉO XUỐNG -->
+  <div class="scroll-hint">⌄</div>
+    </section>
+
+<main>
+  <section class="news-layout">
+    <!-- CỘT TRÁI: TIN TỨC -->
+    <div class="news-column">
+      <!--(-1)-->
+      <div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-van-hoa-song-nuoc-2025.jpg"
+      alt="Chào mừng Lễ hội Văn hóa Sông nước Cần Thơ năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=chao-mung-le-hoi-van-hoa-song-nuoc-can-tho-2025&id=event_379"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Chào mừng Lễ hội Văn hóa Sông nước Cần Thơ năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Lễ hội Văn hóa Sông nước Cần Thơ năm 2025 được tổ chức nhằm tôn vinh giá trị
+        văn hóa sông nước Nam Bộ, kết nối du lịch – thương mại – nghệ thuật và
+        quảng bá hình ảnh thành phố Cần Thơ năng động, giàu bản sắc.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 16/12/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
 
 
-          
-          <button
-            class="cta-primary"
-            onclick="window.open('gopy.html', '_blank')"
-          >
-            Liên hệ - góp ý
-          </button>
-        </nav>
+
+
+
+
+      <!--0-->
+
+      <div class="news-card">
+  <div class="news-thumb">
+    <img src="./image//ctnwe.jpg" alt="Cần Thơ bứt phá thành đầu tàu du lịch liên vùng" />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=can-tho-but-pha-thanh-dau-tau-du-lich-lien-vung&id=heritage_1137"
+          rel="noopener noreferrer"
+        >
+          Cần Thơ bứt phá thành đầu tàu du lịch liên vùng
+        </a>
+      </h3>
+
+      <p>
+         Với lợi thế trung tâm vùng, hạ tầng ngày càng hoàn thiện và sản phẩm
+        du lịch đa dạng, Cần Thơ đang khẳng định vai trò đầu tàu du lịch.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 17/11/2025 · Nguồn: Cổng Thông tin Du lịch
+    </div>
+  </div>
+</div>
+
+<!--1-->
+      <div class="news-card">
+  <div class="news-thumb">
+    <img src="./image/đuaghe8133.jpg" alt="Lễ hội Oóc Om Bóc" />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=le-hoi-ooc-om-boc-dua-ghe-ngo-thanh-pho-can-tho-nam-2025-lan-toa-ban-sac-van-hoa-khmer-va-quang-ba-du-lich-dia-phuong&id=heritage_1131"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lễ hội Oóc Om Bóc – Đua ghe Ngo thành phố Cần Thơ năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Sự kiện văn hóa truyền thống của đồng bào Khmer góp phần lan tỏa
+        bản sắc văn hóa và thúc đẩy du lịch địa phương.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 07/11/2025 · Nguồn: Cổng TTĐT Cần Thơ
+    </div>
+  </div>
+</div>
+<!--2-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img src="./image/dua2.jpg" alt="Đua ghe Ngo Cần Thơ" />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a href="https://canthotourism.vn/vi/detailnews/?t=can-tho-to-chuc-le-hoi-ooc-om-boc-dua-ghe-ngo-nam-2025&id=heritage_1129" target="_blank">
+          Cần Thơ tổ chức Lễ hội Oóc Om Bóc – Đua ghe Ngo năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Lễ hội được tổ chức quy mô cấp thành phố, thu hút đông đảo vận động
+        viên và người dân tham gia, góp phần bảo tồn giá trị văn hóa Khmer.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 29/10/2025 · Nguồn: Báo Cần Thơ
+    </div>
+  </div>
+</div>
+
+
+<!--3-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img src="./image/123.jpg" alt="Du lịch sinh thái Cần Thơ" />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a href="https://canthotourism.vn/vi/detailnews/?t=du-lich-sinh-thai-can-tho-trai-nghiem-song-nuoc-huu-tinh&id=heritage_1127" target="_blank">
+          Du lịch sinh thái Cần Thơ – Trải nghiệm sông nước hữu tình
+        </a>
+      </h3>
+
+      <p>
+        Các mô hình du lịch sinh thái gắn với miệt vườn, sông nước đang
+        trở thành điểm nhấn thu hút du khách.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 28/10/2025 · Nguồn: Báo Du lịch
+    </div>
+  </div>
+</div>
+
+<!--4-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img src="./image/picture1_949876457.jpg" alt="Vườn trái cây Vàm Xáng" />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a href="https://canthotourism.vn/vi/detailnews/?t=vuon-trai-cay-vam-xang-noi-mien-tay-giu-hon-trong-tung-nhip-tho-xanh&id=heritage_1126" target="_blank">
+          Vườn trái cây Vàm Xáng – Nơi miền Tây giữ hồn trong từng nhịp thở xanh
+        </a>
+      </h3>
+
+      <p>
+        Không gian xanh mát, đa dạng cây trái cùng trải nghiệm miệt vườn
+        đặc trưng đã giúp Vàm Xáng trở thành điểm đến hấp dẫn du khách.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 28/10/2025 · Nguồn: Báo Văn hóa
+    </div>
+  </div>
+</div>
+
+<!--5-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/12d.jpg"
+      alt="Du lịch Cần Thơ tham gia Hội chợ Mùa Thu năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=du-lich-can-tho-tham-gia-hoi-cho-mua-thu-nam-2025&id=heritage_1124"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Du lịch Cần Thơ tham gia Hội chợ Mùa Thu năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Hoạt động nhằm quảng bá hình ảnh du lịch Cần Thơ, giới thiệu sản phẩm
+        đặc trưng vùng Đồng bằng sông Cửu Long, đồng thời mở rộng kết nối
+        xúc tiến và hợp tác du lịch liên vùng.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 27/10/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--6-->
+
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-kich-cau-du-lich-2025.jpg"
+      alt="Cần Thơ phát động chương trình kích cầu phát triển du lịch 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=can-tho-phat-dong-chuong-trinh-kich-cau-phat-trien-du-lich-2025&id=heritage_1123"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Cần Thơ phát động chương trình kích cầu phát triển du lịch năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Chương trình nhằm thúc đẩy phục hồi và tăng trưởng du lịch thành phố
+        Cần Thơ năm 2025, khuyến khích doanh nghiệp xây dựng sản phẩm mới,
+        tăng liên kết vùng và nâng cao chất lượng dịch vụ du lịch.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 27/10/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--7-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-ooc-om-boc-2025.png"
+      alt="Cần Thơ khẩn trương chuẩn bị cho Lễ hội Oóc Om Bóc - Đua ghe Ngo năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=can-tho-khan-truong-chuan-bi-cho-le-hoi-ooc-om-boc-dua-ghe-ngo-nam-2025&id=heritage_1114"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Cần Thơ khẩn trương chuẩn bị cho Lễ hội Oóc Om Bóc – Đua ghe Ngo năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Thành phố Cần Thơ đang tích cực triển khai công tác chuẩn bị nhằm tổ chức
+        Lễ hội Oóc Om Bóc – Đua ghe Ngo năm 2025 an toàn, trang trọng, góp phần
+        tôn vinh bản sắc văn hóa Khmer và quảng bá hình ảnh du lịch địa phương.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 10/10/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--8-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-cho-noi.jpg"
+      alt="Lênh đênh chợ nổi Cần Thơ"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=lenh-denh-cho-noi&id=heritage_1113"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lênh đênh chợ nổi – Nét văn hóa đặc trưng của miền sông nước Cần Thơ
+        </a>
+      </h3>
+
+      <p>
+        Chợ nổi là không gian sinh hoạt, giao thương lâu đời của cư dân miền Tây,
+        phản ánh rõ nét đời sống văn hóa sông nước và trở thành sản phẩm du lịch
+        đặc trưng của thành phố Cần Thơ.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 07/10/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--9-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-xuc-tien-du-lich-hue-2025.jpg"
+      alt="Hội nghị xúc tiến, quảng bá du lịch Cần Thơ tại thành phố Huế năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=hoi-nghi-xuc-tien-quang-ba-du-lich-can-tho-tai-thanh-pho-hue-nam-2025&id=event_374"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Hội nghị xúc tiến, quảng bá du lịch Cần Thơ tại thành phố Huế năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Hội nghị được tổ chức nhằm tăng cường liên kết, quảng bá hình ảnh du lịch
+        Cần Thơ đến các địa phương miền Trung, thúc đẩy hợp tác phát triển sản
+        phẩm và mở rộng thị trường khách du lịch trong nước.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 13/05/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--10-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-kich-cau-du-lich-can-tho-2025.png"
+      alt="Chương trình kích cầu phát triển du lịch thành phố Cần Thơ năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=chuong-trinh-kich-cau-phat-trien-du-lich-thanh-pho-can-tho-nam-2025&id=event_372"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Chương trình kích cầu phát triển du lịch thành phố Cần Thơ năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Chương trình được triển khai nhằm thu hút du khách, hỗ trợ doanh nghiệp
+        du lịch phục hồi và phát triển, đồng thời nâng cao chất lượng sản phẩm,
+        dịch vụ và tăng cường liên kết phát triển du lịch thành phố Cần Thơ.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 28/03/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+<!--11-->
+<div class="news-card">
+  <div class="news-thumb">
+    <img
+      src="./image/tintuc-banh-dan-gian-nam-bo-2025.jpg"
+      alt="Lễ hội Bánh dân gian Nam Bộ lần thứ XII năm 2025"
+    />
+  </div>
+
+  <div class="news-content">
+    <div>
+      <h3>
+        <a
+          href="https://canthotourism.vn/vi/detailnews/?t=le-hoi-banh-dan-gian-nam-bo-lan-thu-xii-nam-2025&id=event_370"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lễ hội Bánh dân gian Nam Bộ lần thứ XII năm 2025
+        </a>
+      </h3>
+
+      <p>
+        Lễ hội được tổ chức nhằm tôn vinh giá trị ẩm thực truyền thống Nam Bộ,
+        giới thiệu các loại bánh dân gian đặc trưng, góp phần bảo tồn di sản
+        văn hóa và thu hút du khách đến với thành phố Cần Thơ.
+      </p>
+    </div>
+
+    <div class="news-meta">
+      🕒 08/03/2025 · Nguồn: Cổng thông tin Du lịch Cần Thơ
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+
+    <!-- CỘT PHẢI: VIDEO -->
+<aside class="video-column">
+
+  <!-- VIDEO 1 -->
+  <div class="video-box">
+    <h4>Du lịch Cần Thơ – Tổng quan</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/riVLNTp7vsk"
+        title="Du lịch Cần Thơ"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Video giới thiệu tổng quan về du lịch thành phố Cần Thơ.</p>
+      <span>Nguồn: YouTube · Du lịch Việt Nam</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="video-box">
+    <h4>Văn hóa – Con người Cần Thơ</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/4TJ5nfcVkAk"
+        title="Văn hóa Cần Thơ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Phản ánh nét đẹp văn hóa và đời sống người dân Cần Thơ.</p>
+      <span>Nguồn: YouTube · Kênh Văn hóa</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="video-box">
+    <h4>Chợ nổi Cái Răng</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/iWhDUnHaZRo"
+        title="Chợ nổi Cái Răng"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Giới thiệu chợ nổi Cái Răng – nét đặc trưng của miền Tây.</p>
+      <span>Nguồn: YouTube · Du lịch Miền Tây</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 4 -->
+  <div class="video-box">
+    <h4>Lễ hội – Sự kiện Cần Thơ</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/Bj3adiTCL-A"
+        title="Lễ hội Cần Thơ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Các lễ hội tiêu biểu gắn với văn hóa sông nước Cần Thơ.</p>
+      <span>Nguồn: YouTube · Truyền hình Du lịch</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 5 -->
+  <div class="video-box">
+    <h4>Du lịch sông nước</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/q5CPWdQj8fI"
+        title="Du lịch sông nước Cần Thơ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Trải nghiệm du lịch sông nước đặc trưng Đồng bằng sông Cửu Long.</p>
+      <span>Nguồn: YouTube · Vietnam Travel</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 6 -->
+  <div class="video-box">
+    <h4>Ẩm thực miền Tây</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/FPc8oFGY4gs"
+        title="Ẩm thực miền Tây"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Giới thiệu ẩm thực đặc trưng miền Tây Nam Bộ.</p>
+      <span>Nguồn: YouTube · Ẩm thực Việt</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 7 -->
+  <div class="video-box">
+    <h4>Khám phá Cần Thơ</h4>
+
+    <div class="video-placeholder">
+      <iframe
+        src="https://www.youtube.com/embed/G1zuKbs7sbs"
+        title="Khám phá Cần Thơ"
+        frameborder="0"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="video-info">
+      <p>Hành trình khám phá các điểm du lịch tiêu biểu của Cần Thơ.</p>
+      <span>Nguồn: YouTube · Khám phá Việt Nam</span>
+    </div>
+  </div>
+
+</aside>
+
+
+  </section>
+</main>
+
+
+
+
+
+
+
+
+
     
+
+
+
+
+
+
+
+
+
+
   </body>
 </html>

@@ -1,0 +1,3294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm tham quan</title>
+    <meta
+      name="description"
+      content="Khám phá các điểm di tích lịch sử nổi bật trên Lộ Vòng Cung, Cần Thơ. Thông tin du lịch, lịch sử và hướng dẫn tham quan đầy đủ."
+    />
+
+    <!-- Fonts & AOS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+     <link rel="shortcut icon" href="/favicon.ico" />
+     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+     <link rel="manifest" href="/site.webmanifest" />
+     <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./image/apple-touch-icon.png"
+     />
+      <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
+
+      <style>
+      :root {
+        --blue-deep: #1e40af;
+        --green-fresh: #16a34a;
+        --ivory: #f9fafb;
+        --muted: #6b7280;
+        --card-radius: 14px;
+        --container: 1200px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--blue-deep);
+        background: var(--ivory);
+        margin: 0;
+      }
+
+
+      /* Cards */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .card {
+        background: white;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+        transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1),
+          box-shadow 0.28s ease, filter 0.28s ease;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
+        filter: brightness(0.92);
+      }
+      .card .thumb {
+        height: 170px;
+        overflow: hidden;
+      }
+      .card .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .card .body {
+        padding: 14px;
+      }
+      .card h3 {
+        margin: 0;
+        font-family: Playfair Display;
+        color: var(--blue-deep);
+        font-size: 18px;
+      }
+      .card p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .card .more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: linear-gradient(
+          90deg,
+          rgba(16, 185, 129, 0.08),
+          rgba(30, 64, 175, 0.04)
+        );
+        border: 1px solid rgba(16, 185, 129, 0.08);
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+      .card .more:hover {
+        background: linear-gradient(
+          90deg,
+          var(--green-fresh),
+          var(--blue-deep)
+        );
+        color: white;
+      }
+
+      /* Modal */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        z-index: 80;
+      }
+      .modal {
+        background: white;
+        border-radius: 12px;
+        max-width: 980px;
+        width: 100%;
+        max-height: 92vh;
+        overflow: auto;
+        padding: 18px;
+      }
+      .modal .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .modal .gallery {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .modal .gallery img {
+        width: 220px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      .modal .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      /* small interaction for keyboard focus */
+      .card:focus {
+        outline: 3px solid rgba(30, 64, 175, 0.12);
+      }
+
+      /* Thụt đầu dòng */
+      .intro h2,
+      .intro p {
+        text-indent: 30px;
+      }
+
+      /* NAV */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(6px);
+        transition: box-shadow 0.25s ease;
+      }
+      .navbar.scrolled {
+        box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+      }
+      .nav-inner {
+        max-width: var(--container);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+  width: 56px;          
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+      .site-name {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue-deep);
+  line-height: 1.4;
+  margin-bottom: 4px;   
+}
+.site-sub {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: "Inter", system-ui, sans-serif;
+}
+      .menu {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .menu a {
+        padding: 8px 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--blue-deep);
+        font-weight: 600;
+        transition: all 0.22s ease;
+      }
+      .menu a:hover {
+        background: var(--green-fresh);
+        color: white;
+        transform: translateY(-2px);
+      }
+      .cta-primary {
+        background: linear-gradient(90deg, var(--green-fresh), #10b981);
+        color: white;
+        padding: 9px 14px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.18s ease;
+      }
+      .cta-primary:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.02);
+      }
+      /* Main */
+      main {
+        max-width: var(--container);
+        margin: 28px auto;
+        padding: 0 20px;
+      }
+
+      .intro {
+      width: 100%;
+        height: 100%;
+      }
+      .intro .text h2 {
+        font-family: Playfair Display;
+        color: var(--blue-deep);
+        margin: 0 0 12px;
+        font-size: 26px;
+      }
+      .intro .text p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .intro .visual {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 26px rgba(16, 24, 40, 0.06);
+      }
+      .intro .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+
+      /* Responsive cho điện thoại */
+      /* Tablet nhỏ & màn hình vừa */
+@media (max-width: 768px) {
+  .hero-top-left {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+}
+
+
+
+
+
+      @media (max-width: 1000px) {
+        .intro {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding: 0 24px;
+          text-align: center;
+        }
+
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          padding: 0 16px;
+        }
+      }
+
+      /* Điện thoại */
+      @media (max-width: 640px) {
+        /* Cards */
+        .cards {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 0 12px;
+        }
+
+        /* Ẩn menu, căn lại header */
+        .menu {
+          display: none;
+        }
+
+        .nav-inner {
+          padding: 10px 14px;
+        }
+    
+
+      /* History section */
+      @media (max-width: 768px) {
+        .history-grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding: 0 12px;
+        }
+
+        .history-card {
+          padding: 16px;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .history-card h3 {
+          font-size: 1rem;
+          margin-bottom: 6px;
+        }
+
+        .history-card p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+
+    }
+
+    /* HERO MINI */
+.page-hero {
+  height: 335px;               
+  background:
+    linear-gradient(
+      rgba(0, 77, 64, 0.55),
+      rgba(0, 77, 64, 0.55)
+    ),
+    url("./image/dbscl-4604.jpg") center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+}
+
+/* Nội dung trong hero */
+.hero-content h1 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.page-hero {
+  animation: fadeDown 0.8s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.page-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.85);
+
+  animation: bounce 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+.page-hero {
+  position: relative;
+}
+.hero-content h1 {
+  font-family: "Playfair Display", serif;
+}
+
+
+@media (max-width: 640px) {
+  .page-hero {
+    height: 280px;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+      </style>
+
+
+
+
+
+<a href="/index.html" id="diemdulich"></a>
+
+</head>
+<body>
+<!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo">
+            <img src="./image/Logo HCMUE.png" alt="HCMUE" />
+          </div>
+
+          <div>
+           <div class="site-name">Ngành Địa lý học, khoá 34 (2023 - 2025)</div>
+            <div class="site-sub">
+              Học viên: Nguyễn Thành Đạt (DLHO834004)
+            </div>
+          </div>
+        </div>
+
+        <nav class="menu" aria-label="Main navigation">
+  <a href="index.html">Trang chủ</a>
+  <a href="diemdulich.html">Điểm tham quan</a>
+  <a href="solieu.html">Số liệu</a>
+  <a href="tintuc.html">Tin tức</a>
+  <a href="bando.html">Bản đồ</a>
+
+  <button
+    class="cta-primary"
+    onclick="window.open('gopy.html', '_blank')"
+  >
+    Liên hệ - góp ý
+  </button>
+</nav>
+
+      </header>
+
+       <!-- HERO MINI -->
+    <section class="page-hero">
+    <div class="hero-content">
+    <h1>Các điểm tham quan thành phố Cần Thơ</h1>
+    </div>
+
+    <!-- GỢI Ý KÉO XUỐNG -->
+  <div class="scroll-hint">⌄</div>
+    </section>
+
+
+
+    
+
+
+    <main>
+        <!-- CARDS -->
+      <section id="diemdi">
+        <h2 style="font-family: Playfair Display; margin-top: 30px">
+          1. Di tích - di sản
+        </h2>
+
+        <div class="cards">
+          <!-- 1 -->
+          <article class="card" data-aos="zoom-in" tabindex="0">
+            <div class="thumb">
+              <img
+                src="./image/khutuongniem_ditich_lovongcung.webp"
+                alt="Khu tưởng niệm"
+              />
+            </div>
+            <div class="body">
+              <h3>Di tích lịch sử Lộ Vòng Cung Cần Thơ</h3>
+              <p style="text-align: justify">
+                Khu tưởng niệm và nhà truyền thống trưng bày tư liệu, hiện vật
+                về tuyến Lộ Vòng Cung và tinh thần chiến đấu của quân dân Tây
+                Đô.
+              </p>
+              <div class="more" onclick="openModal('p1')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="40"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/dinh_binhthuy2_637018984345355445.jpg" alt="Đình Bình Thủy" />
+            </div>
+            <div class="body">
+              <h3>Đình Bình Thủy</h3>
+              <p style="text-align: justify">
+               Đình Bình Thủy (hay Long Tuyền Cổ Miếu) ở Cần Thơ là một di tích lịch sử văn hóa lâu đời (hơn 180 năm), mang đậm kiến trúc đình làng Nam Bộ với gỗ, ngói âm dương, đá.
+              </p>
+              <div class="more" onclick="openModal('p2')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/DI_TICH_ONG_HAO.jpg" alt="Ông Hào" />
+            </div>
+            <div class="body">
+              <h3>Chiến thắng Ông Hào (1965)</h3>
+              <p style="text-align: justify">
+                Trận đánh lớn của Tiểu đoàn Tây Đô tại kênh Ông Hào (08/06/1965)
+                — chiến công tiêu biểu trong kháng chiến.
+              </p>
+              <div class="more" onclick="openModal('p3')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="120"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/chua-ong-can-tho1.jpg" alt="Chùa Ông" />
+            </div>
+            <div class="body">
+              <h3>Chùa Ông Cần Thơ (Quảng Triệu Hội Quán)</h3>
+              <p style="text-align: justify">
+                Chùa Ông Cần Thơ là ngôi chùa cổ của người Hoa, thờ Quan Thánh Đế Quân. Chùa nổi bật với kiến trúc Trung Hoa đặc sắc và giá trị văn hóa – lịch sử lâu đời.
+              </p>
+              <div class="more" onclick="openModal('p4')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="160"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/khu-di-tich-lich-su-gian-gua.jpg"
+                alt="Giàn Gừa"
+              />
+            </div>
+            <div class="body">
+              <h3>Di tích Giàn Gừa</h3>
+              <p style="text-align: justify">
+                Giàn gừa nguyên sinh — nơi từng hoạt động cách mạng, cất giấu vũ
+                khí và tổ chức huấn luyện biệt động trong kháng chiến.
+              </p>
+              <div class="more" onclick="openModal('p5')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/kham-lon-can-tho-hanh-trinh-kham-pha-lich-su-va-van-hoa-mien-tay-song-nuoc-68ed2d0021aba.jpeg" alt="Khám lớn Cần Thơ" />
+            </div>
+            <div class="body">
+              <h3>Khám lớn Cần Thơ</h3>
+              <p style="text-align: justify">
+                Khám Lớn Cần Thơ là di tích lịch sử gắn với thời kỳ kháng chiến, nơi từng giam giữ nhiều chiến sĩ cách mạng. Đây là chứng tích về tinh thần đấu tranh kiên cường của nhân dân Cần Thơ.
+              </p>
+              <div class="more" onclick="openModal('p6')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="240"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/chuongthien.jpg" alt="Di tích Lịch sử Chiến thắng Chương Thiện" />
+            </div>
+            <div class="body">
+              <h3>Di tích Lịch sử Chiến thắng Chương Thiện</h3>
+              <p style="text-align: justify">
+                Di tích Lịch sử Chiến thắng Chương Thiện ghi dấu chiến công tiêu biểu của quân và dân Tây Nam Bộ trong kháng chiến chống Mỹ. Di tích thể hiện tinh thần chiến đấu anh dũng và ý chí bảo vệ quê hương của nhân dân vùng Chương Thiện.
+              </p>
+              <div class="more" onclick="openModal('p7')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="280"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/khu_tru_mat_vi_thanh_hoa_luu_100829644.jpg" alt="Khu trù mật Vị Thanh – Hỏa Lựu" />
+            </div>
+            <div class="body">
+              <h3>Khu trù mật Vị Thanh – Hỏa Lựu</h3>
+              <p style="text-align: justify">
+               Khu trù mật Vị Thanh – Hỏa Lựu là di tích lịch sử gắn với chính sách dồn dân lập ấp của chính quyền Sài Gòn trước năm 1975. Nơi đây phản ánh rõ cuộc đấu tranh kiên cường của nhân dân trước sự áp bức và tinh thần yêu nước bền bỉ của vùng Tây Nam Bộ.
+
+              </p>
+              <div class="more" onclick="openModal('p8')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/can_cu_vuon_man.webp" alt="Vườn mận" />
+            </div>
+            <div class="body">
+              <h3>Vườn mận — Căn cứ Tết Mậu Thân (1968)</h3>
+              <p style="text-align: justify">
+                Vườn mận là căn cứ chỉ huy và nơi xuất phát các mũi tiến công
+                trong Tết Mậu Thân 1968 tại Cần Thơ.
+              </p>
+              <div class="more" onclick="openModal('p9')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 10 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/denthobacho.jfif"
+                alt="Đền thờ Bác Hồ"
+              />
+            </div>
+            <div class="body">
+              <h3>Đền thờ Bác Hồ</h3>
+              <p style="text-align: justify">
+                Đền thờ Bác Hồ tại Hậu Giang nằm ở ấp 3, xã Lương Tâm, huyện Long Mỹ, là di tích lịch sử cấp quốc gia để tưởng niệm Chủ tịch Hồ Chí Minh. Khu di tích gồm Nhà tưởng niệm, Nhà trưng bày về cuộc đời Bác và các hạng mục phụ trợ, là địa điểm giáo dục truyền thống quan trọng của địa phương.
+
+              </p>
+              <div class="more" onclick="openModal('p10')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 11 -->
+          <article class="card" data-aos="zoom-in" tabindex="0">
+            <div class="thumb">
+              <img src="./image/chocairangthumb.jpg" alt="Chợ nổi Cái Răng" />
+            </div>
+            <div class="body">
+              <h3>Chợ nổi Cái Răng</h3>
+              <p style="text-align: justify">
+                Chợ nổi Cái Răng, nằm trên sông Cần Thơ, là một trong những chợ
+                nổi sầm uất nhất miền Tây, nổi bật với hình ảnh những chiếc
+                thuyền buôn bán đầy màu sắc, phản ánh đời sống sinh hoạt và văn
+                hóa đặc trưng của vùng sông nước Tây Nam Bộ.
+              </p>
+              <div class="more" onclick="openModal('p11')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 12 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/mo-nha-tho-phan-van-tri-1-1.jpg" alt="PVT" />
+            </div>
+            <div class="body">
+              <h3>Mộ nhà thơ Phan Văn Trị</h3>
+              <p style="text-align: justify">
+                Mộ nhà thơ yêu nước Cử nhân Phan Văn Trị tại Cần Thơ là điểm đến
+                gợi nhắc về tấm gương sáng của một nhà thơ – chiến sĩ, đồng thời
+                góp phần làm phong phú hành trình khám phá văn hóa và lịch sử
+                địa phương.
+              </p>
+              <div class="more" onclick="openModal('p12')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 13 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/dt_tam_vu_667670968.jpg"
+                alt="Khu di tích Chiến thắng Tầm Vu"
+              />
+            </div>
+            <div class="body">
+              <h3>Khu di tích Chiến thắng Tầm Vu</h3>
+              <p style="text-align: justify">
+                Khu di tích Chiến thắng Tầm Vu (Hậu Giang) là nơi ghi dấu chiến công tiêu biểu của quân và dân ta trong thời kỳ kháng chiến chống Pháp, thể hiện tinh thần chiến đấu anh dũng và mưu trí. Di tích có ý nghĩa lịch sử quan trọng, góp phần giáo dục truyền thống yêu nước cho các thế hệ hôm nay.
+              </p>
+              <div class="more" onclick="openModal('p13')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- Điểm mới 14 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/chua-doi.jpg"
+                alt="Chùa Mahatub (Chùa Dơi - Chùa Mã Tộc)"
+              />
+            </div>
+            <div class="body">
+              <h3>Chùa Mahatub (Chùa Dơi - Chùa Mã Tộc)</h3>
+              <p style="text-align: justify">
+                Chùa Mahatup (Chùa Dơi, Chùa Mã Tộc) ở Sóc Trăng là ngôi chùa Khmer cổ kính hơn 400 năm (xây 1569) nổi tiếng với hàng ngàn con dơi khổng lồ (dơi quạ) trú ngụ, kiến trúc độc đáo giao thoa Việt-Khmer, thờ Phật Thích Ca, và là di tích cấp Quốc gia, biểu tượng văn hóa, tâm linh đặc sắc của vùng đất này. 
+               </p>
+              <div class="more" onclick="openModal('p14')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- Điểm mới 2 15 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/taberd.jfif"
+                alt="Khu di tích Trường Taberd 15"
+              />
+            </div>
+            <div class="body">
+              <h3>Khu di tích Trường Taberd </h3>
+              <p style="text-align: justify">
+              Khu di tích Trường Taberd (hay còn gọi là Di tích lịch sử - Văn hóa cấp Quốc gia Trường Taberd) tại Sóc Trăng là di tích lịch sử ghi dấu sự kiện quan trọng: nơi đón tiếp đoàn tù chính trị Côn Đảo về đất liền sau Cách mạng tháng Tám 1945, do người dân Sóc Trăng chuẩn bị, nay là Nhà trưng bày Khu di tích lịch sử Trường Taberd thuộc Trường THPT Ischool, trưng bày hiện vật giá trị về sự kiện này. 
+             </p>
+              <div class="more" onclick="openModal('p15')">Xem chi tiết →</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- CARDS 2-->
+      <section>
+        <h2 style="font-family: Playfair Display; margin-top: 30px">
+          2. Điểm tham quan
+        </h2>
+
+        <div class="cards">
+          <!-- 1 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="160"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/Tam_quan_Thiền_viện_Trúc_Lâm_Phương_Nam.JPG"
+                alt="Thiền viện trúc lâm phương nam"
+              />
+            </div>
+            <div class="body">
+              <h3>Thiền viện Trúc Lâm Phương Nam Cần Thơ</h3>
+              <p style="text-align: justify">
+                Thiền viện Trúc Lâm Phương Nam là ngôi thiền viện lớn nhất miền
+                Tây, mang đậm kiến trúc thời Lý – Trần, là điểm đến tâm linh
+                thanh tịnh và biểu tượng văn hóa đặc sắc của Cần Thơ.
+              </p>
+              <div class="more" onclick="openModal('p16')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="40"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/hutieuthumb.jpg" alt="Lò hủ tiếu sáu hoài" />
+            </div>
+            <div class="body">
+              <h3>Lò hủ tiếu Sáu Hoài</h3>
+              <p style="text-align: justify">
+                Hủ Tiếu Sáu Hoài, gần chợ nổi Cái Răng, nổi tiếng với lò hủ tiếu
+                truyền thống, món Pizza Hủ Tiếu độc đáo và không khí miệt vườn
+                miền Tây Cần Thơ.
+              </p>
+              <div class="more" onclick="openModal('p17')">Xem chi tiết →</div>
+            </div>
+          </article>
+          <!-- 3 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/Can-Tho-1.jpg" alt="Đền thờ Vua Hùng Cần Thơ" />
+            </div>
+            <div class="body">
+              <h3>Đền thờ Vua Hùng</h3>
+              <p style="text-align: justify">
+                Đền thờ Vua Hùng được đầu tư xây dựng nhằm giáo dục truyền thống “Uống nước nhớ nguồn”, đáp ứng nhu cầu tín ngưỡng của nhân dân thành phố Cần Thơ và vùng Đồng bằng sông Cửu Long. Công trình còn là điểm nhấn văn hóa – du lịch, góp phần kết nối các di tích lịch sử và thúc đẩy phát triển du lịch của thành phố Cần Thơ.
+
+              </p>
+              <div class="more" onclick="openModal('p18')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="120"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/Niem-vui-bat-tan-cung-dan-ca-Koi.jpg" alt="Bè cá Bảy Bon" />
+            </div>
+            <div class="body">
+              <h3>Bè cá Bảy Bon</h3>
+              <p style="text-align: justify">
+                Bè cá Bảy Bon là điểm du lịch sinh thái độc đáo, nơi du khách trải nghiệm đời sống sông nước miền Tây như cho cá ăn, câu cá, massage cá koi và thưởng thức các món ăn từ cá tươi. Mô hình kết hợp nuôi trồng thủy sản với du lịch của nông dân Lý Văn Bon đã tạo nên nét văn hóa đặc trưng, góp phần làm phong phú sản phẩm du lịch Cần Thơ.
+               </p>
+              <div class="more" onclick="openModal('p19')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="160"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/ben-ninh-kieu-1.jpg"
+                alt="Bến Ninh Kiều"
+              />
+            </div>
+            <div class="body">
+              <h3>Bến Ninh Kiều</h3>
+              <p style="text-align: justify">
+                Bến Ninh Kiều là biểu tượng của Cần Thơ, nơi vẻ đẹp sông nước hiền hòa hòa quyện với nhịp sống sôi động, đậm chất miền Tây. Đây không chỉ là điểm hẹn văn hóa – du lịch mà còn lưu giữ hồn cốt của vùng đất Tây Đô.
+
+              </p>
+              <div class="more" onclick="openModal('p20')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/cho_co_can_tho_4_4530677.jpg" alt="Nhà lồng chợ Cần Thơ" />
+            </div>
+            <div class="body">
+              <h3>Nhà lồng chợ Cần Thơ</h3>
+              <p style="text-align: justify">
+                "Nhà lồng chợ Cần Thơ" (hay Chợ cổ Cần Thơ) là di tích kiến trúc độc đáo, biểu tượng của thành phố, nằm cạnh bến Ninh Kiều (Đường Hai Bà Trưng, Q. Ninh Kiều), nổi tiếng với kiến trúc cổ kính, mái ngói âm dương và các gian hàng bán đồ lưu niệm, thổ cẩm, đặc sản địa phương, thu hút đông đảo du khách và là địa điểm lý tưởng để khám phá văn hóa, mua sắm đặc sản miền Tây. 
+                </p>
+              <div class="more" onclick="openModal('p21')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="240"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/cv170521.jpg" alt="Công viên ánh sáng kỳ quan cổ đại The Miracle" />
+            </div>
+            <div class="body">
+              <h3>Công viên ánh sáng kỳ quan cổ đại The Miracle</h3>
+              <p style="text-align: justify">
+                Công viên ánh sáng kỳ quan cổ đại The Miracle là không gian nghệ thuật – giải trí độc đáo, tái hiện các kỳ quan cổ đại nổi tiếng thế giới bằng công nghệ ánh sáng hiện đại. Nơi đây mang đến cho du khách trải nghiệm tham quan ấn tượng, kết hợp giữa văn hóa, lịch sử và sáng tạo thị giác.
+                </p>
+              <div class="more" onclick="openModal('p22')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="280"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/cho.webp" alt="Chợ Vị Thanh" />
+            </div>
+            <div class="body">
+              <h3>Chợ Vị Thanh</h3>
+              <p style="text-align: justify">
+               Chợ Vị Thanh (TP. Vị Thanh, Hậu Giang) là một khu chợ nổi tiếng, được nhiều người ví von là "chợ chồm hổm đẹp nhất Việt Nam" nhờ bố cục gọn gàng, vuông vức; nơi đây bán đa dạng nông sản tươi ngon, đặc sản sông nước, mang đậm văn hóa chợ quê giữa lòng thành phố, là điểm đến lý tưởng để trải nghiệm ẩm thực và đời sống địa phương. 
+
+              </p>
+              <div class="more" onclick="openModal('p23')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 9 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/vuontre.jpg" alt="Vườn Tre Tư Sang" />
+            </div>
+            <div class="body">
+              <h3>Vườn Tre Tư Sang</h3>
+              <p style="text-align: justify">
+                Vườn tre Tư Sang là điểm du lịch sinh thái mang đậm nét miệt vườn Nam Bộ, nổi bật với không gian xanh mát và những hàng tre rợp bóng. Nơi đây thu hút du khách bởi các hoạt động trải nghiệm dân dã, gần gũi với thiên nhiên và đời sống người dân miền Tây.
+              </p>
+              <div class="more" onclick="openModal('p24')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 10 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/ho-nuoc-ngot-soc-trang.jpg"
+                alt="Hồ nước ngọt"
+              />
+            </div>
+            <div class="body">
+              <h3>Hồ nước ngọt</h3>
+              <p style="text-align: justify">
+                Hồ Nước Ngọt (hay Khu Văn hóa Hồ Nước Ngọt) ở trung tâm TP Sóc Trăng là một biểu tượng xanh mát, gồm hai hồ lớn và nhỏ (Hồ Tịnh Tâm cũ), có không gian xanh với cây cối, hoa lá, là nơi vui chơi, tập thể dục, tổ chức sự kiện văn hóa lớn, được ví như "Đà Lạt thứ hai" của tỉnh Sóc Trăng, thu hút đông đảo người dân và khách du lịch. 
+
+              </p>
+              <div class="more" onclick="openModal('p25')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 11 -->
+          <article class="card" data-aos="zoom-in" tabindex="0">
+            <div class="thumb">
+              <img src="./image/bongsen.jpg" alt="Liên Hoa Bảo Tháp" />
+            </div>
+            <div class="body">
+              <h3>Liên Hoa Bảo Tháp</h3>
+              <p style="text-align: justify">
+                Liên Hoa Bảo Tháp tại Tân Huê Viên là công trình kiến trúc tâm linh nổi bật, mang hình tượng hoa sen vươn cao, biểu trưng cho sự thanh tịnh và giác ngộ trong Phật giáo. Công trình được xem là biểu tượng mới của Sóc Trăng, thu hút đông đảo du khách và Phật tử đến tham quan, chiêm bái.
+
+              </p>
+              <div class="more" onclick="openModal('p26')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 12 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="80"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/ve-dep-yen-binh-cua-vuon-co-tan-long-soc-trang.webp" alt="Vườn Cò Tân Long" />
+            </div>
+            <div class="body">
+              <h3>Vườn Cò Tân Long</h3>
+              <p style="text-align: justify">
+              
+               Vườn Cò Tân Long là khu sinh thái tự nhiên tiêu biểu, nơi cư trú của nhiều loài cò và chim nước giữa không gian miệt vườn yên bình. Điểm đến này mang giá trị sinh thái và giáo dục cao, thu hút du khách yêu thiên nhiên và trải nghiệm cuộc sống miền Tây.
+
+              </p>
+              <div class="more" onclick="openModal('p27')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          </section>
+          
+
+          
+          
+
+      
+
+
+       <!-- CARDS (điểm mới) -->
+      <section>
+        <h2 style="font-family: Playfair Display; margin-top: 30px">
+          3. Khu du lịch
+        </h2>
+        <div class="cards">
+        
+          <!-- 15 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="120"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/lang-du-lich-my-khanh-1.jpg"
+                alt="KDL Mỹ Khánh"
+              />
+            </div>
+            <div class="body">
+              <h3>Làng du lịch Mỹ Khánh</h3>
+              <p style="text-align: justify">
+                Làng du lịch Mỹ Khánh, nằm tại Cần Thơ, là điểm đến hấp dẫn với
+                không gian miệt vườn rộng rãi, trải nghiệm văn hóa sông nước đặc
+                trưng miền Tây và những hoạt động giải trí, ẩm thực độc đáo cho
+                du khách.
+              </p>
+              <div class="more" onclick="openModal('p28')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          
+
+          <!-- 17 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/z7206081461721_6d87f4049815b32dc26242f7a20eaacd.jpg"
+                alt="KDL Ông Đề"
+              />
+            </div>
+            <div class="body">
+              <h3>Khu du lịch sinh thái Ông Đề</h3>
+              <p style="text-align: justify">
+                Khu du lịch sinh thái Ông Đề tại Cần Thơ mang đến trải nghiệm
+                miệt vườn đặc trưng miền Tây, với vườn cây trái xanh mát, sông
+                nước hữu tình và các hoạt động giải trí, ẩm thực đặc sắc cho du
+                khách.
+              </p>
+
+              <div class="more" onclick="openModal('p29')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 18 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="240"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/Con-Son.jpg"
+                alt="Du lịch Cồn Sơn"
+              />
+            </div>
+            <div class="body">
+              <h3>Du lịch Cồn Sơn</h3>
+              <p style="text-align: justify">
+                Du lịch sinh thái cộng đồng Cồn Sơn (Cần Thơ) nổi bật với các trải nghiệm miệt vườn sông nước như tát mương bắt cá, tham quan vườn trái cây, xem cá lóc bay và thưởng thức đờn ca tài tử. Du khách có thể tự do khám phá bằng đò hoặc tham gia tour trọn gói, cảm nhận cuộc sống dân dã ven sông Hậu với chi phí hợp lý.
+
+              </p>
+              <div class="more" onclick="openModal('p30')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 19 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="280"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/thu_hoach_khom_tren_dia_ban_tinh_hau_giang_ly_anh_lam_4_756243568.jpg" alt="Khu du lịch cộng đồng khóm Cầu Đúc" />
+            </div>
+            <div class="body">
+              <h3>Khu du lịch cộng đồng khóm Cầu Đúc</h3>
+              <p style="text-align: justify">
+                Du lịch cộng đồng khóm Cầu Đúc đang được định hình dựa trên thế mạnh vùng trồng khóm đặc sản, gắn sản xuất nông nghiệp với trải nghiệm du lịch, ẩm thực và tham quan sinh thái ven sông. Mô hình này góp phần nâng cao giá trị trái khóm Cầu Đúc, quảng bá văn hóa địa phương và tạo điểm nhấn du lịch mới cho tỉnh Hậu Giang.
+
+              </p>
+              <div class="more" onclick="openModal('p31')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 20 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/3_717685598.jpg"
+                alt="Khu du lịch sinh thái Mùa Xuân "
+              />
+            </div>
+            <div class="body">
+              <h3>Khu du lịch sinh thái Mùa Xuân</h3>
+              <p style="text-align: justify">
+               Khu du lịch sinh thái Mùa Xuân là điểm đến xanh, yên bình đậm chất miền Tây với rừng tràm, kênh rạch và vườn chim đa dạng, thu hút du khách trải nghiệm sông nước, ẩm thực địa phương và đờn ca tài tử. Nơi đây hướng đến du lịch xanh, bảo tồn thiên nhiên và mang lại trải nghiệm sinh thái chân thực cho du khách.
+
+              </p>
+              <div class="more" onclick="openModal('p32')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 21 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/lung tràm.jpg" alt="lung tràm" />
+            </div>
+            <div class="body">
+              <h3>Vườn Du Lịch Sinh Thái Lung Tràm</h3>
+              <p style="text-align: justify">
+                Về Lung Tràm câu cá, hái trái cây, chèo xuồng len lỏi giữa hàng
+                tràm xanh mát – để tạm gác lại phố xá ồn ào, và tận hưởng trọn
+                vẹn sự bình yên mộc mạc nơi miền sông nước Cần Thơ
+              </p>
+              <div class="more" onclick="openModal('p33')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 22 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/Kittyd-Minnied-o-hau-giang-ivivu-2.jpg" alt="Công viên giải trí Kittyd & Minnied" />
+            </div>
+            <div class="body">
+              <h3>Công viên giải trí Kittyd & Minnied</h3>
+              <p style="text-align: justify">
+               Công viên giải trí Kittyd & Minnied là khu phức hợp vui chơi giải trí rộng hơn 20ha tại Hậu Giang (trong khuôn viên Đại học Võ Trường Toản), nổi bật với kiến trúc Châu Âu cổ điển, lộng lẫy, được ví như "Disneyland thu nhỏ" ở miền Tây, có nhiều trò chơi cảm giác mạnh, khu vui chơi trẻ em, công viên nước và khu vực chụp ảnh check-in ấn tượng như Lâu đài Coeus, Phố đi bộ Olympus, phù hợp cho mọi lứa tuổi. 
+
+              </p>
+              <div class="more" onclick="openModal('p34')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 23 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/eco.jpg" alt="eco cần thơ" />
+            </div>
+            <div class="body">
+              <h3>Cantho Eco Resort</h3>
+              <p style="text-align: justify">
+                Cần Thơ Eco Resort là khu nghỉ dưỡng sinh thái kết hợp nông trại
+                rất đáng chú ý tại miền Tây.
+              </p>
+              <div class="more" onclick="openModal('p35')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 24 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="320"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img src="./image/bdb45597-khu-du-lich-sinh-thai-phuoc-my-thanh-6144445.jpg" alt="Khu du lịch sinh thái Cồn Mỹ Phước" />
+            </div>
+            <div class="body">
+              <h3>Khu du lịch sinh thái Cồn Mỹ Phước</h3>
+              <p style="text-align: justify">
+               Khu du lịch sinh thái Cồn Mỹ Phước là cồn đất trù phú giữa sông Hậu, nổi bật với vườn cây ăn trái phong phú và không gian miệt vườn sông nước yên bình. Nơi đây thu hút du khách bởi các lễ hội truyền thống, ẩm thực dân gian và nét văn hóa đặc trưng của miền Tây.
+
+              </p>
+              <div class="more" onclick="openModal('p36')">Xem chi tiết →</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- CARDS (điểm mới) -->
+      <section>
+        <h2 style="font-family: Playfair Display; margin-top: 30px">
+          4. Làng nghề
+        </h2>
+        <div class="cards">
+        
+          <!-- 1 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="120"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/lang-hoa-ba-bo-1.webp"
+                alt="Làng hoa Bà Bộ"
+              />
+            </div>
+            <div class="body">
+              <h3>Làng hoa Bà Bộ</h3>
+              <p style="text-align: justify">
+                Làng hoa Bà Bộ là làng nghề truyền thống nổi tiếng của Cần Thơ, chuyên trồng và cung cấp các loại hoa kiểng phục vụ Tết và lễ hội. Nơi đây không chỉ góp phần giữ gìn nghề trồng hoa mà còn là điểm tham quan mang đậm sắc xuân miền Tây.
+
+              </p>
+              <div class="more" onclick="openModal('p37')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          
+
+          <!-- 2 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/lang-nghe-dan-luoi-thom-rom-45-.1735.jpg"
+                alt="Làng đan lưới Thơm Rơm"
+              />
+            </div>
+            <div class="body">
+              <h3>Làng đan lưới Thơm Rơm</h3>
+              <p style="text-align: justify">
+                Làng đan lưới Thơm Rơm là làng nghề truyền thống hình thành gần 30 năm, chuyên sản xuất lưới đánh bắt thủy sản bền, giá rẻ, được tiêu thụ rộng khắp Đồng bằng sông Cửu Long. Nghề đan lưới không chỉ tạo việc làm cho hàng trăm lao động địa phương mà còn góp phần giúp nhiều hộ dân thoát nghèo và ổn định cuộc sống.
+
+              </p>
+
+              <div class="more" onclick="openModal('p38')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article
+            class="card"
+            data-aos="zoom-in"
+            data-aos-delay="240"
+            tabindex="0"
+          >
+            <div class="thumb">
+              <img
+                src="./image/IMG-1216-1-1692586795.webp"
+                alt="Làng nghề bánh tráng Thuận Hưng"
+              />
+            </div>
+            <div class="body">
+              <h3>Làng nghề bánh tráng Thuận Hưng</h3>
+              <p style="text-align: justify">
+                Làng bánh tráng Thuận Hưng (Cần Thơ) là làng nghề hơn 200 năm tuổi nổi tiếng với bánh tráng dẻo thơm, mịn đều, được công nhận di sản văn hóa phi vật thể quốc gia. Đặc sản ở đây đa dạng gồm bánh mặn, lạt, nem, dừa, được làm thủ công với bí quyết pha bột riêng, tạo nên hương vị gạo nồng nàn, không chua, không dai, rất được ưa chuộng. 
+                
+              </p>
+              <div class="more" onclick="openModal('p39')">Xem chi tiết →</div>
+            </div>
+          </article>
+
+          
+        </div>
+      </section>
+
+
+    </main>
+
+
+
+
+
+    <!-- FOOTER -->
+    <footer
+      style="
+        width: 100%;
+        background-color: #e6f0ff;
+        border-top: 3px solid #007bff;
+        padding: 10px 0 5px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <div
+        class="footer-inner"
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          color: #002b5c;
+          font-weight: 600;
+          font-size: 14px;
+        "
+      >
+        © <span id="year"></span> Du lịch thành phố Cần Thơ
+      </div>
+
+      <!-- Dòng thống kê lượt truy cập -->
+      <div style="margin-top: 8px; font-size: 13px; color: #002b5c">
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+          "
+        >
+          <span>Đang online: <strong id="onlineCount">0</strong></span>
+          <span>Hôm nay: <strong id="todayCount">0</strong></span>
+          <span>Tháng này: <strong id="monthCount">0</strong></span>
+          <span>Tổng truy cập: <strong id="totalCount">0</strong></span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module">
+      // Import Firebase
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+        update,
+        increment,
+        onValue,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCGHYenGAsg9cNWZAwnlJYLzbqo53WYwCE",
+        authDomain: "visitor-counter-f3d0c.firebaseapp.com",
+        databaseURL:
+          "https://visitor-counter-f3d0c-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "visitor-counter-f3d0c",
+        storageBucket: "visitor-counter-f3d0c.firebasestorage.app",
+        messagingSenderId: "402754633129",
+        appId: "1:402754633129:web:0d25bcdc5ff07a491c58b8",
+        measurementId: "G-N2V24RSB8X",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+
+      function generateSessionId() {
+        return (
+          "session_" +
+          Date.now() +
+          "_" +
+          Math.random().toString(36).substr(2, 9)
+        );
+      }
+
+      function getSessionId() {
+        let sessionId = sessionStorage.getItem("visitorSessionId");
+        if (!sessionId) {
+          sessionId = generateSessionId();
+          sessionStorage.setItem("visitorSessionId", sessionId);
+        }
+        return sessionId;
+      }
+
+      async function initializeCounter() {
+        const sessionId = getSessionId();
+        const statsRef = ref(database, "stats");
+        const sessionRef = ref(database, "sessions/" + sessionId);
+
+        try {
+          const snapshot = await get(statsRef);
+          let stats = snapshot.val() || {
+            total: 0,
+            today: 0,
+            month: 0,
+            lastDate: new Date().toDateString(),
+            lastMonth: new Date().getMonth(),
+            lastYear: new Date().getFullYear(),
+          };
+
+          const now = new Date();
+          const currentDate = now.toDateString();
+          const currentMonth = now.getMonth();
+          const currentYear = now.getFullYear();
+
+          if (stats.lastDate !== currentDate) {
+            stats.today = 0;
+            stats.lastDate = currentDate;
+          }
+
+          if (
+            stats.lastMonth !== currentMonth ||
+            stats.lastYear !== currentYear
+          ) {
+            stats.month = 0;
+            stats.lastMonth = currentMonth;
+            stats.lastYear = currentYear;
+          }
+
+          const sessionSnapshot = await get(sessionRef);
+          if (!sessionSnapshot.exists()) {
+            // Session mới - tăng các bộ đếm
+            stats.total++;
+            stats.today++;
+            stats.month++;
+
+            await set(statsRef, stats);
+
+            await set(sessionRef, {
+              timestamp: serverTimestamp(),
+            });
+          } else {
+            await update(sessionRef, {
+              timestamp: serverTimestamp(),
+            });
+          }
+
+          onValue(statsRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+              updateDisplay(data);
+            }
+          });
+
+          updateOnlineCount();
+
+          setInterval(() => {
+            update(sessionRef, {
+              timestamp: serverTimestamp(),
+            });
+            updateOnlineCount();
+          }, 30000);
+
+          window.addEventListener("beforeunload", () => {
+            update(sessionRef, {
+              timestamp: serverTimestamp(),
+            });
+          });
+        } catch (error) {
+          console.error("Lỗi Firebase:", error);
+        }
+      }
+
+      async function updateOnlineCount() {
+        const sessionsRef = ref(database, "sessions");
+        try {
+          const snapshot = await get(sessionsRef);
+          if (snapshot.exists()) {
+            const sessions = snapshot.val();
+            const fiveMinutesAgo = Date.now() - 5 * 60 * 1000;
+
+            let onlineCount = 0;
+            const updates = {};
+
+            for (let sessionId in sessions) {
+              const sessionTime = sessions[sessionId].timestamp;
+              if (sessionTime && sessionTime > fiveMinutesAgo) {
+                onlineCount++;
+              } else {
+                updates["sessions/" + sessionId] = null;
+              }
+            }
+
+            if (Object.keys(updates).length > 0) {
+              await update(ref(database), updates);
+            }
+
+            document.getElementById("onlineCount").textContent = onlineCount;
+          }
+        } catch (error) {
+          console.error("Lỗi đếm online:", error);
+        }
+      }
+
+      function updateDisplay(data) {
+        document.getElementById("todayCount").textContent = data.today || 0;
+        document.getElementById("monthCount").textContent = data.month || 0;
+        document.getElementById("totalCount").textContent = data.total || 0;
+      }
+
+      initializeCounter();
+    </script>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- MODAL -->
+    <div id="modalRoot" class="modal-backdrop" role="dialog" aria-hidden="true">
+      <div class="modal" role="document" aria-modal="true">
+        <div class="modal-header">
+          <h3 id="modalTitle">Tiêu đề</h3>
+          <button
+            onclick="closeModal()"
+            aria-label="Đóng"
+            style="
+              background: none;
+              border: none;
+              font-size: 20px;
+              cursor: pointer;
+            "
+          >
+            ✕
+          </button>
+        </div>
+        <div id="modalBody">
+          <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 650, once: true, easing: "ease-out-cubic" });
+      document.getElementById("year").innerText = new Date().getFullYear();
+
+      // navbar shadow on scroll
+      const nav = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      });
+
+      // Data for 23 points (modal content)
+      const points = {
+        p1: {
+          title:
+            "Nơi bom đạn từng hoành hành, giờ vang lên tiếng hát mùa xuân – Lộ Vòng Cung",
+          html: `
+          <p><strong>Vị trí:</strong> Mỹ Khánh, Phong Điền, TP. Cần Thơ.</p>
+        <p style="text-align: justify; line-height: 1.6;"><strong>Thông tin:</strong><br><strong>1. Dấu ấn lịch sử trên vùng đất Tây Đô</strong><br>
+          Giữa trung tâm vùng đồng bằng sông Cửu Long, Lộ Vòng Cung – nay thuộc địa bàn các quận Cái Răng, Bình Thủy, Ô Môn, Phong Điền và huyện Thới Lai, thành phố Cần Thơ – từng là một trong những địa danh mang ý nghĩa chiến lược đặc biệt trong kháng chiến chống Mỹ cứu nước. Với vị trí án ngữ phía nam sông Hậu, nối liền các tuyến giao thông huyết mạch về quân sự và hậu cần, nơi đây trở thành “tuyến lửa” kiên cường suốt những năm tháng chiến tranh ác liệt.
+          <br> Từ đầu những năm 1960, quân đội Mỹ – ngụy đã nhận ra vai trò trọng yếu của khu vực này nên lập hàng loạt căn cứ, đồn bốt, sân bay dã chiến dọc tuyến, biến Lộ Vòng Cung thành một vòng cung phòng thủ vững chắc bảo vệ trung tâm Cần Thơ. Chính vì vậy, nơi đây hứng chịu không ít đợt càn quét, ném bom, pháo kích dữ dội. Cảnh “bom cày, đạn xới” đã trở thành hình ảnh ám ảnh nhưng cũng khắc sâu tinh thần kiên cường của quân và dân ta trong suốt hai cuộc kháng chiến.
+          <br><strong>2. Chiến trường ác liệt và ý chí kiên cường</strong><br>Trong suốt gần hai thập kỷ, Lộ Vòng Cung là nơi ghi dấu nhiều trận đánh lớn nhỏ giữa lực lượng cách mạng và quân đội Mỹ – ngụy. Đây là tuyến tiếp giáp giữa vùng giải phóng và vùng địch tạm chiếm, là “cánh cửa thép” mà ta phải kiên trì mở rộng để tiến về trung tâm Cần Thơ.
+          <br>Nhiều địa danh như Ba Láng, Phong Điền, Trường Long, Trà Nóc, Bình Thủy, Ô Môn… đã trở thành những địa chỉ đỏ, gắn liền với chiến công của các đơn vị chủ lực và lực lượng vũ trang địa phương.
+          <br>Các trận đánh trên Lộ Vòng Cung không chỉ thể hiện chiến thuật linh hoạt mà còn là biểu tượng cho lòng quả cảm và tinh thần “quyết tử cho Tổ quốc quyết sinh”. Nơi đây từng là “tọa độ lửa” của miền Tây Nam Bộ, nơi mỗi tấc đất đều thấm máu xương của biết bao chiến sĩ, đồng bào. Hàng trăm người con ưu tú của quê hương đã nằm lại với vùng đất này, để hôm nay cây trái bốn mùa xanh tốt, hòa bình nở hoa trên chính mảnh đất từng chìm trong khói lửa.
+          <br><strong>3. Lộ Vòng Cung hôm nay – dấu xưa giữa nhịp sống mới</strong><br>Sau ngày đất nước thống nhất, Lộ Vòng Cung dần hồi sinh. Từ những hố bom cũ, những bãi chiến trường hoang tàn, người dân cần cù khai phá, dựng nhà, mở vườn, biến vùng đất khói lửa năm xưa thành khu vực trù phú, năng động.
+          <br>Ngày nay, dọc tuyến Lộ Vòng Cung, người ta có thể dễ dàng bắt gặp những vườn cây ăn trái trĩu quả, những con đường bê tông rợp bóng xanh, những khu dân cư ấm no, hiền hòa. Mỗi địa phương đều lưu giữ lại một phần ký ức hào hùng – bằng bia tưởng niệm, di tích, câu chuyện, và cả nếp sống nghĩa tình của người dân nơi đây.
+          <br>Hiện nay, Di tích Lộ Vòng Cung Cần Thơ đã được xếp hạng là Di tích lịch sử cấp Quốc gia (theo Quyết định số 1419/QĐ-BVHTTDL ngày 15/4/2009 của Bộ Văn hóa, Thể thao và Du lịch).
+          <br><strong>4. Bảo tồn và phát huy giá trị di tích</strong>
+          <br>Nhằm tôn vinh truyền thống và giáo dục thế hệ trẻ, thành phố Cần Thơ đã triển khai nhiều chương trình bảo tồn, trùng tu và quảng bá giá trị của Di tích Lộ Vòng Cung. Các công trình tưởng niệm, nhà truyền thống, bia ghi công được đầu tư, kết nối trong tuyến du lịch “Về nguồn – Lộ Vòng Cung”, tạo nên hành trình khám phá vừa mang ý nghĩa lịch sử, vừa gắn với phát triển du lịch sinh thái, văn hóa địa phương.
+          <br>Không chỉ là nơi tưởng nhớ, Lộ Vòng Cung còn là biểu tượng của sự hồi sinh, nơi chiến tranh từng cướp đi bao sinh mạng nhưng giờ đây lại là vùng đất tràn đầy sức sống, năng lượng và khát vọng vươn lên. Mỗi mùa xuân, khi những vườn cây trổ hoa, người dân Cần Thơ lại nhắc về những năm tháng oai hùng, tự hào về vùng đất “bom cày, đạn xới” nay rực rỡ sắc đời mới.
+          <br><strong>5. Kết nối quá khứ và hiện tại</strong>
+          <br>Ngày nay, hành trình đến với Lộ Vòng Cung không chỉ là chuyến đi về nguồn, mà còn là hành trình tìm lại chính mình – để hiểu rằng, giữa những mất mát và đau thương, dân tộc Việt Nam vẫn kiên cường đứng dậy, kiến tạo tương lai.
+Lộ Vòng Cung – vùng đất của ký ức, của niềm tin và của sức sống vĩnh hằng – là minh chứng cho bản lĩnh và nghị lực của con người Tây Đô nói riêng, và dân tộc Việt Nam nói chung.
+<br> <i>“Lộ Vòng Cung – nơi bom đạn từng dày xéo, nay nở hoa hòa bình.”
+Một biểu tượng không chỉ của chiến tranh và kháng chiến, mà còn của niềm tin, của sự hồi sinh trên mảnh đất miền Tây anh hùng.<i></p>
+          
+          <div class="gallery">
+            <img src="./image/lvc01.jpg">
+            <img src="./image/lvc02.jpg">
+            <img src="./image/lvc1.jpg">
+            <img src="./image/lvc2.jfif">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+
+        p2: {
+  title:
+    "Đình Bình Thủy – Nơi hội tụ tín ngưỡng, lịch sử và bản sắc văn hóa Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Phường Bình Thủy, quận Bình Thủy, TP. Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Dấu ấn hình thành của một ngôi đình cổ Nam Bộ</strong><br>
+  Đình Bình Thủy là một trong những ngôi đình cổ tiêu biểu của vùng Tây Nam Bộ, gắn liền với quá trình khai phá và định cư của cư dân Việt trên vùng đất Cần Thơ xưa. Theo sử liệu và truyền khẩu dân gian, đình được xây dựng vào khoảng năm 1844, dưới triều vua Thiệu Trị (nhà Nguyễn), ban đầu tọa lạc tại rạch Bình Thủy, sau đó được dời về vị trí hiện nay để thuận tiện cho sinh hoạt tín ngưỡng của cộng đồng.
+  <br>
+  Ngôi đình không chỉ là nơi thờ Thành Hoàng Bổn Cảnh – vị thần bảo hộ cho làng xã – mà còn là trung tâm sinh hoạt văn hóa, tín ngưỡng quan trọng của cư dân vùng Bình Thủy suốt gần hai thế kỷ qua.
+
+  <br><strong>2. Không gian kiến trúc và giá trị nghệ thuật</strong><br>
+  Đình Bình Thủy mang đậm phong cách kiến trúc đình làng truyền thống Nam Bộ, kết hợp hài hòa giữa yếu tố dân gian và ảnh hưởng cung đình Huế. Kết cấu đình gồm cổng tam quan, chánh điện, võ ca và các công trình phụ trợ, được bố trí theo trục nghiêm trang, cân đối.
+  <br>
+  Điểm nổi bật của đình là hệ thống chạm khắc gỗ tinh xảo, các hoành phi, câu đối sơn son thếp vàng mang giá trị nghệ thuật cao. Trên mái đình, hình tượng rồng, phượng, hoa lá được tạo hình sinh động, thể hiện quan niệm thẩm mỹ và tín ngưỡng của cư dân Nam Bộ xưa.
+
+  <br><strong>3. Trung tâm sinh hoạt tín ngưỡng và cộng đồng</strong><br>
+  Không chỉ là nơi thờ tự, Đình Bình Thủy còn đóng vai trò là trung tâm gắn kết cộng đồng làng xã. Hằng năm, tại đây diễn ra nhiều nghi lễ truyền thống, tiêu biểu là Lễ Kỳ Yên – lễ hội lớn nhất của đình, nhằm cầu cho quốc thái dân an, mưa thuận gió hòa, mùa màng bội thu.
+  <br>
+  Các hoạt động lễ hội tại đình không chỉ mang ý nghĩa tâm linh mà còn góp phần bảo tồn các giá trị văn hóa phi vật thể như nghi thức tế lễ, âm nhạc lễ hội, nghệ thuật trình diễn dân gian và phong tục truyền thống của cư dân địa phương.
+
+  <br><strong>4. Đình Bình Thủy trong dòng chảy lịch sử</strong><br>
+  Trải qua nhiều biến động của lịch sử, đặc biệt trong các giai đoạn kháng chiến chống thực dân Pháp và đế quốc Mỹ, Đình Bình Thủy từng là nơi hội họp, che chở cho cán bộ cách mạng, góp phần vào phong trào đấu tranh yêu nước của nhân dân địa phương.
+  <br>
+  Với những giá trị lịch sử, văn hóa và kiến trúc tiêu biểu, Đình Bình Thủy đã được Nhà nước xếp hạng là Di tích lịch sử – văn hóa cấp Quốc gia, trở thành niềm tự hào của người dân quận Bình Thủy nói riêng và thành phố Cần Thơ nói chung.
+
+  <br><strong>5. Giá trị bảo tồn và phát triển du lịch</strong><br>
+  Ngày nay, Đình Bình Thủy không chỉ là nơi sinh hoạt tín ngưỡng của người dân địa phương mà còn là điểm đến hấp dẫn trong hành trình khám phá văn hóa – lịch sử Cần Thơ. Du khách đến đây có cơ hội tìm hiểu về kiến trúc đình làng Nam Bộ, tham gia lễ hội truyền thống và cảm nhận đời sống văn hóa cộng đồng đặc trưng của miền sông nước.
+  <br>
+  Việc bảo tồn và phát huy giá trị của Đình Bình Thủy góp phần kết nối quá khứ với hiện tại, gìn giữ bản sắc văn hóa dân tộc và thúc đẩy phát triển du lịch bền vững cho địa phương.
+
+  <br><i>
+  “Đình Bình Thủy – nơi lắng đọng hồn xưa của đất Tây Đô,  
+  nơi tín ngưỡng dân gian hòa quyện cùng dòng chảy lịch sử.”
+  </i>
+  </p>
+
+  <div class="gallery">
+    <img src="./image/dinhbinhthuy1.jpg">
+    <img src="./image/dinhbinhthuy2.jpg">
+    <img src="./image/dinhbinhthuy3.jpg">
+    <img src="./image/dinhbinhthuy4.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp từ Cổng thông tin Du lịch Cần Thơ & nhóm tác giả</p>
+  `,
+},
+
+
+        p3: {
+          title:
+            "KHU DI TÍCH CHIẾN THẮNG ÔNG HÀO – DẤU ẤN HÀO HÙNG TRÊN VÙNG ĐẤT CẦN THƠ",
+          html: `
+          <p style="text-align: justify; line-height: 1.6;"><strong>Vị trí:</strong> Nằm tại ấp Trường Thọ, xã Trường Long, huyện Phong Điền, cách trung tâm thành phố Cần Thơ khoảng 25km về hướng Tây Nam, Khu di tích Chiến thắng Ông Hào là một trong những địa chỉ đỏ ghi dấu chiến công oanh liệt của quân và dân ta trong thời kỳ kháng chiến chống Mỹ cứu nước.</p>
+          <p style="text-align: justify; line-height: 1.6;"><strong>Thông tin:</strong> <br>
+            Tên gọi “Ông Hào” vốn bắt nguồn từ tên của một người dân địa phương, dần trở thành tên của một con kênh và một vùng quê anh dũng, đã đi vào lịch sử đấu tranh bất khuất của nhân dân miền Tây Nam Bộ. Kênh Ông Hào dài khoảng 4km, rộng chừng 10m, đối diện là rạch Càng Đước, ở giữa là kênh Tắc cắt ngang – tạo nên khu vực Áng Khám với địa hình sông rạch chằng chịt, ruộng vườn rậm rạp, rất thuận lợi cho việc xây dựng công sự, bố trí lực lượng phòng ngự. Chính nơi đây đã trở thành điểm tựa chiến đấu quan trọng của quân dân Cần Thơ trong những năm tháng khói lửa.
+            <br>
+            Đầu tháng 6 năm 1965, theo lệnh của tướng ngụy Đặng Văn Quang, địch huy động một lực lượng lớn gồm nhiều trung đoàn, tiểu đoàn và phương tiện chiến đấu hiện đại mở cuộc càn quét quy mô vào khu vực Ô Môn – Châu Thành nhằm tiêu diệt Tiểu đoàn Tây Đô. Trước tình hình đó, ta nhanh chóng tập kết lực lượng về khu vực Áng Khám – Ông Hào, bí mật xây dựng trận địa phòng ngự, sẵn sàng đối phó.
+<br>
+Ngày 08 tháng 6 năm 1965, trận chiến lịch sử nổ ra ác liệt. Dưới mưa bom, đạn pháo và những đợt càn quét dữ dội của địch với hàng chục lượt máy bay, xe bọc thép, Tiểu đoàn Tây Đô cùng lực lượng vũ trang Ô Môn đã kiên cường chống trả, gây cho địch thiệt hại nặng nề. Quân ta tiêu diệt 889 tên địch, xoá sổ Tiểu đoàn 2 “Cọp Đen”, bắn rơi một máy bay B57, thu nhiều quân trang, quân dụng.
+<br>
+Song, chiến thắng ấy cũng được đổi bằng máu của 37 chiến sĩ đã anh dũng hy sinh và 57 đồng chí bị thương, cùng nỗi đau của 121 đồng bào, trong đó có 112 giáo dân bị bom đạn địch tàn phá tại Nhà thờ Ông Hào. Dẫu vậy, trận Ông Hào đã trở thành bước ngoặt quan trọng, khẳng định sự trưởng thành vượt bậc của lực lượng vũ trang Cần Thơ, đồng thời đập tan cuộc hành quân quy mô lớn của địch ở vùng IV chiến thuật.
+<br>
+Với ý nghĩa lịch sử sâu sắc, ngày 25 tháng 9 năm 1998, Ủy ban nhân dân tỉnh Cần Thơ đã xếp hạng Di tích Chiến thắng Ông Hào là Di tích Lịch sử - Văn hóa cấp thành phố.
+<br>
+Đến năm 2009, công trình được đầu tư xây dựng trên diện tích 25.748m², bao gồm cổng chào, quảng trường, tượng đài, phù điêu, nhà truyền thống, nhà khách và công viên cây xanh. Ngày 20 tháng 12 năm 2012, công trình chính thức được khánh thành, trở thành biểu tượng thiêng liêng của lòng yêu nước và tinh thần chiến đấu kiên cường của quân dân Cần Thơ.
+<br>
+Nổi bật giữa khuôn viên là tượng đài Chiến thắng cao 14 mét, khắc họa hình tượng ba chiến sĩ – đại diện cho ba lực lượng: bộ đội chủ lực, địa phương quân và dân quân du kích – trong tư thế hiên ngang, phất cao lá cờ đỏ sao vàng rực rỡ, biểu trưng cho ý chí “Ra đi là chiến thắng – Đánh là tiêu diệt”.
+<br>
+Phía sau tượng đài là bức phù điêu lớn bằng xi măng, được chia làm hai mảng: một bên tái hiện khí thế tấn công mãnh liệt của quân dân ta, bên kia thể hiện niềm hân hoan trong ngày chiến thắng, như khúc khải hoàn ca rộn rã giữa lòng đất Tây Đô.
+<br>
+Ngày nay, đứng trước tượng đài chiến thắng Ông Hào, giữa không gian khoáng đạt và trầm mặc, du khách có thể cảm nhận sâu sắc hơi thở linh thiêng của một thời máu lửa. Đây không chỉ là nơi lưu giữ những giá trị lịch sử hào hùng, mà còn là địa chỉ đỏ giáo dục truyền thống cách mạng, nơi tổ chức các hoạt động về nguồn, sinh hoạt văn hóa, văn nghệ, thể thao mỗi dịp kỷ niệm ngày chiến thắng 8 tháng 6 hằng năm.
+<br>
+Đi về miền sông nước Cần Thơ, nếu chưa một lần ghé thăm khu di tích Chiến thắng Ông Hào – nơi từng ghi dấu những năm tháng chiến đấu anh dũng, cùng bến Ninh Kiều và Lộ Vòng Cung lừng danh, thì hành trình ấy hẳn còn dang dở.
+Bởi nơi đây không chỉ là chứng tích của quá khứ, mà còn là bản hùng ca bất diệt của lòng yêu nước, của ý chí quật cường và tinh thần bất khuất – làm rạng rỡ thêm trang sử vàng của vùng Đồng bằng sông Cửu Long anh hùng.
+</p>
+          <div class="gallery">
+            <img src="./image/onghao1.jfif" alt="Ông Hào">
+            <img src="./image/onghao00.webp" alt="Ông Hào">
+        <img src="./image/onghao1jpg.jpg" alt="Chiến thắng ông Hào">
+        <img src="./image/onghao2.jpg" alt="Chiến thắng ông Hào">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+
+        p4: {
+  title:
+    "Hội quán Quảng Triệu – Di tích kiến trúc độc đáo và tín ngưỡng truyền thống tại Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Số 32 Hai Bà Trưng, phường Tân An, quận Ninh Kiều, TP. Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Nguồn gốc và lịch sử hình thành</strong><br>
+  Hội quán Quảng Triệu, tên gốc chữ Hán là Quảng Triệu Hội Quán (廣肇會館; 广肇会馆), là một di tích tín ngưỡng lâu đời tại Cần Thơ, được thiết lập bởi cộng đồng người Hoa gốc Quảng Đông – Triệu Khánh định cư tại vùng đất Trấn Giang (tức Cần Thơ ngày nay). Theo lịch sử ghi lại, hội quán xuất hiện từ cuối thế kỷ XIX và ban đầu là nơi sinh hoạt cộng đồng, giao thương và thờ cúng tín ngưỡng của cư dân Hoa kiều. Sau đó, nơi đây phát triển thành địa điểm thờ tự linh thiêng và sinh hoạt văn hóa quan trọng của cộng đồng người Hoa tại Tây Đô. 
+
+  <br><strong>2. Vai trò xã hội và tín ngưỡng</strong><br>
+  Hội quán Quảng Triệu không chỉ là nơi cộng đồng người Hoa tập trung cư trú và kết nối sinh hoạt, mà còn là không gian tín ngưỡng gắn với nhiều vị thần có ý nghĩa quan trọng trong đời sống tâm linh của họ. Ở chính điện, người dân thờ "Quan Thánh Đế Quân (Quan Công)" – biểu tượng của trung nghĩa và chính trực, cùng các vị như "Thiên Hậu Thánh Mẫu" và "Phật Bà Quan Âm", phản ánh sự đa dạng trong tín ngưỡng dân gian người Hoa. 
+
+  <br><strong>3. Kiến trúc nghệ thuật và giá trị văn hóa</strong><br>
+  Kiến trúc hội quán mang đậm phong cách truyền thống Trung Hoa: bố cục hình chữ "Quốc" với sân Thiên Tĩnh rộng thoáng, mái ngói âm dương đặc trưng, các bờ mái gờ bằng men xanh đặc sắc. Hoành phi, câu đối cùng họa tiết điêu khắc gỗ tinh xảo thể hiện kỹ thuật nghệ thuật điêu khắc và mỹ thuật của người Hoa di cư vào Nam Bộ. 
+
+  <br><strong>4. Vị thế trong đời sống cộng đồng</strong><br>
+  Là một điểm sinh hoạt tín ngưỡng, hội quán là nơi đón tiếp, giao lưu và tổ chức nghi lễ cho cư dân Hoa tại Cần Thơ. Qua nhiều năm, nơi đây vẫn duy trì vai trò văn hóa quan trọng, trở thành địa chỉ tâm linh và lịch sử được nhiều thế hệ người dân trân trọng. 
+
+  <br><strong>5. Di tích hôm nay và khách tham quan</strong><br>
+  Ngày nay, Hội quán Quảng Triệu được nhìn nhận như một di tích kiến trúc và tín ngưỡng tiêu biểu của cộng đồng người Hoa tại thành phố Cần Thơ. Du khách đến đây không chỉ tìm hiểu về lịch sử cư trú và văn hóa dân cư Hoa kiều ở miền Tây Nam Bộ mà còn có thể chiêm ngưỡng những nét chạm khắc và kiến trúc mỹ thuật đặc sắc. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/chuacong01.jpg">
+    <img src="./image/chuacong02.jpg">
+    <img src="./image/chuacong03.jpg">
+    <img src="./image/chuacong04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Cổng thông tin chính quyền TP. Cần Thơ & nhóm tác giả</p>
+  `,
+},
+
+
+
+        p5: {
+          title:
+            "Khu di tích Giàn Gừa – Dấu ấn linh thiêng trên vùng đất Tây Đô",
+          html: `
+          <p style= "text-align: justify; line-height: 1.6;"><strong>Vị trí:</strong> Tọa lạc tại ấp Nhơn Khánh, xã Nhơn Nghĩa, huyện Phong Điền, Giàn Gừa cách trung tâm thành phố Cần Thơ khoảng 14 km. Du khách có thể đến đây theo hai hướng: men theo lộ Vòng Cung qua xã Mỹ Khánh rồi qua phà sang Nhơn Nghĩa, hoặc theo quốc lộ 61B hướng về Hậu Giang, rẽ vào đường dẫn có bảng chỉ vào khu di tích.</p>
+          <p style= "text-align: justify; line-height: 1.6;"><strong>Thông tin:</strong>
+            <br>
+            Về với vùng đất Tây Đô trù phú, du khách không thể không dừng chân nơi Giàn Gừa – một di tích lịch sử lâu đời, được xem là chứng nhân của bao thăng trầm trên hành trình khai hoang, lập ấp của người dân miền sông nước Cần Thơ. Nơi đây không chỉ là dấu ấn văn hóa – tâm linh thiêng liêng mà còn là biểu tượng của tinh thần quật cường, bất khuất của quân dân Phong Điền trong những năm tháng đấu tranh giành độc lập.
+            <br>
+            Giàn Gừa là một kỳ quan thiên nhiên độc đáo của vùng đồng bằng sông Cửu Long. Những cây gừa trăm tuổi đan xen, vươn mình như những cánh tay khổng lồ tạo thành tấm lưới thiên nhiên huyền bí. Dưới bóng gừa xanh mát, du khách có thể cảm nhận một không gian trong lành, tĩnh tại, gợi nhớ bao lớp người đi trước từng gắn bó, gìn giữ nơi này.
+            <br>
+            Trải qua thời gian và bom đạn chiến tranh, khu di tích ngày nay còn khoảng 2.700 m² gừa cổ thụ, nhưng sức sống bền bỉ của chúng khiến ai cũng phải khâm phục. Những vết tích đạn bom vẫn còn in hằn trên thân cây, như minh chứng sống cho ý chí kiên cường của mảnh đất này. Với sức sống mãnh liệt, những nhánh gừa không ngừng đâm chồi nảy lộc, vươn mình tỏa bóng, khiến Giàn Gừa trở thành “kỳ quan xanh” có một không hai của Việt Nam.
+<br>
+Không chỉ mang vẻ đẹp hoang sơ, Giàn Gừa còn ẩn chứa nhiều huyền thoại và giá trị tâm linh sâu sắc. Theo truyền thuyết, nơi đây là chốn ngự của Bà Thượng Động Cố Hỷ, vị thần được nhân dân tôn kính là người phù hộ cho quốc thái dân an, mưa thuận gió hòa. Mỗi năm, vào ngày 28 tháng 2 âm lịch, người dân địa phương và du khách thập phương lại nô nức về dự Lễ Vía Bà, với những nghi thức cúng tế trang trọng, múa bóng rỗi, đờn ca tài tử và lễ hội dân gian đặc sắc – thể hiện tấm lòng tri ân và lòng thành kính đối với vị thần linh bảo hộ vùng đất này.
+<br>
+Bên cạnh giá trị tín ngưỡng, Giàn Gừa còn là một căn cứ cách mạng quan trọng trong hai thời kỳ kháng chiến chống Pháp và chống Mỹ. Đây từng là nơi họp bàn chiến lược, huấn luyện lực lượng, cất giấu vũ khí, góp phần làm nên chiến thắng giải phóng Cần Thơ năm 1975.
+<br>
+Nhờ những giá trị to lớn về lịch sử, văn hóa và sinh thái, ngày 05/4/2013, UBND thành phố Cần Thơ đã công nhận Giàn Gừa là di tích lịch sử cấp thành phố. Không lâu sau đó, ngày 13/6/2013, Hội Bảo vệ Thiên nhiên và Môi trường Việt Nam đã vinh danh Giàn Gừa là “Cây Di sản Việt Nam” – danh hiệu đầu tiên của khu vực đồng bằng sông Cửu Long và duy nhất tại Cần Thơ tính đến nay.
+
+<br>
+Giàn Gừa hôm nay không chỉ là biểu tượng của thiên nhiên và văn hóa tâm linh Nam Bộ, mà còn là bản hùng ca bất diệt khắc sâu trong tâm thức người dân Tây Đô – nơi hội tụ giữa quá khứ hào hùng, hiện tại tươi đẹp và niềm tin hướng đến tương lai.
+            </p>
+          <div class="gallery">
+            <img src="./image/giangua1.jfif" alt="Giàn Gừa">
+           <img src="./image/giangua2.jpg" alt="Giàn Gừa">
+            <img src="./image/giangua3.jpg" alt="Giàn Gừa">
+            <img src="./image/giangua5.jpg" alt="Giàn Gừa">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+
+        p6: {
+  title:
+    "Khám Lớn Cần Thơ – Di tích lịch sử nhiệm màu và minh chứng bất khuất của một thời chiến tranh",
+  html: `
+  <p><strong>Vị trí:</strong> Số 08, đường Ngô Gia Tự, phường Tân An, quận Ninh Kiều, TP. Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Nguồn gốc và mục đích xây dựng</strong><br>
+  Khám Lớn Cần Thơ là một di tích lịch sử tiêu biểu phản ánh giai đoạn đô hộ của thực dân Pháp tại miền Nam Việt Nam. Được xây dựng từ khoảng năm 1876 đến 1886 dưới tên gọi "Prison Provinciale", trại giam này nằm liền kề Dinh Tỉnh trưởng và Tòa Hành chính tỉnh, biệt lập với khu dân cư. Mục đích ban đầu là phục vụ bộ máy cai trị và đàn áp các phong trào yêu nước tại vùng Tây Nam Bộ trong thế kỷ XIX. 
+
+  <br><strong>2. Biến cố lịch sử và vai trò trong các cuộc kháng chiến</strong><br>
+  Qua nhiều năm hoạt động, Khám Lớn Cần Thơ đã trở thành nơi giam giữ nhiều chiến sĩ cách mạng và đồng bào yêu nước trong cả hai cuộc kháng chiến chống Pháp và chống Mỹ. Dưới thời chính quyền Sài Gòn sau Hiệp định Giơ-ne-vơ năm 1954, nơi này được đổi tên thành "Trung tâm cải huấn", nhưng bản chất vẫn là nơi giam cầm và tra tấn. Nhân dân địa phương quen gọi là “Khám Lớn” vì quy mô và tính chất nghiêm ngặt của trại giam. 
+
+  <br><strong>3. Kiến trúc và môi trường giam giữ</strong><br>
+  Khám Lớn Cần Thơ chiếm diện tích rộng, có tường bao cao kiên cố và cột gác kiểm soát, cùng nhiều phòng giam tập thể và xà lim biệt giam. Hệ thống kiến trúc này phản ánh đầy đủ những đặc trưng của một cơ sở giam giữ thời thực dân – đế quốc, với lối bố trí nhằm tách biệt người bị giam với đời sống bên ngoài, và đồng thời thể hiện tính kỷ luật cùng sự quản lý nghiêm ngặt. 
+
+  <br><strong>4. Khám Lớn Cần Thơ hôm nay</strong><br>
+  Ngày nay, Khám Lớn Cần Thơ đã được Bộ Văn hóa – Thông tin công nhận là "di tích lịch sử cấp quốc gia" vào ngày 28/6/1996, trở thành một điểm đến quan trọng cho hoạt động giáo dục truyền thống yêu nước, ôn lại quá khứ và tưởng nhớ công lao các thế hệ chiến sĩ, đồng bào đã hy sinh. 
+
+  <br><strong>5. Giá trị văn hóa và du lịch</strong><br>
+  Khách tham quan di tích không chỉ tìm hiểu về những trang lịch sử oai hùng và bi tráng của dân tộc, mà còn được chiêm nghiệm về tinh thần bất khuất, ý chí kiên cường của nhân dân trong đấu tranh giành độc lập tự do. Di tích Khám Lớn góp phần quan trọng trong tuyến du lịch lịch sử – văn hóa của thành phố Cần Thơ, thu hút đông đảo du khách, học sinh, sinh viên và các đoàn tham quan. 
+
+  </p>
+
+  <div class="gallery">
+    <img src="./image/khamlon1.jpg" alt="Khám Lớn Cần Thơ – cổng chính">
+    <img src="./image/khamlon2.jpg" alt="Khám Lớn Cần Thơ – khu di tích">
+    <img src="./image/khamlon3.jpg" alt="Khám Lớn Cần Thơ – tường bao và vọng gác">
+    <img src="./image/khamlon4.jpg" alt="Khám Lớn Cần Thơ – phòng giam cổ">
+  </div>
+
+  <p class="meta">Nguồn: Cổng thông tin Du lịch TP. Cần Thơ & nhóm tác giả</p>
+  `,
+},
+
+       p7: {
+  title:
+    "Di tích lịch sử Chiến thắng Chương Thiện – Minh chứng ý chí kiên cường miền Tây Nam Bộ",
+  html: `
+  <p><strong>Vị trí:</strong> Khu vực 3, phường 5, thành phố Vị Thanh và Ấp 1, xã Vĩnh Viễn, huyện Long Mỹ, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Nguồn gốc và bối cảnh lịch sử</strong><br>
+  Di tích lịch sử Chiến thắng Chương Thiện ghi dấu chiến công của quân và dân Khu 9 trong cuộc kháng chiến chống Mỹ cứu nước. Chương Thiện từng là tỉnh do chính quyền Sài Gòn thiết lập từ ngày 24/12/1960, bao gồm các huyện Long Mỹ và Vị Thanh cùng các khu vực phụ cận. Do vị trí chiến lược gần Đất Mũi, nơi đây trở thành đầu mối giao thông thủy bộ quan trọng và là tuyến phòng thủ của địch nhằm bảo vệ vùng IV chiến thuật, với trung tâm tại thành phố Cần Thơ. 
+
+  <br><strong>2. Chiến thắng 75 lượt tiểu đoàn địch</strong><br>
+  Sau Hiệp định Paris 1973, địch tiếp tục âm mưu bình định, lấn chiếm Chương Thiện để triệt phá hậu phương cách mạng. Trong hơn 11 tháng từ đầu 1973 đến cuối năm, quân và dân ta, dưới sự lãnh đạo của Quân khu 9, đã kiên cường bám trụ và đánh bại "75 lượt tiểu đoàn địch" có ý định chiếm đóng vùng này, giải phóng nhiều địa bàn chiến lược như Long Phú, Vĩnh Quới và các cứ điểm khác. Chiến thắng đã phá tan âm mưu của địch, củng cố vị thế cách mạng miền Nam trong giai đoạn quyết định. 
+
+  <br><strong>3. Di tích và các hạng mục chính</strong><br>
+  Khu di tích được quy hoạch trên diện tích lớn, với nhiều hạng mục tiêu biểu của một bảo tàng ngoài trời chiến tranh. Tại khu vực thành phố Vị Thanh, điểm đến gồm "cụm tượng đài ba khối kiến trúc", biểu tượng cho ba đội quân và mũi giáp công; "nhà trưng bày hiện vật và ảnh tư liệu; sân lễ lớn" có sức chứa hàng chục nghìn người. Sau lưng tượng đài là "biểu tượng lá dừa cách điệu" – biểu trưng của vùng Hậu Giang và đồng bằng sông Cửu Long. 
+
+  <br><strong>4. Giá trị lịch sử – văn hóa và xếp hạng</strong><br>
+  Di tích chiến thắng Chương Thiện không chỉ có giá trị lịch sử to lớn mà còn là địa điểm giáo dục truyền thống cách mạng cho thế hệ trẻ. Với ý nghĩa đặc biệt, di tích đã được "Thủ tướng Chính phủ xếp hạng" Di tích lịch sử "quốc gia đặc biệt" qua Quyết định số 2383/QĐ-TTg ngày 09/12/2013, là một trong những điểm đỏ của miền Tây Nam Bộ. 
+
+  <br><strong>5. Di tích hôm nay và du lịch</strong><br>
+  Ngày nay, Du khách đến Di tích chiến thắng Chương Thiện không chỉ được chiêm nghiệm lịch sử oai hùng mà còn thấy hình ảnh một vùng đất từng chịu bom đạn nay trù phú với vườn cây, trường học và các công trình phục vụ đời sống. Khu di tích trở thành điểm "du lịch lịch sử – văn hóa không thể bỏ qua" khi khám phá Hậu Giang – Cần Thơ và tuyến miền Tây Nam Bộ. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/chuongthien1.jpg" alt="Di tích Chiến thắng Chương Thiện – tượng đài chính">
+    <img src="./image/chuongthien2.jpg" alt="Khu trưng bày hiện vật ngoài trời">
+    <img src="./image/chuongthien3.jpg" alt="Sân lễ tại Di tích Chương Thiện">
+    <img src="./image/chuongthien4.jpg" alt="Nhà trưng bày hiện vật Chiến thắng Chương Thiện">
+  </div>
+
+  <p class="meta">Nguồn: Cục Di sản văn hóa – Bộ Văn hóa, Thể thao và Du lịch & nhóm tác giả</p>
+  `,
+},
+
+
+        p8: {
+  title:
+    "Khu trù mật Vị Thanh – Hỏa Lựu: Di tích lịch sử chiến tranh và bài học kiên cường miền Tây Nam Bộ",
+  html: `
+  <p><strong>Vị trí:</strong> Khu vực 4 (Khu văn hóa Hồ Sen), phường 1, thành phố Vị Thanh, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Lịch sử hình thành khu trù mật</strong><br>
+  Khu trù mật Vị Thanh – Hỏa Lựu được xây dựng vào khoảng năm 1959–1960 theo chính sách “khu trù mật” của chính quyền Việt Nam Cộng hòa nhằm kiểm soát dân cư, ngăn chặn lực lượng cách mạng tiến cận căn cứ U Minh và bảo vệ vùng trọng yếu chiến lược ở miền Tây Nam Bộ. Đây là kế hoạch thí điểm cho các khu trù mật khác tại Nam Bộ, được triển khai trên một diện tích rộng, lấy kinh Xà No làm trục trung tâm và chia thành nhiều tiểu khu sinh sống, hành chính và kiểm soát. 
+
+  <br><strong>2. Cuộc sống trong khu trù mật và phản kháng của dân</strong><br>
+  Người dân trong khu trù mật phải sống trong điều kiện bị kiểm soát chặt chẽ về lao động, đi lại, sinh hoạt và quan hệ xã hội. Những biện pháp cưỡng chế này khiến dân chúng bức xúc, dẫn tới nhiều phong trào đấu tranh chống lệnh di cư và gom dân, trong đó có các cuộc biểu tình, thả truyền đơn và các hành động phản kháng khác. 
+
+  <br><strong>3. Vai trò và sự kiện lịch sử</strong><br>
+  Khu trù mật Vị Thanh – Hỏa Lựu là biểu tượng của chính sách kiểm soát dân cư và nỗ lực đàn áp của chính quyền Ngô Đình Diệm trong thời kỳ chiến tranh. Mặc dù vậy, các lực lượng cách mạng và nhân dân địa phương đã tổ chức nhiều hoạt động đấu tranh để phá bỏ các rào cản và kiểm soát, mở đường cho phong trào đấu tranh chung của miền Nam.
+
+  <br><strong>4. Di tích và xếp hạng</strong><br>
+  Ngày 02/8/1997, Khu trù mật Vị Thanh – Hỏa Lựu đã được Bộ Văn hóa – Thông tin (nay là Bộ Văn hóa, Thể thao và Du lịch) công nhận là "di tích lịch sử cấp Quốc gia", ghi nhận vai trò lịch sử và ý nghĩa giáo dục truyền thống cho các thế hệ sau. 
+
+  <br><strong>5. Ý nghĩa văn hóa và du lịch</strong><br>
+  Hiện nay, khu di tích được bảo tồn, tu bổ và giới thiệu rộng rãi với du khách, học sinh, sinh viên và người dân địa phương. Đây là một điểm đến trong hành trình khám phá di tích lịch sử chiến tranh ở ĐBSCL, giúp hiểu sâu hơn về chính sách chiến tranh, phản kháng của dân chúng và ý chí vượt khó của nhân dân khu vực này. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/khu_tru_mat_vithanh01.jpg" alt="Cụm di tích Khu trù mật Vị Thanh – Hỏa Lựu">
+    <img src="./image/khu_tru_mat_vithanh02.jpg" alt="Cảnh quần thể di tích và hiện vật">
+    <img src="./image/khu_tru_mat_vithanh03.jpg" alt="Tượng đài hoặc trưng bày ngoài trời">
+    <img src="./image/khu_tru_mat_vithanh04.jpg" alt="Nhà trưng bày trong khu di tích">
+  </div>
+
+  <p class="meta">Nguồn: Cổng thông tin Du lịch Hậu Giang & nhóm tác giả</p>
+  `,
+},
+
+        p9: {
+          title:
+            "Di tích lịch sử - văn hóa Căn cứ Ban Chỉ huy Tổng tiến công và nổi dậy Xuân Mậu Thân 1968 tại Cần Thơ (Căn cứ Vườn Mận)",
+          html: `
+          <p><strong>Vị trí:</strong> Khu di tích tọa lạc tại khu vực Bình Thường B, phường Long Tuyền, quận Bình Thủy, thành phố Cần Thơ.</p>
+          <p style="text-align: justify; line-height: 1.6;"><strong>1. Giới thiệu về khu di tích</strong><br>
+            Khu di tích tọa lạc tại khu vực Bình Thường B, phường Long Tuyền, quận Bình Thủy, thành phố Cần Thơ. Trước đây, khu vườn mận bạt ngàn với nhiều ha cây ăn trái, nay chỉ còn duy nhất một cây mận hồng đào. Hầm hào và công sự chiến đấu đã được san lấp để trồng cây ăn trái, căn nhà cũ của chú Hai Tiểu được thay thế bằng căn nhà tình nghĩa bán kiên cố do Tỉnh ủy cấp.
+<br>
+Năm 2011, quận Bình Thủy khởi công phục dựng căn cứ Vườn Mận và đưa vào khai thác phục vụ khách tham quan. Khu di tích hiện có nhà đa năng, hầm quân sự, nhà mẹ Việt Nam anh hùng Tạ Thị Phi, cùng các hiện vật lưu giữ tại Bảo tàng Cần Thơ gồm: nắp hầm bí mật, ghe máy vận chuyển thương binh, cờ mặt trận, tủ thuốc trạm phẫu thuật, nồi cơm, hũ gạo, ống chích và thùng sắt đựng tài liệu.
+<br>
+Khi bước qua cổng, du khách sẽ thấy bảng tóm tắt di tích và nhà đa năng, nơi trưng bày các hiện vật phục chế, hình ảnh trận đánh Tổng tiến công và nổi dậy Xuân Mậu Thân 1968, bản đồ trận đấu và hiện vật từ trận sáu ngày đêm giữ căn cứ Vườn Mận năm 1970. Ngoài ra, còn có ảnh ngã ba Cầu Nhiếm nơi máy bay Mỹ ném bom giết hại hơn 100 người dân vô tội, ngã ba Xẻo Tre - vùng chiến ác liệt giữa ta và địch, hầm làm việc Ban Chỉ huy chiến dịch, ghe tam bản của bà Dương Thị Phấn dùng vận chuyển thương binh, lương thực, khách sạn Nam Phương bị giặc phá ngày 3 Tết Mậu Thân, cùng mô hình trạm phẫu thuật tiền phương. Trong vườn còn có nhiều hầm bí mật cá nhân và công sự chiến đấu chạy dọc bìa vườn.
+<br>
+Tên gọi Vườn Mận xuất phát từ việc khu vườn này trước đây rộng mấy chục ha và là nơi bám trụ hoạt động cách mạng.
+<br>
+<strong>2. Sự kiện tại Căn cứ Vườn Mận</strong>
+<br>
+Căn cứ Vườn Mận còn được gọi là “Căn cứ lõm Vườn Mận”, do xung quanh bị hệ thống 09 đồn bót địch bao vây, trong đó có đồn bà Chủ Kiểu và đồn Hàng Bàng - Cầu Đá chỉ cách hơn 400 m. Tuy nhiên, nơi đây được lựa chọn làm căn cứ vì địa hình hiểm yếu, thuận lợi cho hoạt động bí mật, đi lại và chiến đấu của lực lượng cách mạng. Vườn mận được bao quanh bởi sông nhỏ, tạo thành chiến hào tự nhiên, quan sát bên ngoài thuận tiện, nhưng kẻ thù muốn tiếp cận phải qua sông.
+<br>
+Các hầm bí mật, bờ liếp, và địa hình rậm rạp được tận dụng tối đa để che khuất và bảo vệ lực lượng. Nhân dân địa phương có truyền thống cách mạng vững mạnh, ủng hộ chiến lược, tiếp tế lương thực, thuốc men và dẫn đường, khiến căn cứ trở thành “căn cứ lòng dân” an toàn nhất trong vùng.
+<br>
+Khu vườn mận của gia đình ông Lê Văn Tiểu trở thành nơi xây dựng căn cứ của Ban Chỉ huy Tổng tiến công và nổi dậy Xuân Mậu Thân 1968. Các lực lượng biệt động nội thành Cần Thơ đã sử dụng đây làm trung tâm chỉ huy, tiếp nhận báo cáo và nhận chỉ thị từ Ban Chỉ đạo. Từ căn cứ này, lực lượng vũ trang đồng loạt xuất kích, triển khai ba đợt tấn công, loại khỏi vòng chiến đấu hơn 20.000 quân địch, phá hủy hàng trăm máy bay, đánh chìm nhiều tàu chiến và giải phóng bốn xã với hơn 10.000 dân. Thành công này góp phần làm phá sản chiến lược “Chiến tranh cục bộ” của Mỹ, tạo tiền đề cho Hội nghị Paris và thắng lợi chung của cả nước.
+<br>
+Trong trận giữ căn cứ Vườn Mận năm 1970, với chỉ 45 cán bộ, chiến sĩ, lực lượng biệt động đã bẻ gãy 13 đợt tấn công của địch trong sáu ngày đêm. Ngày 03/10/1970, khi địch bắn pháo vào căn cứ, đồng chí Đặng Văn Lợi (Bảy Lợi) bị trọng thương, giao chỉ huy cho đồng chí Võ Tấn Dũng và hy sinh anh dũng. Võ Tấn Dũng cùng đồng đội tiếp tục giữ vững trận địa, minh chứng tinh thần kiên cường và bất khuất của người lính Cụ Hồ.
+<br>
+Căn cứ Vườn Mận nằm trên tuyến Lộ Vòng Cung, nơi chiến trường ác liệt nhất ở Tây Nam Bộ, là minh chứng hùng hồn về niềm tin tuyệt đối của nhân dân với cách mạng. Nhân dân không quản hiểm nguy, đùm bọc, tiếp tế, đưa cán bộ qua các vùng địch kiểm soát, hiến đất, đào hầm bí mật, chăm sóc thương binh và bảo vệ lực lượng cách mạng. Gia đình ông Hai Tiểu và bà Tạ Thị Phi là những điển hình, đã hy sinh hoặc cống hiến trọn đời cho sự nghiệp cách mạng. Bà Phi đã anh dũng hy sinh tháng 11/1974 ngay trong vườn mận, được Nhà nước truy tặng danh hiệu Liệt sĩ - Mẹ Việt Nam Anh Hùng.
+<br>
+Căn cứ Vườn Mận ghi dấu lịch sử hào hùng, thể hiện tinh thần chiến đấu kiên cường của quân dân Cần Thơ trong kháng chiến chống Mỹ, là một trong những trận đánh tiêu biểu, mang ý nghĩa lịch sử và nhân văn sâu sắc.
+            </p>
+          <div class="gallery">
+            <img src="./image/vuonman1.jpg">
+            <img src="./image/vuonman2.jpg">
+            <img src="./image/vuonman4.jpg">
+            <img src="./image/vuonman3.jpg">
+
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+
+        p10: {
+  title:
+    "Đền thờ Bác Hồ – Di tích lịch sử cấp quốc gia tại xã Lương Tâm, Long Mỹ, Hậu Giang",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp 3, xã Lương Tâm, huyện Long Mỹ, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Tấm lòng nhớ Bác của đồng bào miền Nam</strong><br>
+  Khi nghe tin Chủ tịch Hồ Chí Minh từ trần vào ngày 2/9/1969, nhân dân miền Nam nói chung và nhân dân Hậu Giang nói riêng vô cùng thương tiếc. Tại xã Lương Tâm, huyện Long Mỹ, nhiều người dân và Đảng bộ địa phương đã lập bàn thờ Bác ngay tại Văn phòng Đảng ủy xã để tưởng nhớ công ơn của Người và thề quyết tâm chiến đấu giành độc lập, tự do cho đất nước. 
+
+  <br><strong>2. Hình thành và phát triển di tích</strong><br>
+  Ngày lễ truy điệu Bác được tổ chức trang trọng với sự tham dự của đông đảo đồng bào, bộ đội và các cấp lãnh đạo, cùng một lòng tưởng nhớ Bác Hồ kính yêu. Sau giai đoạn đầu chỉ là bàn thờ tạm, nhân dân và chính quyền địa phương đã quyết định xây dựng Đền thờ Bác tại ấp 3, xã Lương Tâm – vị trí thuận tiện cho việc thờ tự và sinh hoạt văn hóa truyền thống. 
+
+  <br><strong>3. Kiến trúc và các hạng mục</strong><br>
+  Khu di tích rộng gần 2 ha, với nhiều hạng mục công trình kiến trúc trang nghiêm, gồm đền chính thờ Bác, nhà tưởng niệm và trưng bày hiện vật về cuộc đời Người, và nhà hội sinh hoạt văn hóa. Di tích được quy hoạch bài bản, hòa hợp giữa không gian tâm linh và cảnh quan thiên nhiên, tạo môi trường tôn nghiêm và trang trọng cho người đến viếng. 
+
+  <br><strong>4. Xếp hạng và vai trò truyền thống</strong><br>
+  Ngày 7/1/2000, Bộ Văn hóa – Thông tin (nay là Bộ Văn hóa, Thể thao và Du lịch) đã ra quyết định công nhận Đền thờ Bác Hồ tại xã Lương Tâm là "di tích lịch sử – văn hóa cấp quốc gia", ghi nhận giá trị lịch sử to lớn và vai trò giáo dục truyền thống cách mạng lâu dài.
+
+  <br><strong>5. Đền thờ hôm nay và du lịch</strong><br>
+  Hiện nay, Đền thờ Bác là địa chỉ tâm linh và văn hóa quan trọng, nơi hàng năm đón nhận nhiều đoàn khách, học sinh – sinh viên và người dân từ khắp nơi đến dâng hương, tưởng nhớ và học tập truyền thống yêu nước. Ngoài các ngày lễ lớn như "19/5 (ngày sinh Bác)"" và "2/9 (quốc khánh)"", di tích cũng thường xuyên tổ chức hoạt động giáo dục ý nghĩa. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/den_tho_bac_LuongTam01.jpg" alt="Đền thờ Bác Hồ – cổng di tích">
+    <img src="./image/den_tho_bac_LuongTam02.jpg" alt="Nhà tưởng niệm và trưng bày">
+    <img src="./image/den_tho_bac_LuongTam03.jpg" alt="Không gian di tích dưới cây xanh">
+    <img src="./image/den_tho_bac_LuongTam04.jpg" alt="Hoạt động dâng hương tưởng niệm Bác Hồ">
+  </div>
+
+  <p class="meta">Nguồn: Cổng thông tin Du lịch Hậu Giang & nhóm tác giả</p>
+  `,
+},
+
+
+        p11: {
+          title: "Chợ nổi Cái Răng",
+          html: `
+          <p><strong>Vị trí:</strong> Chợ nổi Cái Răng, Phường Lê Bình, Quận Cái Răng, TP Cần Thơ. Cách trung tâm thành phố Cần Thơ khoảng 6 km.</p>
+          <p><strong>Giới thiệu:</strong> Chợ nổi Cái Răng là một trong những chợ nổi lớn nhất miền Tây, nổi tiếng với cảnh buôn bán sầm uất trên sông. Đây không chỉ là nơi trao đổi nông sản mà còn là điểm du lịch đặc trưng của Cần Thơ.</p>
+          <p><strong>🎯 Những trải nghiệm nổi bật</strong><br>• Tham quan bằng thuyền: Ngồi trên xuồng, bạn sẽ thấy những chiếc ghe chở đầy trái cây, rau củ, hàng hóa đa dạng.<br>
+ • Mua sắm trực tiếp trên sông: Trái cây đặc sản miền Tây, hải sản tươi sống, bánh trái…<br>
+ • Check‑in & chụp ảnh: Khung cảnh sông nước, ghe thuyền, buôn bán tấp nập rất đặc trưng.<br>
+ • Thưởng thức ẩm thực: Một số ghe bán bánh xèo, hủ tiếu, trái cây tại chỗ.
+ <p><strong>🕒 Giờ hoạt động</strong> <br>• Buổi sáng là thời điểm nhộn nhịp nhất: khoảng 5:00 – 9:00. <br> • Nên đi sớm để trải nghiệm trọn vẹn cảnh buôn bán trên sông.
+
+
+          <div class="gallery">
+            <img src="./image/chonoict.jpg" alt="chợ nổi cái răng">
+          <img src="./image/Chữ chợ nổi.jpg" alt="chợ nổi cái răng">
+          <img src="./image/chocairang3.jpg" alt="chợ nổi cái răng">
+          <img src="./image/chocairang4.webp" alt="chợ nổi cái răng">
+          </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        
+        p12: {
+          title: "Di tích lịch sử - văn hóa Mộ nhà thơ Phan Văn Trị",
+          html: `
+          <p style="text-align: justify; line-height: 1.6;"><strong>Vị trí:</strong> Di tích mộ nhà thơ Phan Văn Trị tọa lạc tại ấp Nhơn Lộc 1, thị trấn Phong Điền, huyện Phong Điền, cách trung tâm thành phố Cần Thơ khoảng 16 km. Du khách có thể đến bằng đường bộ, theo quốc lộ 1 hướng về Sóc Trăng, tới cầu Cái Răng rẽ vào tỉnh lộ 923 ven sông, đi qua vùng cây ăn trái nổi tiếng của huyện Phong Điền. Nếu đi đường thủy, từ Cần Thơ theo kinh đến Cái Răng, tiếp tục 10 km đến cầu Trà Niềng, rẽ vào rạch Cái Tắc thêm 1 km sẽ đến di tích.
+<br>
+<p style="text-align: justify; line-height: 1.6;"><strong>1. Giới thiệu về di tích</strong> 
+  <br>
+  Năm 2005, Ủy ban nhân dân huyện Phong Điền đã triển khai trùng tu toàn diện khu mộ Phan Văn Trị trên diện tích 2.060 m², bao gồm các hạng mục: nhà tưởng niệm, nhà trưng bày, phần mộ, cuốn sách lưu niệm và các bia đá khắc những câu thơ nổi tiếng của cử nhân Phan Văn Trị.
+  <br>
+Cổng vào được thiết kế theo kiến trúc tam quan với mái ngói truyền thống. Qua sân và ao, du khách đến nhà tưởng niệm, nơi đặt bức tượng đồng bán thân nhà thơ, phía sau là phù điêu gỗ, phía trước có hai con hạc đứng trên con rùa. Phía sau nhà tưởng niệm là phần mộ của nhà thơ và vợ, nơi tôn vinh cuộc đời và sự nghiệp của ông.
+<br>
+Trước năm 1942, ngôi mộ không có bia, không tam cấp đá hay gò đất; chỉ là một đám cỏ xanh rì. Đến năm 1959, nhân dân xây dựng nấm mộ bằng đất với khung xi măng bao quanh, trên đó trồng hoa. Năm 1990, tỉnh Hậu Giang kết hợp đầu tư trùng tu mở rộng, kiên cố và trang nghiêm hơn.
+<br>
+Phòng trưng bày trong khu di tích chủ yếu giới thiệu:
+<br>
+- Hình ảnh ngôi mộ qua các thời kỳ
+<br>
+Các bài thơ nổi tiếng của Phan Văn Trị
+<br>
+Bài báo, tư liệu về nhà thơ
+<br>
+Hiện vẫn chưa tìm thấy hiện vật gốc liên quan trực tiếp đến đời sống sinh hoạt của Phan Văn Trị.
+<br>
+<strong>2. Cuộc đời và sự nghiệp của nhà thơ Phan Văn Trị</strong>
+<br>
+Phan Văn Trị sinh năm 1830 tại thôn Hưng Thạnh, huyện Bảo An, trấn Vĩnh Thanh (nay là xã Thạnh Phú Đông, huyện Giồng Trôm, tỉnh Bến Tre), trong một gia đình nho học, coi trọng đạo lý và giàu truyền thống yêu nước.
+<br>
+Từ nhỏ, ông đã bộc lộ tư chất thông minh và hiếu học. Mười chín tuổi, ông đạt học vị Cử nhân, đủ điều kiện ra làm quan để cống hiến cho dân, cho nước. Tuy nhiên, khi lưu trú tại Gia Định, trung tâm kinh tế - chính trị phía Nam của triều Nguyễn, Phan Văn Trị nhận ra sự bất công xã hội: quan lại tham lam, sống xa hoa, nhân dân chịu cảnh nghèo khổ, đất nước suy yếu. Ông thất vọng trước chính sách bóc lột của triều đình và chủ trương cấm đạo, bế quan tỏa cảng, nên quyết định không ra làm quan, lui về dạy học và sáng tác thơ phú.
+<br>
+Tại Gia Định, ông tham gia sáng lập nhóm “Bạch Mai Thi xã”, nơi hội tụ các nhà khoa bảng, tao nhân mặc khách, cùng ngâm thơ vịnh cảnh.
+<br>
+Năm 1858, khi Thực dân Pháp mở đầu cuộc xâm lược Đà Nẵng, Phan Văn Trị trở về Vĩnh Long mở trường dạy học, chữa bệnh cứu dân nghèo, đồng thời cùng các sĩ phu thực hiện phong trào “Tỵ địa”, không cộng tác với thực dân, cổ vũ các phong trào yêu nước.
+<br>
+Năm 1868, ông về làng Nhơn Ái, Phong Điền, Cần Thơ, tiếp tục dạy học và sáng tác thơ văn phản đối quan lại tham lam, ca ngợi sĩ khí các nghĩa quân, sĩ phu yêu nước.
+<br>
+Phong cách thơ của Phan Văn Trị mang đậm tinh thần bình dân, dễ tiếp cận đại chúng, thể hiện tinh thần dân tộc, lòng yêu nước, thương dân, đồng thời phê phán bạn thù rõ ràng. Mặc dù không hoành tráng như Nguyễn Đình Chiểu hay Bùi Hữu Nghĩa, thơ ông vẫn là vũ khí sắc bén, góp phần nâng cao tinh thần đấu tranh chính nghĩa. Ông được xem là nhà thơ - chiến sĩ, lãnh đạo tinh thần trên mặt trận yêu nước Nam Bộ cuối thế kỷ XIX, đầu thế kỷ XX.
+<br>
+Phan Văn Trị mất ngày 22 tháng 6 âm lịch năm 1910, yên nghỉ tại làng Nhơn Ái trong ngôi nhà lá đơn sơ, để lại nỗi tiếc thương cho nhân dân địa phương. Từ đó, mỗi năm vào ngày 22 tháng 6 âm lịch, địa phương tổ chức lễ giỗ trang trọng kết hợp các hoạt động văn hóa, văn nghệ: chương trình nghệ thuật, thi vẽ tranh, triển lãm sách, trình diễn thư pháp, giới thiệu sản phẩm du lịch, tạo nên ngày hội truyền thống của di tích và thành phố Cần Thơ.
+</p>
+          
+            
+           
+          <div class="gallery">
+            <img src="./image/pvt1.jpg" alt="Mộ nhà thơ Phan Văn Trị">
+            <img src="./image/pvt2.jpg" alt="Mộ nhà thơ Phan Văn Trị">
+            <img src="./image/pvt3jpg.jpg" alt="Mộ nhà thơ Phan Văn Trị">
+            <img src="./image/pvt4.jpg" alt="Mộ nhà thơ Phan Văn Trị">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        p13: {
+  title:
+    "Khu di tích Chiến thắng Tầm Vu – Di tích lịch sử quốc gia ghi dấu 4 trận oai hùng",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Xẻo Cao, xã Thạnh Xuân, huyện Châu Thành A, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Bối cảnh lịch sử và nguồn gốc</strong><br>
+  Khu di tích Chiến thắng Tầm Vu là một di tích lịch sử – văn hóa quốc gia, nơi diễn ra "bốn trận chiến lớn trong giai đoạn đầu của cuộc kháng chiến chống thực dân Pháp". Những trận đánh này diễn ra trên đoạn Quốc lộ 61 từ Cái Tắc đến Rạch Gòi, với chiều dài chưa đến 5 km, nơi quân dân địa phương kiên cường chiến đấu chống lại âm mưu xâm lược của địch trong giai đoạn 1946–1948. 
+
+  <br><strong>2. Các trận đánh oai hùng Tầm Vu</strong><br>
+  - "Trận Tầm Vu I" diễn ra ngày "20/01/1946", là trận chiến mở đầu cho các hoạt động chiến đấu lâu dài của lực lượng cách mạng tại đây. 
+  - "Trận Tầm Vu II" diễn ra ngày "12/11/1946" gây thiệt hại nặng cho địch. 
+  - "Trận Tầm Vu III" diễn ra ngày "03/05/1947", dưới sự chỉ huy của các chỉ huy anh dũng. 
+  - "Trận Tầm Vu IV" vào ngày "19/04/1948" là trận thắng ghi dấu đặc biệt với việc tiêu diệt nhiều sinh lực địch, thu vật phẩm chiến lợi phẩm và pháo lớn. 
+
+  <br><strong>3. Di tích và cảnh quan hiện nay</strong><br>
+  Ngày nay, khu di tích được quy hoạch trên diện tích rộng hơn 2 ha với nhiều hạng mục tiêu biểu như: tượng đài chiến thắng cao sừng sững giữa không gian xanh, "phù điêu mô tả các trận đánh lịch sử", "nhà trưng bày hiện vật – ảnh tư liệu" và "pháo 105 mm do quân ta thu được" được trưng bày trong khuôn viên. Khung cảnh di tích hòa quyện với vườn cây xanh, hồ nước và vườn sen tạo nên không gian vừa trang nghiêm vừa gần gũi thiên nhiên cho du khách. 
+
+  <br><strong>4. Xếp hạng di tích và ý nghĩa lịch sử</strong><br>
+  Ngày "25/01/1991", Bộ Văn hóa – Thông tin (nay là Bộ Văn hóa, Thể thao và Du lịch) ra "Quyết định số 154/VH-QĐ công nhận Khu di tích Chiến thắng Tầm Vu là di tích lịch sử – văn hóa cấp quốc gia", ghi nhận những đóng góp và chiến công vẻ vang của quân dân miền Tây Nam Bộ trong cuộc kháng chiến chống Pháp. 
+
+  <br><strong>5. Giá trị giáo dục và du lịch</strong><br>
+  Khu di tích Chiến thắng Tầm Vu không chỉ là địa chỉ giáo dục truyền thống đối với học sinh, sinh viên và du khách, mà còn là điểm đến hấp dẫn trong các hành trình du lịch lịch sử – văn hóa của vùng ĐBSCL. Du khách đến đây có thể tìm hiểu về những trận đánh oai hùng, chiêm ngưỡng nghệ thuật tượng đài, tư liệu trưng bày và trải nghiệm môi trường thiên nhiên miền Tây sông nước. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/tamvu01.jpg" alt="Tượng đài Chiến thắng Tầm Vu">
+    <img src="./image/tamvu02.jpg" alt="Phù điêu mô phỏng trận đánh Tầm Vu">
+    <img src="./image/tamvu03.jpg" alt="Pháo 105 mm trưng bày tại khu di tích">
+    <img src="./image/tamvu04.jpg" alt="Khuôn viên di tích và cảnh quan thiên nhiên">
+  </div>
+
+  <p class="meta">Nguồn: Cổng du lịch & di tích Hậu Giang & nhóm tác giả</p>
+  `,
+},
+p14: {
+  title:
+    "Chùa Dơi (Chùa Mahatup) – Di tích kiến trúc nghệ thuật Khmer cổ tại Sóc Trăng",
+  html: `
+  <p><strong>Vị trí:</strong> Đường Văn Ngọc Chính, Phường 3, thành phố Sóc Trăng, tỉnh Sóc Trăng, Việt Nam.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Nguồn gốc và lịch sử hình thành</strong><br>
+  Chùa Dơi, có tên Khmer là "Wath Sêrâytêchô Mahatup", còn được gọi là "Chùa Mã Tộc", là một trong những ngôi chùa cổ nhất khu vực Đồng bằng sông Cửu Long với lịch sử hơn "400 năm tuổi". Ngôi chùa được khởi công xây dựng từ năm "1569" bởi ông Thạch Út và theo dòng thời gian đã trải qua nhiều lần trùng tu, giữ vững vai trò là trung tâm tâm linh của cộng đồng Phật tử Khmer tại địa phương. 
+
+  <br><strong>2. Kiến trúc độc đáo và tín ngưỡng</strong><br>
+  Kiến trúc chùa mang đậm phong cách "Khmer Nam Bộ", hòa trộn nghệ thuật truyền thống với các họa tiết tinh xảo, mái ngói cong vút và các tượng Kemnar trang trí đặc trưng. Quần thể kiến trúc gồm chánh điện, sala, nhà hội và các công trình phụ trợ nằm trong khuôn viên rộng khoảng 4 ha, tạo nên không gian vừa cổ kính vừa yên bình. 
+
+  <br><strong>3. Danh xưng “Chùa Dơi”</strong><br>
+  Ngôi chùa trở nên nổi tiếng nhờ "đàn dơi khổng lồ" từng sinh sống trong khuôn viên. Các cây sao và dầu cổ thụ quanh chùa là nơi trú ngụ của hàng ngàn con dơi quạ, tạo nên cảnh tượng ấn tượng khi hoàng hôn buông xuống. Dơi ở đây được xem như một phần của nét văn hóa độc đáo gắn liền với danh thắng chùa. 
+
+  <br><strong>4. Xếp hạng di tích</strong><br>
+  Ngày "12/02/1999", Chùa Dơi được "Bộ Văn hóa – Thông tin (nay là Bộ Văn hóa, Thể thao và Du lịch)" ban hành Quyết định xếp hạng "Di tích kiến trúc nghệ thuật cấp Quốc gia", phản ánh giá trị văn hóa – lịch sử và kiến trúc đặc sắc của ngôi chùa. 
+
+  <br><strong>5. Du lịch và vai trò hôm nay</strong><br>
+  Hiện nay, "Chùa Dơi là điểm đến du lịch tâm linh nổi bật tại Sóc Trăng", thu hút du khách trong và ngoài nước với kiến trúc độc đáo, không gian yên bình và những câu chuyện thú vị về đàn dơi. Ngoài việc tham quan, du khách còn có thể tìm hiểu sâu hơn về văn hóa Khmer Nam Bộ và các lễ hội Phật giáo được tổ chức trong khuôn viên chùa. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/chua_doi01.jpg" alt="Chánh điện Chùa Dơi – Sóc Trăng">
+    <img src="./image/chua_doi02.jpg" alt="Khuôn viên Chùa Dơi với cây cổ thụ">
+    <img src="./image/chua_doi03.jpg" alt="Kiến trúc Khmer đặc trưng của Chùa Dơi">
+    <img src="./image/chua_doi04.jpg" alt="Cảnh vật xung quanh Chùa Dơi">
+  </div>
+
+  <p class="meta">Nguồn: Wikipedia tiếng Việt & Cẩm nang du lịch Sóc Trăng & nhóm tác giả</p>
+  `,
+},
+p15: {
+  title:
+    "Di tích Trường Taberd – Nơi đón đoàn chính trị phạm từ Côn Đảo trở về (Sóc Trăng)",
+  html: `
+  <p><strong>Vị trí:</strong> Số 19, đường Tôn Đức Thắng, Phường 6, thành phố Sóc Trăng, tỉnh Sóc Trăng.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Lịch sử hình thành và bối cảnh</strong><br>
+  Di tích Trường Taberd là một địa điểm lịch sử quan trọng gắn liền với thời kỳ đầu sau Cách mạng Tháng Tám 1945. Trường được xây dựng từ khoảng giữa những năm đầu thế kỷ XX, với kiến trúc kiểu trường học Pháp thuộc, có khuôn viên rộng và các dãy nhà kiên cố. Vào ngày 23-9-1945, Trường Taberd ở Sóc Trăng được chọn làm nơi đón tiếp và chăm sóc đoàn chiến sĩ cách mạng — những chính trị phạm từng bị giam ở nhà tù Côn Đảo — trở về đất liền sau sự kiện Cách mạng Tháng Tám thành công.
+
+  <br><strong>2. Sự kiện lịch sử đặc biệt</strong><br>
+  Khi đoàn tàu gồm 27 tàu ghe xuất phát từ Côn Đảo vào tháng 9-1945 mang theo hơn 1.800 chiến sĩ cách mạng cập bến Sóc Trăng, nhân dân và Xứ ủy Nam Kỳ đã phối hợp đón tiếp và tổ chức chu đáo tại Trường Taberd. Trong số các chiến sĩ được đón tiếp có những cán bộ sau này trở thành lãnh đạo cao cấp của Đảng và Nhà nước như Chủ tịch Tôn Đức Thắng, Tổng Bí thư Lê Duẩn và Tổng Bí thư Nguyễn Văn Linh.
+
+  <br><strong>3. Vai trò & hoạt động tại di tích</strong><br>
+  Khu di tích gồm khuôn viên trường xưa cùng "nhà trưng bày lịch sử", nơi trưng bày hiện vật và tư liệu về sự kiện đón đoàn tù chính trị từ Côn Đảo về. Các hiện vật như mô hình ca-nô cùng những hình ảnh, sơ đồ diễn biến đều được bảo tồn, góp phần phục vụ giáo dục truyền thống và nghiên cứu lịch sử. 
+
+  <br><strong>4. Xếp hạng di tích</strong><br>
+  Di tích Trường Taberd được "Bộ Văn hóa, Thông tin và Thể thao (nay là Bộ Văn hóa, Thể thao và Du lịch)"" công nhận là **Di tích Lịch sử – Văn hóa cấp Quốc gia** theo Quyết định số 734/QĐ ngày 11/6/1992, ghi nhận giá trị lịch sử to lớn của nơi này đối với phong trào cách mạng và lịch sử Việt Nam. 
+
+  <br><strong>5. Giá trị giáo dục & du lịch</strong><br>
+  Ngày nay, Khu di tích Trường Taberd là "điểm đến lịch sử – văn hóa nổi bật tại Sóc Trăng", thu hút nhiều đoàn khách, học sinh, sinh viên và du khách tìm hiểu quá khứ oai hùng. Khu di tích là nơi diễn ra các hoạt động giáo dục truyền thống, tham quan hiện vật và ngắm nhìn không gian trường học xưa, góp phần kết nối quá khứ với hiện tại và lan tỏa giá trị lịch sử cách mạng. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/truong_taberd01.jpg" alt="Khu di tích Trường Taberd – Sóc Trăng">
+    <img src="./image/truong_taberd02.jpg" alt="Nhà trưng bày lịch sử Trường Taberd">
+    <img src="./image/truong_taberd03.jpg" alt="Không gian sân trường xưa tại Trường Taberd">
+    <img src="./image/truong_taberd04.jpg" alt="Hình ảnh tư liệu chiến sĩ trở về tại Trường Taberd">
+  </div>
+
+  <p class="meta">Nguồn: Báo Cần Thơ Online, Cổng thông tin Du lịch Sóc Trăng & nhóm tác giả</p>
+  `,
+},
+p18: {
+  title:
+    "Đền thờ Vua Hùng – Biểu tượng tâm linh và văn hóa nguồn cội tại TP. Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Phường Bình Thủy, quận Bình Thủy, thành phố Cần Thơ, Việt Nam.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Ý nghĩa nguồn cội và bối cảnh xây dựng</strong><br>
+  Đền thờ Vua Hùng tại Cần Thơ là công trình văn hóa – tâm linh được xây dựng để tưởng nhớ và tôn vinh công đức các "Vua Hùng – người có công dựng nước", biểu tượng nguồn cội của dân tộc Việt Nam. Công trình được khởi công vào ngày 18/6/2019 và chính thức khánh thành vào ngày 6/4/2022, trở thành một điểm đến quan trọng cho sinh hoạt tín ngưỡng và giáo dục truyền thống tại vùng ĐBSCL. 
+
+  <br><strong>2. Kiến trúc và biểu tượng đặc sắc</strong><br>
+  Khu di tích có tổng diện tích hơn 39.000 m², gồm nhiều hạng mục: đền chính, cổng chính, Nghi môn (cổng tam quan), nhà bia, nhà điều hành và sân lễ lớn. Đặc biệt, đền chính được thiết kế theo hình trống đồng cách điệu, với 18 cánh cung bao quanh tượng trưng cho 18 đời Vua Hùng, và xung quanh hồ tròn có 54 trụ tượng trưng cho 54 dân tộc anh em trên đất Việt Nam. Biểu tượng “trời tròn – đất vuông” cùng các họa tiết Đông Sơn được lồng ghép trong kiến trúc, tạo nên nét thẩm mỹ vừa hiện đại vừa sâu sắc với lịch sử dân tộc. 
+
+  <br><strong>3. Vai trò văn hóa – tâm linh</strong><br>
+  Đền thờ Vua Hùng không chỉ là nơi thờ tự tâm linh mà còn là không gian tổ chức các hoạt động văn hóa và lễ hội truyền thống, đặc biệt là "Giỗ Tổ Hùng Vương (10/3 âm lịch)" hàng năm, thu hút đông đảo người dân địa phương và du khách đến dâng hương, tưởng nhớ công lao của các vua Hùng. 
+
+  <br><strong>4. Giải thưởng kiến trúc</strong><br>
+  Công trình Đền thờ Vua Hùng tại TP. Cần Thơ đã được vinh dự đoạt "giải Đồng trong Giải thưởng Kiến trúc Quốc gia 2024–2025" ở hạng mục kiến trúc công cộng, ghi nhận sự sáng tạo, bản sắc văn hóa và giá trị nghệ thuật của công trình. 
+
+  <br><strong>5. Điểm đến du lịch và giáo dục</strong><br>
+  Ngày nay, Đền thờ Vua Hùng là một trong những điểm du lịch tiêu biểu của Cần Thơ – vùng ĐBSCL, thu hút cả khách trong nước và quốc tế. Du khách đến đây không chỉ tưởng nhớ nguồn cội mà còn trải nghiệm không gian văn hóa truyền thống, chiêm ngưỡng kiến trúc mang đậm bản sắc dân tộc và tham gia các hoạt động lễ hội theo mùa. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/den_tho_vua_hung_cantho01.jpg" alt="Đền thờ Vua Hùng – cổng chính và hồ tròn">
+    <img src="./image/den_tho_vua_hung_cantho02.jpg" alt="Kiến trúc đền chính với 18 cánh cung">
+    <img src="./image/den_tho_vua_hung_cantho03.jpg" alt="Sân lễ và Nghi môn tại Đền thờ Vua Hùng">
+    <img src="./image/den_tho_vua_hung_cantho04.jpg" alt="Không gian tham quan và lễ hội tại Đền thờ Vua Hùng">
+  </div>
+
+  <p class="meta">Nguồn: Wikipedia tiếng Anh, Cổng thông tin Du lịch Cần Thơ & nhóm tác giả</p>
+  `,
+},
+p19: {
+  title:
+    "Làng bè cá Bảy Bon – Trải nghiệm du lịch sinh thái độc đáo trên sông Hậu (Cồn Sơn, Cần Thơ)",
+  html: `
+  <p><strong>Vị trí:</strong> Cồn Sơn, quận Bình Thủy, thành phố Cần Thơ, Đồng bằng sông Cửu Long, Việt Nam.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Mô hình du lịch sinh thái độc đáo</strong><br>
+  Làng bè cá Bảy Bon là một mô hình kết hợp nuôi cá và du lịch cộng đồng độc đáo nằm giữa lòng Cồn Sơn – hòn đảo xanh mát trên dòng sông Hậu. Đây không chỉ là một bè nuôi cá thông thường mà đã trở thành một điểm đến hấp dẫn, thu hút đông đảo du khách trong và ngoài nước đến trải nghiệm đời sống sông nước Nam Bộ. 
+
+  <br><strong>2. Nguồn gốc và sáng tạo địa phương</strong><br>
+  Nông dân Lý Văn Bon (Bảy Bon) là người sáng lập mô hình bè cá này, với ý tưởng kết nối nuôi cá truyền thống cùng du lịch trải nghiệm, giúp du khách hiểu hơn về đời sống sông nước miền Tây. Không gian này phản ánh được nét văn hóa lao động và sự thích nghi của người dân địa phương trong việc đa dạng hóa sinh kế nông nghiệp kết hợp dịch vụ du lịch. 
+
+  <br><strong>3. Trải nghiệm tại bè cá</strong><br>
+  Du khách khi đến làng bè có thể tham gia nhiều hoạt động thú vị:  
+  - Cho cá ăn trực tiếp và xem đàn cá đủ loại bơi lội dưới chân bè.  
+  - Câu cá, chụp ảnh check-in cùng cá Koi rực rỡ sắc màu giữa sông Hậu.  
+  - Thưởng thức ẩm thực cá tươi được chế biến ngay tại bè hoặc khu vực gần đó.  
+  Các trải nghiệm này không chỉ mang lại niềm vui mà còn giúp khách hiểu sâu hơn về sinh thái thủy sản và văn hóa sông nước vùng ĐBSCL. 
+
+  <br><strong>4. Vị trí & cách tiếp cận</strong><br>
+  Làng bè cá Bảy Bon tọa lạc tại Cồn Sơn – cách trung tâm TP. Cần Thơ khoảng 7–8 km về phía Bắc. Du khách thường đến đây bằng thuyền hoặc đò từ bến Cô Bắc (phường Bình Thủy), qua sông Hậu khoảng 10–15 phút để đến làng bè và các điểm du lịch cộng đồng xung quanh. 
+
+  <br><strong>5. Ý nghĩa văn hóa và du lịch</strong><br>
+  Bè cá Bảy Bon không chỉ đơn thuần là điểm tham quan mà còn là minh chứng cho sự đổi mới trong du lịch cộng đồng, mang đậm bản sắc miền Tây sông nước. Nơi đây góp phần quảng bá nông nghiệp vùng sông nước, tạo thêm trải nghiệm gắn kết giữa du khách và người dân địa phương, đồng thời thúc đẩy phát triển du lịch sinh thái tại Cần Thơ.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/lang_be_ca_bay_bon01.jpg" alt="Làng bè cá Bảy Bon – Cồn Sơn, Cần Thơ">
+    <img src="./image/lang_be_ca_bay_bon02.jpg" alt="Du khách cho cá ăn tại bè cá Bảy Bon">
+    <img src="./image/lang_be_ca_bay_bon03.jpg" alt="Đàn cá Koi rực rỡ tại bè cá Bảy Bon">
+    <img src="./image/lang_be_ca_bay_bon04.jpg" alt="Không gian sông nước miền Tây ở Cồn Sơn">
+  </div>
+
+  <p class="meta">Nguồn: consoncantho.com – Cồn Sơn Cần Thơ & nhóm tác giả</p>
+  `,
+},
+
+p20: {
+  title:
+    "Bến Ninh Kiều – Biểu tượng văn hóa, du lịch và đời sống sông nước tại TP. Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Phường Tân An, quận Ninh Kiều, thành phố Cần Thơ, Đồng bằng sông Cửu Long, Việt Nam.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Lịch sử hình thành và nguồn gốc</strong><br>
+  Bến Ninh Kiều là một địa danh nổi tiếng gắn liền với quá trình hình thành và phát triển của thành phố Cần Thơ. Ban đầu đây là một bến sông nằm ở đầu chợ Cần Thơ vào thế kỷ 19, nơi mà các thương nhân ghe thuyền tụ hội để giao thương hàng hóa trong khu vực. Trong thời kỳ Pháp thuộc, bến được xây dựng với gạch và đá để chống sóng và trở thành một điểm giao thương sầm uất dọc sông Hậu. Khu vực này từng được gọi là bến Hàng Dương và có tên Pháp là Quai de Commerce trước khi đổi tên thành bến Ninh Kiều vào năm 1958. 
+
+  <br><strong>2. Biểu tượng văn hóa và thơ ca</strong><br>
+  Bến Ninh Kiều đã đi vào thơ ca và văn học Việt Nam với hình ảnh thơ mộng của miền Tây Nam Bộ. Không gian bến dọc theo sông Hậu với cảnh nước hiền hòa, phồn hoa chợ búa và đời sống sông nước đã trở thành biểu tượng đặc trưng của Cần Thơ, được nhắc đến trong các câu thơ nổi tiếng về mảnh đất “Tây Đô”. 
+
+  <br><strong>3. Không gian hiện tại và hoạt động du lịch</strong><br>
+  Ngày nay, bến Ninh Kiều là một công viên ven sông rộng lớn với hệ thống cây xanh, lối đi bộ lát đá, đường dạo mát và băng ghế ngắm cảnh. Khu vực này là điểm tụ tập của người dân địa phương và du khách để dạo bộ, ngắm hoàng hôn trên sông Hậu hoặc ngồi thưởng thức ẩm thực đường phố. Du khách còn có thể tham gia các chuyến du ngoạn bằng thuyền dọc theo sông, ngắm cảnh Cầu Cần Thơ và tham quan chợ nổi Cái Răng từ điểm khởi hành tại Ninh Kiều. 
+
+  <br><strong>4. Điểm nhấn kiến trúc và nghệ thuật</strong><br>
+  Một trong những điểm nổi bật tại khu vực Bến Ninh Kiều là bức tượng bằng đồng của Chủ tịch Hồ Chí Minh cao 7,2 mét, được đặt trên bệ cao 3,6 mét, là trung tâm nhiều hoạt động lễ hội và chụp ảnh. Hai bên bờ còn có nhiều công trình hiện đại như cầu đi bộ nối với các điểm vui chơi và phố ẩm thực, tạo nên bức tranh sinh hoạt xen kẽ giữa truyền thống và hiện đại. 
+
+  <br><strong>5. Ý nghĩa văn hóa – du lịch và cộng đồng</strong><br>
+  Bến Ninh Kiều không chỉ là địa điểm du lịch hấp dẫn mà còn là **trung tâm sinh hoạt văn hóa của thành phố Cần Thơ**, nơi diễn ra các lễ hội, sự kiện dọc bờ sông, chợ đêm và phố đi bộ vào các dịp cuối tuần. Nơi đây phản ánh nhịp sống sông nước đặc trưng, kết nối giữa người dân địa phương và du khách, góp phần quảng bá văn hóa miền Tây rộng lớn. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/ben_ninh_kieu01.jpg" alt="Bến Ninh Kiều – Cần Thơ ven sông Hậu">
+    <img src="./image/ben_ninh_kieu02.jpg" alt="Tượng Chủ tịch Hồ Chí Minh tại Ninh Kiều">
+    <img src="./image/ben_ninh_kieu03.jpg" alt="Còn đường dạo ven bờ sông ở Bến Ninh Kiều">
+    <img src="./image/ben_ninh_kieu04.jpg" alt="Hoạt động chợ đêm và du lịch tại Bến Ninh Kiều">
+  </div>
+
+  <p class="meta">Nguồn: Cổng thông tin Du lịch Cần Thơ, trang điểm du lịch & nhóm tác giả</p>
+  `,
+},
+p21: {
+  title:
+    "Chợ Cổ Cần Thơ – Di tích kiến trúc nghệ thuật và không gian mua sắm truyền thống",
+  html: `
+  <p><strong>Vị trí:</strong> Đường Hai Bà Trưng, phường Ninh Kiều, thành phố Cần Thơ, Việt Nam.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Lịch sử hình thành</strong><br>
+  Chợ Cổ Cần Thơ, còn được người dân địa phương gọi là Chợ Cò, là một trong những điểm mua sắm truyền thống lâu đời của thành phố. Chợ được xây dựng khoảng năm 1915 và gắn liền với quá trình hình thành – phát triển đô thị Cần Thơ đầu thế kỷ XX. Trải qua nhiều lần trùng tu, công trình vẫn giữ được dáng dấp kiến trúc cổ đặc trưng.
+
+  <br><strong>2. Kiến trúc và giá trị nghệ thuật</strong><br>
+  Chợ mang phong cách kiến trúc cổ điển, kết hợp hài hòa với không gian mở của miền sông nước Nam Bộ. Mái ngói, kết cấu khung và bố cục gian hàng tạo nên nét riêng của một khu chợ cổ vùng Tây Đô.
+
+  <br><strong>3. Hoạt động mua sắm và trải nghiệm</strong><br>
+  Hiện nay, chợ là nơi bày bán nhiều mặt hàng lưu niệm, thủ công mỹ nghệ, đặc sản địa phương và quà tặng cho du khách. Không gian chợ mang lại trải nghiệm sinh hoạt truyền thống, gần gũi và đậm bản sắc miền Tây.
+
+  <br><strong>4. Vị trí và kết nối du lịch</strong><br>
+  Chợ Cổ Cần Thơ nằm gần Bến Ninh Kiều, thuận tiện cho du khách kết hợp tham quan các điểm du lịch ven sông. Đây là điểm dừng chân quen thuộc trong hành trình khám phá trung tâm thành phố.
+
+  <br><strong>5. Ý nghĩa văn hóa</strong><br>
+  Chợ Cổ không chỉ là nơi giao thương mà còn là không gian lưu giữ ký ức đô thị và văn hóa mua bán truyền thống của người dân Cần Thơ, góp phần làm nên bản sắc riêng của vùng đất Tây Đô.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/cho_co_can_tho01.jpg" alt="Chợ Cổ Cần Thơ">
+    <img src="./image/cho_co_can_tho02.jpg" alt="Không gian bên trong chợ cổ">
+    <img src="./image/cho_co_can_tho03.jpg" alt="Du khách tham quan chợ Cổ Cần Thơ">
+    <img src="./image/cho_co_can_tho04.jpg" alt="Khu vực mua sắm tại chợ cổ">
+  </div>
+  `,
+},
+p22: {
+  title:
+    "Công viên Ánh sáng Kỳ quan Cổ đại – The Miracle: Điểm tham quan kiến trúc độc đáo tại Hậu Giang",
+  html: `
+  <p><strong>Vị trí:</strong> Khu đô thị Cát Tường Western Pearl 2, đường Võ Văn Kiệt, phường 5, thành phố Vị Thanh, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Giới thiệu chung</strong><br>
+  Công viên Ánh sáng Kỳ quan Cổ đại – The Miracle là điểm đến du lịch hiện đại tại thành phố Vị Thanh, được xây dựng nhằm tái hiện các công trình kiến trúc kỳ quan cổ đại nổi tiếng của thế giới trong không gian mở, kết hợp cảnh quan và nghệ thuật ánh sáng.
+
+  <br><strong>2. Không gian kiến trúc</strong><br>
+  Công viên nổi bật với các mô hình kỳ quan cổ đại được bố trí quanh khu vực trung tâm, tạo nên tổng thể hài hòa và ấn tượng. Các công trình được thiết kế theo phong cách mô phỏng, mang tính trực quan cao, phù hợp cho tham quan và chụp ảnh.
+
+  <br><strong>3. Trải nghiệm tham quan</strong><br>
+  Du khách đến đây có thể dạo bộ, ngắm cảnh, khám phá từng công trình kiến trúc mô phỏng và tận hưởng không gian sinh hoạt ngoài trời. Vào buổi tối, hệ thống chiếu sáng tạo nên khung cảnh lung linh, tăng sức hấp dẫn cho khu vực.
+
+  <br><strong>4. Vai trò trong phát triển du lịch</strong><br>
+  Công viên The Miracle góp phần đa dạng hóa sản phẩm du lịch của Hậu Giang, bổ sung thêm loại hình du lịch tham quan, giải trí hiện đại bên cạnh các điểm du lịch sinh thái và di tích lịch sử truyền thống.
+
+  <br><strong>5. Ý nghĩa</strong><br>
+  Đây là điểm đến phù hợp cho người dân địa phương và du khách khi đến với Hậu Giang, đặc biệt là giới trẻ và các gia đình, góp phần tạo diện mạo mới cho không gian đô thị thành phố Vị Thanh.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/the_miracle01.jpg" alt="Công viên Ánh sáng Kỳ quan Cổ đại The Miracle">
+    <img src="./image/the_miracle02.jpg" alt="Không gian kiến trúc mô phỏng kỳ quan cổ đại">
+    <img src="./image/the_miracle03.jpg" alt="Cảnh quan trung tâm công viên The Miracle">
+    <img src="./image/the_miracle04.jpg" alt="Công viên ánh sáng tại thành phố Vị Thanh">
+  </div>
+  `,
+},
+p23: {
+  title:
+    "Chợ Vị Thanh – Chợ chồm hổm độc đáo giữa lòng miền Tây",
+  html: `
+  <p><strong>Vị trí:</strong> Trung tâm thành phố Vị Thanh, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Tên gọi và đặc trưng</strong><br>
+  Chợ Vị Thanh là khu chợ truyền thống nổi tiếng của thành phố Vị Thanh, thường được gọi bằng cái tên dân dã là chợ chồm hổm. Tên gọi này xuất phát từ hình ảnh người bán không có sạp cố định, thường ngồi thấp hoặc ngồi xổm để bày hàng hóa trước mặt, tạo nên nét sinh hoạt rất riêng của miền Tây Nam Bộ.
+
+  <br><strong>2. Không gian chợ</strong><br>
+  Chợ được bố trí ngăn nắp, hàng hóa sắp xếp ngay hàng thẳng lối. Khi nhìn từ trên cao, phiên chợ tạo nên bố cục đẹp mắt, phản ánh nếp sống giản dị nhưng trật tự của người dân địa phương.
+
+  <br><strong>3. Hoạt động mua bán</strong><br>
+  Hàng hóa tại chợ chủ yếu là rau củ, trái cây, thủy sản và sản vật địa phương do chính người dân mang đến bán. Chợ thường họp từ sáng sớm đến gần trưa, là nơi giao thương quen thuộc của cư dân thành phố Vị Thanh.
+
+  <br><strong>4. Giá trị văn hóa</strong><br>
+  Không chỉ là nơi mua bán, chợ Vị Thanh còn phản ánh rõ nét đời sống sinh hoạt và văn hóa cộng đồng miền Tây, nơi người mua và người bán giao tiếp gần gũi, thân tình và chân chất.
+
+  <br><strong>5. Trải nghiệm du lịch</strong><br>
+  Du khách khi ghé thăm chợ Vị Thanh có thể cảm nhận nhịp sống buổi sáng của người dân địa phương, quan sát sinh hoạt chợ truyền thống và trải nghiệm không gian văn hóa rất đặc trưng của vùng sông nước.
+  </p>
+
+  <p><strong>Nguồn:</strong> iVIVU và tư liệu du lịch địa phương.</p>
+
+  <div class="gallery">
+    <img src="./image/cho_vi_thanh01.jpg" alt="Chợ Vị Thanh buổi sáng">
+    <img src="./image/cho_vi_thanh02.jpg" alt="Người bán hàng chồm hổm tại chợ Vị Thanh">
+    <img src="./image/cho_vi_thanh03.jpg" alt="Không gian mua bán tại chợ Vị Thanh">
+    <img src="./image/cho_vi_thanh04.jpg" alt="Góc nhìn tổng thể chợ Vị Thanh">
+  </div>
+  `,
+},
+
+p24: {
+  title:
+    "Vườn tre Tư Sang – Con đường tre đẹp nhất miền Tây tại Hậu Giang",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Phú Xuân, xã Thạnh Hòa, huyện Phụng Hiệp, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Giới thiệu chung</strong><br>
+  Vườn tre Tư Sang là điểm tham quan sinh thái nổi tiếng tại huyện Phụng Hiệp, gây ấn tượng với con đường tre xanh mát kéo dài giữa không gian miệt vườn yên bình. Nơi đây được nhiều du khách đánh giá là một trong những con đường tre đẹp nhất miền Tây.
+
+  <br><strong>2. Quá trình hình thành</strong><br>
+  Khu vườn do ông Đặng Văn Sang, thường gọi là Tư Sang, trồng và chăm sóc trong nhiều năm. Những hàng tre được gìn giữ cẩn thận, phát triển tự nhiên, tạo nên không gian xanh mát quanh năm.
+
+  <br><strong>3. Không gian và trải nghiệm</strong><br>
+  Du khách có thể đi bộ dưới những tán tre rợp bóng, tận hưởng không khí trong lành, chụp ảnh và thư giãn. Khu vực được bố trí lối đi thuận tiện, xen kẽ các chòi nghỉ và tiểu cảnh phục vụ tham quan.
+
+  <br><strong>4. Giá trị du lịch</strong><br>
+  Vườn tre Tư Sang là điểm đến phù hợp cho hoạt động dã ngoại, tham quan và trải nghiệm thiên nhiên, góp phần đa dạng hóa sản phẩm du lịch sinh thái của tỉnh Hậu Giang.
+
+  <br><strong>5. Ý nghĩa văn hóa</strong><br>
+  Không gian vườn tre thể hiện lối sống gần gũi thiên nhiên của người dân miền Tây, mang đến cho du khách cảm giác thư thái và sự kết nối với cảnh quan nông thôn Nam Bộ.
+  </p>
+
+  <p><strong>Nguồn:</strong> Báo Thanh Niên và tư liệu du lịch địa phương.</p>
+
+  <div class="gallery">
+    <img src="./image/vuon_tre_tu_sang01.jpg" alt="Con đường tre tại Vườn tre Tư Sang">
+    <img src="./image/vuon_tre_tu_sang02.jpg" alt="Không gian xanh mát của rừng tre Hậu Giang">
+    <img src="./image/vuon_tre_tu_sang03.jpg" alt="Du khách tham quan và chụp ảnh tại vườn tre">
+    <img src="./image/vuon_tre_tu_sang04.jpg" alt="Cảnh quan sinh thái tại Vườn tre Tư Sang">
+  </div>
+  `,
+},
+p25: {
+  title:
+    "Hồ nước ngọt Sóc Trăng – Không gian xanh giữa trung tâm thành phố",
+  html: `
+  <p><strong>Vị trí:</strong> Phường 6, thành phố Sóc Trăng, tỉnh Sóc Trăng.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+  <strong>Thông tin:</strong><br>
+
+  <strong>1. Giới thiệu</strong><br>
+  Hồ nước ngọt Sóc Trăng là khu công viên sinh thái nằm ngay trung tâm thành phố, có diện tích lớn và cảnh quan xanh mát. Nơi đây được xem là không gian sinh hoạt cộng đồng quan trọng của người dân địa phương.
+
+  <br><strong>2. Quá trình hình thành</strong><br>
+  Hồ được đào và hình thành từ những năm đầu thập niên 1960, ban đầu phục vụ mục đích trữ nước. Qua nhiều giai đoạn, khu vực này được mở rộng và cải tạo thành công viên văn hóa kết hợp cảnh quan hồ nước.
+
+  <br><strong>3. Không gian cảnh quan</strong><br>
+  Xung quanh hồ là hệ thống cây xanh lâu năm tạo bóng mát quanh năm. Lối đi bộ ven hồ rộng rãi, phù hợp cho hoạt động dạo bộ, tập thể dục và thư giãn.
+
+  <br><strong>4. Sinh hoạt và vui chơi</strong><br>
+  Hồ nước ngọt là nơi diễn ra nhiều hoạt động cộng đồng như vui chơi, sinh hoạt ngoài trời, hội chợ và các sự kiện văn hóa của thành phố.
+
+  <br><strong>5. Vai trò du lịch</strong><br>
+  Đây là điểm đến quen thuộc của du khách khi tham quan Sóc Trăng, mang lại không gian nghỉ ngơi và trải nghiệm đời sống đô thị gắn với thiên nhiên.
+  </p>
+
+  <p><strong>Nguồn:</strong> Tư liệu du lịch Sóc Trăng.</p>
+
+  <div class="gallery">
+    <img src="./image/ho_nuoc_ngot_soc_trang01.jpg" alt="Hồ nước ngọt Sóc Trăng">
+    <img src="./image/ho_nuoc_ngot_soc_trang02.jpg" alt="Không gian cây xanh ven hồ">
+    <img src="./image/ho_nuoc_ngot_soc_trang03.jpg" alt="Hoạt động sinh hoạt quanh hồ">
+    <img src="./image/ho_nuoc_ngot_soc_trang04.jpg" alt="Cảnh quan hồ nước ngọt Sóc Trăng">
+  </div>
+  `,
+},
+p26: {
+  title:
+    "Liên Hoa Bảo Tháp – Biểu tượng mới của du lịch tâm linh Sóc Trăng",
+  html: `
+  <p><strong>Vị trí:</strong> Khuôn viên Thiền viện Trúc Lâm Sóc Trăng, xã An Hiệp, huyện Châu Thành, tỉnh Sóc Trăng.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Công trình tâm linh nổi bật giữa lòng Sóc Trăng</strong><br>
+    Liên Hoa Bảo Tháp là công trình kiến trúc tâm linh quy mô lớn, tọa lạc trong khuôn viên Thiền viện Trúc Lâm Sóc Trăng. Với chiều cao 9 tầng, công trình gây ấn tượng mạnh bởi hình dáng hoa sen vươn cao giữa không gian thanh tịnh, thể hiện triết lý từ bi và giác ngộ của Phật giáo.
+    <br>
+    Đây không chỉ là điểm nhấn kiến trúc độc đáo mà còn được xem là biểu tượng mới trong hành trình phát triển du lịch văn hóa – tâm linh của tỉnh Sóc Trăng.
+
+    <br><strong>2. Kiến trúc mang đậm dấu ấn Phật giáo</strong><br>
+    Liên Hoa Bảo Tháp được thiết kế theo hình tượng hoa sen – biểu trưng cho sự thanh cao, thuần khiết. Các tầng tháp được bố trí hài hòa, mỗi tầng đều mang ý nghĩa riêng gắn với con đường tu tập và giác ngộ.
+    <br>
+    Không gian xung quanh tháp thoáng đãng, kết hợp hài hòa giữa kiến trúc, cảnh quan và yếu tố thiên nhiên, tạo nên cảm giác an yên cho du khách khi đặt chân đến chiêm bái.
+
+    <br><strong>3. Điểm đến thu hút du khách và Phật tử</strong><br>
+    Từ khi hoàn thành, Liên Hoa Bảo Tháp nhanh chóng trở thành điểm đến thu hút đông đảo du khách, Phật tử và người dân địa phương. Không chỉ đến tham quan, chụp ảnh, nhiều người tìm về nơi đây để tĩnh tâm, cầu an và tìm lại sự cân bằng trong cuộc sống.
+    <br>
+    Công trình góp phần làm phong phú thêm bản đồ du lịch Sóc Trăng, bên cạnh các điểm đến nổi tiếng như chùa Dơi, chùa Đất Sét, chùa Kh’leang…
+
+    <br><strong>4. Góp phần phát triển du lịch văn hóa – tâm linh</strong><br>
+    Liên Hoa Bảo Tháp không chỉ mang giá trị tâm linh mà còn có ý nghĩa lớn trong việc quảng bá hình ảnh Sóc Trăng – vùng đất giàu bản sắc văn hóa, nơi giao thoa của các cộng đồng Kinh – Khmer – Hoa.
+    <br>
+    Công trình được kỳ vọng sẽ trở thành điểm nhấn quan trọng, góp phần thúc đẩy phát triển du lịch bền vững, gắn kết giá trị văn hóa – lịch sử – tín ngưỡng của địa phương.
+
+    <br><strong>5. Biểu tượng của niềm tin và sự an lạc</strong><br>
+    Giữa nhịp sống hiện đại, Liên Hoa Bảo Tháp hiện lên như một điểm tựa tinh thần, nơi con người tìm về sự bình yên và hướng thiện.
+    <br>
+    Công trình không chỉ là một kiến trúc tôn giáo, mà còn là biểu tượng của niềm tin, của khát vọng sống an lành, hòa hợp và hướng đến những giá trị tốt đẹp.
+    <br><i>
+    “Liên Hoa Bảo Tháp – đóa sen vươn cao giữa lòng Sóc Trăng, lan tỏa thông điệp an lạc và từ bi.”
+    </i>
+  </p>
+
+  <div class="gallery">
+    <img src="./image/lienhoa01.jpg">
+    <img src="./image/lienhoa02.jpg">
+    <img src="./image/lienhoa03.jpg">
+    <img src="./image/lienhoa04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Thuận Phát Hotel & Internet</p>
+  `,
+},
+p27: {
+  title:
+    "Vườn cò Tân Long – thiên nhiên thanh bình, trù phú tại Sóc Trăng",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Tân Bình, Xã Long Bình, Huyện Ngã Năm, Tỉnh Sóc Trăng.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Điểm đến sinh thái nổi bật</strong><br>
+    Vườn cò Tân Long là khu du lịch sinh thái nổi tiếng của Sóc Trăng, nơi trú ngụ của hàng chục ngàn cá thể cò và các loài chim khác, tạo nên hệ sinh thái phong phú và hấp dẫn du khách. Không gian nơi đây mang đến sự thanh bình, tĩnh lặng và không khí trong lành, rất phù hợp cho những ai muốn thoát khỏi nhịp sống ồn ào đô thị. 
+
+    <br><strong>2. Hành trình khám phá thiên nhiên</strong><br>
+    Khi đến Vườn cò Tân Long, du khách có thể dạo bước giữa không gian xanh mướt, ngắm nhìn những tổ chim, quan sát tập tính sinh sống của các loài cò. Chủ vườn xây dựng một tháp quan sát cao để bạn có thể chiêm ngưỡng cảnh quan thiên nhiên và những khoảnh khắc hoàng hôn tuyệt đẹp khi đàn cò trở về sau một ngày kiếm ăn. 
+
+    <br><strong>3. Hoạt động thú vị và trải nghiệm</strong><br>
+    Khu vườn không chỉ là nơi ngắm cảnh mà còn là điểm dã ngoại lý tưởng. Du khách có thể picnic giữa thiên nhiên xanh mát, tận hưởng không khí miền Tây sông nước và trò chuyện với chủ vườn để tìm hiểu thêm về tập tính thú vị của các loài chim nơi đây. 
+
+    <br><strong>4. Thưởng thức ẩm thực địa phương</strong><br>
+    Bên cạnh việc tham quan, bạn có thể thưởng thức các món ăn đặc sản Sóc Trăng ngay tại khu vườn, như bún mắm, bánh xèo, bún nước lèo, gà nướng… mang phong vị miền Tây đậm đà và hấp dẫn. 
+
+    <br><strong>5. Hướng dẫn di chuyển</strong><br>
+    Để đến đây, từ trung tâm thành phố Sóc Trăng, bạn đi theo tuyến đường đến thị xã Ngã Năm rồi tiếp tục theo tỉnh lộ 42 khoảng vài km là đến Vườn cò Tân Long. Đây là điểm đến khá dễ tiếp cận bằng xe máy hoặc ô tô riêng.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/vuonco_tanlong01.jpg">
+    <img src="./image/vuonco_tanlong02.jpg">
+    <img src="./image/vuonco_tanlong03.jpg">
+    <img src="./image/vuonco_tanlong04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: MIA.vn & Internet</p>
+  `,
+},
+
+
+        p28: {
+          title: "Làng du lịch Mỹ Khánh",
+          html: `
+          <p><strong>Vị trí:</strong> Số 335 đường Lộ Vòng Cung, ấp Mỹ Khánh, xã Mỹ Khánh, huyện Phong Điền, thành phố Cần Thơ, Việt Nam.</p>
+          <p style="text-align: justify; line-height: 1.6">
+            <strong>Giới thiệu:</strong>
+            <br>
+            
+Trong suốt hơn 25 năm qua, Làng du lịch Mỹ Khánh đã trở thành một điểm dừng chân quen thuộc của du khách khi đến với vùng Đồng bằng sông Cửu Long. Nằm bên dòng sông Cần Thơ hiền hòa, thuộc xã Mỹ Khánh, huyện Phong Điền – nơi nổi tiếng với những vườn cây trĩu quả quanh năm – khu du lịch có diện tích hơn 30ha, cách trung tâm thành phố Cần Thơ khoảng 20 phút di chuyển. Với vị trí thuận lợi giữa hai chợ nổi Cái Răng và Phong Điền, Mỹ Khánh là một tổ hợp du lịch đa chức năng gồm resort – bungalow nghỉ dưỡng – khu vui chơi giải trí – ẩm thực – du lịch sinh thái, tái hiện trọn vẹn nét văn hóa đặc trưng của miền sông nước Nam Bộ.
+<br>
+Đến với nơi đây, du khách sẽ được thả mình giữa thiên nhiên trong lành, tham gia nhiều hoạt động mang đậm bản sắc miệt vườn và tận hưởng những dịch vụ hấp dẫn, đáng nhớ.
+<br><br>
+<strong>Khu nghỉ dưỡng Resort – Bungalow – Hồ bơi</strong>
+<br>
+Làng du lịch Mỹ Khánh sở hữu hệ thống resort và bungalow đạt tiêu chuẩn tương đương 3 sao, kết hợp hài hòa giữa kiến trúc truyền thống và hiện đại. Các khu lưu trú được bố trí xen kẽ dưới những tán cây sapô hàng trăm năm tuổi, mang đến cảm giác thư thái, gần gũi thiên nhiên.
+<br>
+Bên cạnh đó, hồ bơi ngoài trời thoáng mát, đạt chuẩn chất lượng cũng là điểm nhấn giúp kỳ nghỉ của du khách trở nên trọn vẹn và dễ chịu hơn bao giờ hết.
+<br><br>
+<strong>Vườn cây ăn trái đặc sản theo mùa</strong>
+<br>
+Một trong những điểm thu hút nổi bật của Mỹ Khánh chính là vườn cây ăn trái đặc sản rộng hơn 10ha, nơi bảo tồn và phát triển hơn 15 giống cây đặc trưng của miền Tây như: sầu riêng, măng cụt, chôm chôm, bưởi da xanh, nhãn xuồng, mít, xoài, dâu Hạ Châu, mận, ổi, sapô,...
+<br>
+Tại đây, du khách không chỉ được dạo bước giữa những vườn cây trĩu quả, mà còn có thể trải nghiệm hái trái và thưởng thức ngay tại vườn, cảm nhận trọn vẹn hương vị ngọt lành của vùng miệt vườn.
+<br><br>
+<strong>Trải nghiệm “Một ngày làm điền chủ”</strong>
+<br>
+Chương trình “Một ngày làm điền chủ” là một hoạt động mang đậm nét văn hóa Nam Bộ xưa, được xem là điểm nhấn độc đáo nhất của Làng du lịch Mỹ Khánh.
+<br>
+Tham gia chương trình, du khách sẽ hóa thân thành những thành viên trong gia đình điền chủ thời thịnh vượng, được phục vụ, hầu quạt, đưa đi thăm điền, tham quan làng nghề truyền thống, thưởng thức rượu đế và các loại bánh dân gian vừa mới ra lò.
+<br>
+Đặc biệt, du khách còn được dùng bữa cơm điền chủ đúng phong vị những năm 1930–1945, nghe đờn ca tài tử, thưởng trà và nếm trái cây Nam Bộ, mang lại cảm giác như được sống lại trong không gian hoài cổ đầy thi vị.
+<br><br>
+<strong>Tổ chức Team Building và các hoạt động tập thể</strong>
+<br>
+Với khuôn viên rộng rãi, thoáng mát và nhiều khu vực hoạt động ngoài trời, Làng du lịch Mỹ Khánh là địa điểm lý tưởng cho các chương trình team building.
+<br>
+Tại đây, du khách có thể tham gia các trò chơi vận động tập thể vừa vui nhộn, vừa mang tính gắn kết, giúp giải tỏa căng thẳng, khơi dậy tinh thần đồng đội và tạo nên những kỷ niệm đáng nhớ.
+<br><br>
+<strong>Các trò chơi và trải nghiệm vui nhộn</strong>
+<br>
+Đến với Mỹ Khánh, du khách sẽ có cơ hội tham gia hàng loạt hoạt động giải trí phong phú, như:
+<br>
+- Cho cá chép bú bình, xem xiếc thú nghệ thuật
+<br>
+- Tham gia đua heo, đua chó và nhận thưởng vui
+<br>
+- Khám phá 18 tầng địa ngục, Cội nguồn Phương Nam, Cầu Tình yêu, Nhà cổ Nam Bộ
+<br>
+- Trải nghiệm các trò chơi dân gian: tát mương bắt cá, Sasuke miệt vườn, massage cá,…
+<br>
+Tất cả đều mang lại niềm vui giản dị, mộc mạc nhưng đầy thú vị, đúng chất miền Tây sông nước.
+<br><br>
+<strong>Tham quan Nhà cổ Nam Bộ</strong>
+<br>
+Ngôi nhà cổ Nam Bộ trong khu du lịch có tuổi đời gần một thế kỷ, vốn là tư dinh của một điền chủ vùng Bình Thủy xưa kia. Công trình được trùng tu và bảo tồn cẩn thận, giúp du khách có thể hình dung rõ nét về không gian sinh hoạt và lối sống của tầng lớp thượng lưu Nam Bộ xưa.
+<br>
+Bên trong nhà, từng món đồ gỗ, tủ thờ, hay vật dụng sinh hoạt đều được chạm trổ tinh xảo, phản ánh sự sang trọng, tinh tế và nề nếp của gia đình quyền quý thời bấy giờ. Không gian yên tĩnh, trầm mặc mang đến cho du khách một trải nghiệm văn hóa sâu sắc và đầy hoài niệm.
+<br><br>
+<strong>Ẩm thực Nam Bộ đặc sắc</strong>
+<br>
+Ẩm thực là linh hồn của miền Tây, và tại Mỹ Khánh, du khách sẽ được thưởng thức trọn vẹn hương vị đặc sản miệt vườn.
+<br>
+Từ những món dân dã như bánh xèo, bánh khọt, ốc nướng tiêu, cá nướng ống tre, đến chuột đồng quay lu, cá lóc nướng trui, lẩu mắm đồng quê – tất cả đều được chế biến tươi ngon, đậm đà bản sắc.
+<br>
+Thưởng thức những món ăn này dưới những túp lều lá mát rượi, giữa không gian miệt vườn yên ả, sẽ mang lại cảm giác ấm cúng, gần gũi và thân tình.
+<br><br>
+<strong>Trải nghiệm City Tour bằng Taxi điện</strong>
+<br>
+Ngoài khu du lịch, du khách có thể khám phá thêm vẻ đẹp của Cần Thơ về đêm qua dịch vụ City Tour bằng taxi điện Mỹ Khánh – một hình thức di chuyển mới mẻ, thân thiện với môi trường.
+<br>
+Hành trình sẽ đưa du khách dạo quanh những điểm đến nổi tiếng như Bến Ninh Kiều, Nhà cổ Bình Thủy, Chùa Ông,…, chiêm ngưỡng cảnh sắc lung linh của thủ phủ miền Tây, đồng thời khám phá nếp sống, văn hóa đặc trưng của vùng đất Tây Đô.
+<br><br>
+<strong>Tổng kết</strong>
+<br>
+Có thể nói, Làng du lịch Mỹ Khánh chính là bức tranh thu nhỏ của miền Tây Nam Bộ, nơi hội tụ đủ thiên nhiên, văn hóa, ẩm thực và con người.
+
+Một chuyến ghé thăm nơi đây không chỉ mang đến sự thư giãn, trải nghiệm thú vị, mà còn giúp du khách hiểu hơn về đời sống và tâm hồn chân chất của người dân Nam Bộ.
+
+Bỏ qua Mỹ Khánh khi đến Cần Thơ quả là một thiếu sót lớn, bởi nơi đây luôn chào đón du khách bằng sự hiếu khách, bình dị và chân thành.
+            </p>
+          <div class="gallery">
+            <img src="./image/mykhanh1.webp" alt="Khu du lịch mỹ khánh">
+            <img src="./image/mykhanh2.png" alt="Khu du lịch mỹ khánh">
+            <img src="./image/mykhanh3.jpg" alt="Khu du lịch mỹ khánh">
+            <img src="./image/mykhanh4.jpg" alt="Khu du lịch mỹ khánh">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        p16: {
+          title:
+            "🏯 Thiền viện Trúc Lâm Phương Nam Cần Thơ – Điểm đến an yên giữa miền Tây sông nước",
+          html: `
+          <p style="text-align: justify; line-heigth: 1.6;"><strong>Vị trí:</strong> Tọa lạc tại xã Mỹ Khánh, huyện Phong Điền, cách trung tâm thành phố Cần Thơ khoảng 15km, Thiền viện Trúc Lâm Phương Nam được xem là một trong những công trình Phật giáo nổi bật nhất khu vực Tây Nam Bộ. Công trình mang đậm phong cách kiến trúc thời Lý – Trần, vừa cổ kính, vừa trang nghiêm.</p>
+          <p style="text-align: justify; line-heigth: 2.0;"> 
+            <strong>1. Giới thiệu chung</strong>
+<br>
+Thiền viện có quy mô lớn nhất miền Tây hiện nay và được khởi xướng xây dựng theo đề xuất của Đại tướng Phạm Văn Trà, nguyên Bộ trưởng Bộ Quốc phòng. Đây không chỉ là một ngôi chùa thuần túy mà còn là biểu tượng giao hòa giữa văn hóa dân tộc và tín ngưỡng Phật giáo Việt Nam.
+<br>
+Không chỉ là nơi hành lễ, tu tập, Thiền viện Trúc Lâm Cần Thơ còn thu hút đông đảo du khách gần xa đến tham quan, chiêm bái, tìm về chốn bình yên và khám phá nét đẹp kiến trúc truyền thống.
+<br><br>
+<strong>2. Quá trình hình thành và phát triển</strong>
+<br>
+Công trình được xây dựng trên diện tích gần 4 hecta, khởi công vào tháng 7 năm 2013 và hoàn thành chỉ sau 10 tháng thi công, vào tháng 5 năm 2014. Lễ khánh thành long trọng diễn ra ngày 17/5/2014, do Ban Trị sự Giáo hội Phật giáo Việt Nam thành phố Cần Thơ chủ trì.
+<br>
+Trải qua quá trình xây dựng đầy tâm huyết của chư tăng, Phật tử cùng các đơn vị thi công, Thiền viện Trúc Lâm Phương Nam đã trở thành một trung tâm Phật giáo lớn và uy nghi, thể hiện rõ tinh thần hướng thiện, tôn vinh giá trị văn hóa cổ truyền của dân tộc.
+<br><br>
+<strong>3. Tổng quan kiến trúc</strong>
+<br>
+Thiền viện được thiết kế hài hòa trong một không gian rộng mở, lấy cảm hứng từ kiến trúc Phật giáo Việt Nam cổ. Mái lợp ngói đỏ truyền thống, khung cột bằng gỗ lim quý, nền lát gạch tàu tạo nên vẻ đẹp vừa mộc mạc, vừa sang trọng.
+<br>
+Toàn bộ khuôn viên gồm 20 hạng mục công trình chính như: chánh điện, nhà tổ, tháp chuông, tháp trống, bảo tháp 9 tầng, hội trường, nhà thủy tạ, khu tăng xá, trai đường, thư viện cùng nhiều không gian sinh hoạt khác.
+<br>
+Điểm đặc biệt là khoảng 1.000 khối gỗ lim nhập khẩu từ Nam Phi được dùng để dựng cột, xà, và các cấu kiện chính. Các pho tượng trong thiền viện cũng được chế tác công phu: tượng Phật Thích Ca Mâu Ni bằng đồng, cùng tượng Bồ Tát và các vị tổ sư được tạc từ gỗ Du Sam 800 năm tuổi, mang lại cảm giác linh thiêng và bền vững với thời gian.
+<br><br>
+<strong>4. Những khu vực nổi bật trong Thiền viện</strong>
+<br><br>
+<strong><i>4.1. Cổng tam quan và sân ngoài</i></strong>
+<br>
+Ngay khi bước vào, du khách sẽ bị cuốn hút bởi cổng tam quan hùng vĩ với cấu trúc bê tông cốt thép giả gỗ, ba lối đi cân xứng, mái ngói vi cá đỏ nổi bật. Trên đỉnh cổng là hình lưỡng long chầu bánh xe Pháp Luân, biểu tượng cho sự giác ngộ và luân hồi.
+<br>
+Qua cổng, khoảng sân rộng hiện ra với 18 pho tượng La Hán bằng đá bố trí đối xứng hai bên, tạo nên không gian thiền định thanh tịnh và trang nghiêm.
+<br><br>
+<strong><i>4.2. Chánh điện (Đại Hùng Bửu Điện)</i></strong>
+<br>
+Chánh điện là công trình trung tâm của toàn khu, được thiết kế theo kiểu “năm gian hai chái”, mái tám tầng ngói cong vút – đặc trưng của kiến trúc triều Trần. Không gian bên trong có sức chứa hàng trăm người, đủ để tổ chức các buổi lễ lớn.
+<br>
+Hai bên chánh điện là tháp chuông và tháp trống, tượng trưng cho âm dương hài hòa. Toàn bộ cột, kèo, xà ngang được làm bằng gỗ lim, chạm khắc tinh tế, toát lên vẻ trang nghiêm và uy nghi của cửa Phật.
+<br><br>
+<strong><i>4.3. Khu nhà Tổ điện</i></strong>
+<br>
+Phía sau chánh điện là Tổ điện, nơi thờ các vị tổ sư của thiền phái Trúc Lâm: Trần Nhân Tông, Pháp Loa và Huyền Quang. Khu nhà có kiến trúc ngói bốn mái cong theo phong cách thời Lý, bên trong là tượng Tổ sư Đạt Ma cùng ba vị tam tổ.
+<br>
+Trước sân Tổ điện có ba tượng đá lớn mô phỏng hình ảnh các vị tổ đang nhập thiền, tạo nên không gian linh thiêng, sâu lắng. Đối diện là vườn cây nhỏ với tượng Phật Hoàng Trần Nhân Tông ngồi thiền, gợi cảm giác tĩnh tại và hòa mình vào thiên nhiên.
+<br><br>
+<strong><i>4.4. Khu sinh hoạt và thư giãn</i></strong>
+<br>
+Phía sau Tổ đường là khu vực sinh hoạt của chư tăng, gồm thư viện, trai đường, nhà bếp, phòng trưng bày, nhà khách cùng nhiều công trình phụ trợ khác. Nơi đây phủ đầy cây xanh, mang đến cảm giác mát mẻ và yên bình.
+<br>
+Một số khu vực nội viện là không gian riêng của tăng ni, không mở cửa cho khách tham quan, nhằm đảm bảo sự tĩnh lặng cho việc tu tập.
+<br><br>
+<strong><i>4.5. Phòng khám chữa bệnh miễn phí</i></strong>
+<br>
+Một điểm nhân văn đặc biệt của Thiền viện là phòng khám y học cổ truyền miễn phí, chuyên chữa bệnh bằng thuốc Nam cho người nghèo. Phòng khám mở cửa thứ 3, 5 và 7 hàng tuần, buổi sáng từ 7h–11h và chiều 13h–17h, luôn đón đông đảo người dân đến thăm khám.
+<br><br>
+<strong><i>4.6. Cổng sau và khu vực tượng Phật Di Lặc</i></strong>
+<br>
+Từ khu vực phương trượng (phòng trụ trì), du khách có thể rẽ trái để đến cổng sau, nơi đặt tượng Phật Di Lặc khổng lồ với nụ cười an lạc. Đây cũng là điểm dừng chân lý tưởng để nghỉ ngơi, tận hưởng không gian thoáng đãng và thanh tịnh.
+<br><br>
+<strong>5. Trải nghiệm và ý nghĩa</strong>
+<br><br>
+<strong><i>5.1. Dấu ấn kiến trúc thuần Việt</i></strong>
+<br>
+Toàn bộ Thiền viện được thiết kế theo phong cách kiến trúc thuần Việt, tái hiện vẻ đẹp của thời Lý – Trần qua từng chi tiết nhỏ. Hình ảnh rồng, phượng, hoa sen, bánh xe Pháp Luân xuất hiện khắp nơi, tôn vinh sự phát triển rực rỡ của Phật giáo trong lịch sử Việt Nam.
+<br><br>
+<strong><i>5.2. Điểm check-in và chụp ảnh ấn tượng</i></strong>
+<br>
+Không chỉ là chốn tâm linh, nơi đây còn là điểm sống ảo lý tưởng cho du khách yêu thích nhiếp ảnh. Các khu vực như tháp trống, tượng La Hán, 33 ứng hóa thân Bồ Tát, khu sinh hoạt, vườn Tổ điện... đều là những góc chụp tuyệt đẹp, lưu giữ khoảnh khắc thanh tịnh và thiêng liêng.
+<br><br>
+<strong><i>5.3. Không gian nghỉ ngơi, tìm lại sự bình yên</i></strong>
+<br>
+Giữa nhịp sống hối hả, Thiền viện Trúc Lâm Phương Nam là nơi giúp con người tạm gác muộn phiền, tìm về sự cân bằng và thanh tịnh trong tâm hồn. Du khách có thể dạo quanh hồ nước, nghe tiếng chuông chùa ngân vang và cảm nhận sự an nhiên giữa thiên nhiên trong lành.
+<br><br>
+<strong><i>5.4. Dâng hương cầu bình an</i></strong>
+<br>
+Đến với thiền viện, du khách còn có thể dâng hương, cầu an, cầu phúc cho gia đình, gửi gắm tâm nguyện của mình trong khói hương trầm lan tỏa – một trải nghiệm thiêng liêng và ý nghĩa.
+<br><br>
+<strong>6. Gợi ý lưu trú khi tham quan</strong>
+<br>
+Do nằm trong khu vực thành phố Cần Thơ, du khách có thể chọn nghỉ lại tại các khách sạn hoặc homestay trong trung tâm để thuận tiện di chuyển. Nếu muốn ở gần hơn, có thể chọn Mỹ Khánh Resort – khu nghỉ dưỡng gần thiền viện, kết hợp tham quan Làng du lịch Mỹ Khánh để chuyến đi thêm trọn vẹn.
+<br><br>
+<strong>7. Hướng dẫn di chuyển và lưu ý</strong>
+<br>
+- Taxi hoặc xe ôm: Xuất phát từ trung tâm Cần Thơ, yêu cầu tài xế chở đến “Thiền viện Trúc Lâm Phương Nam – xã Mỹ Khánh, huyện Phong Điền.”
+<br>
+- Xe cá nhân: Từ trung tâm, đi đường Cách Mạng Tháng 8 → rẽ trái vào Nguyễn Văn Cừ, đi tiếp khoảng 10km là đến.
+<br>
+<b>* Một số lưu ý khi tham quan:</b>
+<br>
+- Ăn mặc kín đáo, lịch sự, phù hợp không gian tâm linh.
+<br>
+- Khuôn viên khá rộng, nên đi buổi chiều để tránh nắng gắt.
+<br>
+- Có khu vực nghỉ chân, nước uống miễn phí, và hòm công đức cho ai muốn đóng góp.
+<br>
+- Kết hợp tham quan Làng du lịch Mỹ Khánh để có trải nghiệm trọn vẹn hơn.
+<br><br>s
+<strong>8. Tổng kết</strong>
+<br>
+Thiền viện Trúc Lâm Phương Nam Cần Thơ không chỉ là trung tâm tu học Phật giáo lớn mà còn là biểu tượng văn hóa – kiến trúc đặc sắc của miền Tây Nam Bộ. Đến đây, du khách không chỉ được chiêm ngưỡng công trình đồ sộ, tinh tế mà còn được sống chậm lại, cảm nhận sự tĩnh lặng và an nhiên nơi cửa Phật.
+            
+</p>
+
+
+
+          <div class="gallery">
+            <img src="./image/thienvien1.jpg" alt="Thiền viện trúc lâm Phương Nam">
+            <img src="./image/thienvien2.jpg" alt="Thiền viện trúc lâm Phương Nam">
+            <img src="./image/thienvien3.jpg" alt="Thiền viện trúc lâm Phương Nam">
+            <img src="./image/thienvien4.jpg" alt="Thiền viện trúc lâm Phương Nam">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+p17: {
+          title: "Lò hủ tiếu Sáu Hoài",
+          html: `
+          <p><strong>Vị trí:</strong> 476 Đường Lộ Vòng Cung, Phường An Bình, Quận Ninh Kiều, TP Cần Thơ.</p>
+          <p><strong>🏠 Giới thiệu</strong><br>Lò Hủ Tiếu Sáu Hoài là một cơ sở sản xuất và trải nghiệm du lịch làng nghề nổi tiếng ở Cần Thơ, vốn từ lâu đời với nghề làm hủ tiếu thủ công.<br> Tại đây du khách không chỉ được xem quy trình làm hủ tiếu từ khâu chọn gạo, ngâm, tráng bánh, phơi bánh, cắt sợi… mà còn có thể trực tiếp tham gia một số công đoạn.<br> Một điểm nổi bật là món “pizza hủ tiếu” – sáng tạo tại đây – biến sợi hủ tiếu chiên giòn thành món ăn độc đáo mê hoặc thực khách.</p>
+          <p><strong>🎯 Vì sao nên đến?</strong>
+            <br>• Trải nghiệm văn hoá làng nghề: Tìm hiểu và tham gia quy trình thủ công làm hủ tiếu truyền thống, rất phù hợp cho bạn đang quan tâm tới bản sắc địa phương.<br> • Ẩm thực độc đáo: Món pizza hủ tiếu chỉ có nơi đây với sợi hủ tiếu chiên giòn, topping như trứng chiên, thịt khìa, nước cốt dừa…<br>• Chụp ảnh đẹp và trải nghiệm thực tế: Sân phơi bánh, các công đoạn truyền thống, màu sắc sợi hủ tiếu tự nhiên… tạo nên những khoảnh khắc thú vị.</p>
+          <div class="gallery">
+            <img src="./image/hutieu1.jfif" alt="hủ tiếu sáu hoài">
+            <img src="./image/hutieu2.jpg" alt="hủ tiếu sáu hoài">
+            <img src="./image/hutieu3.jpg" alt="hủ tiếu sáu hoài">
+            <img src="./image/hutieu4.jpg" alt="hủ tiếu sáu hoài">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        p29: {
+          title:
+            "Khu du lịch sinh thái Ông Đề – Sức hút mới mẻ giữa lòng Cần Thơ",
+          html: `
+          <p style="text-align: justify; line-height: 1.6"><strong>Vị trí:</strong> Tọa lạc tại tổ 26, ấp Mỹ Ái, xã Mỹ Khánh, huyện Phong Điền, TP. Cần Thơ, Khu du lịch sinh thái Ông Đề là điểm dừng chân lý tưởng cho những ai muốn hòa mình vào không khí miệt vườn đặc trưng của miền Tây Nam Bộ. Nơi đây chỉ cách trung tâm thành phố khoảng 10km, thuận tiện di chuyển theo tuyến Nguyễn Văn Cừ nối dài.</p>
+          <p style="text-align: justify; line-height: 1.6">
+            <strong>1. Tổng quan</strong>
+<br>
+Với diện tích hơn 3ha, Ông Đề được xây dựng theo mô hình du lịch tổng hợp, kết hợp giữa vui chơi, nghỉ dưỡng và ẩm thực dân dã. Không gian xanh mát, cây trái sum suê cùng các hoạt động dân gian độc đáo khiến nơi đây trở thành địa điểm yêu thích của du khách gần xa.
+<br>
+<strong>2. Trải nghiệm hấp dẫn tại Ông Đề</strong>
+<br>
+Đến với Ông Đề, bạn có thể thử sức với nhiều trò chơi dưới nước như:
+<br>
+- Chèo xuồng ba lá, len lỏi giữa các con rạch.
+<br>
+- Đi xe đạp qua ván, đi cầu khỉ, vượt cầu lắc, rèn sự khéo léo và mang lại nhiều tiếng cười.
+<br>
+- Tát mương bắt cá, trượt thác bùn – trải nghiệm đậm chất miệt vườn.
+<br>
+- Bên cạnh đó, nơi đây còn là thiên đường chụp ảnh “sống ảo”. Du khách có thể thuê áo bà ba, nón lá để ghi lại những khoảnh khắc mộc mạc, gần gũi.
+<br>
+<strong>3. Lễ hội và văn hóa địa phương</strong>
+<br>
+Mỗi năm, vào ngày 20 tháng 2 âm lịch, khu du lịch tổ chức lễ giỗ Ông Đề, gồm phần lễ rước trang nghiêm và phần hội sôi nổi với nhiều trò chơi dân gian như kéo co, bắt vịt, bơi thuyền... Đây là dịp để du khách hòa mình vào nét văn hóa truyền thống của người dân miền Tây.
+<br>
+<strong>4. Vườn trái cây trĩu quả</strong>
+<br>
+Đến Ông Đề, bạn có thể dạo quanh vườn trái cây sai trĩu với đủ loại đặc sản miền Tây: sầu riêng, vú sữa, chôm chôm, bưởi, dâu Hạ Châu... Du khách còn được tự tay hái và thưởng thức trái cây tại vườn, cảm nhận trọn vẹn hương vị tươi mát của vùng sông nước.
+<br>
+<b>5. Ẩm thực dân dã đậm đà</b>
+<br>
+Ẩm thực tại Ông Đề mang đậm phong vị quê hương với các món đặc sản như:
+<br>
+Cá lóc nướng trui, ếch chiên nước mắm, chuột đồng khìa nước dừa, lẩu bần chua…
+Ngoài ra còn có nhiều bánh dân gian hấp dẫn như bánh xèo, bánh chuối, bánh bột lọc, bánh lá mít – tất cả đều được chế biến thủ công, mang hương vị truyền thống.
+<br>
+<strong>6. Lưu trú tại Ông Đề</strong>
+<br>
+Du khách có thể nghỉ đêm ngay trong khu du lịch với bungalow homestay bên kênh nhỏ, rợp bóng dừa. Giá dao động từ 960.000 – 1.440.000 VNĐ/khách, bao gồm ăn uống và vé vui chơi. Ngoài ra, các homestay gần đó như Ba Xinh Homestay cũng là lựa chọn phù hợp với chi phí tiết kiệm hơn.
+<br>
+<i><b>Tóm gọn lại</b></i>
+<br>
+Khu du lịch sinh thái Ông Đề là điểm đến hoàn hảo để trải nghiệm cuộc sống miệt vườn, tận hưởng không khí trong lành và khám phá nét văn hóa dân gian đặc trưng của vùng Tây Nam Bộ – nơi mỗi du khách đều có thể tìm thấy niềm vui giản dị và ký ức khó quên.</p>
+          
+<div class="gallery">
+  <img src="./image/ông đề 1.jpg" alt="ông đề">
+          <img src="./image/ông đề 2.jpg" alt="ông đề">
+          <img src="./image/ongde3.jpg" alt="ông đề">
+          <img src="./image/ongde4.webp" alt="ông đề">
+          </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        
+         
+       p30: {
+  title:
+    "Du lịch Cồn Sơn tự túc – khám phá thiên nhiên yên bình giữa sông Hậu",
+  html: `
+  <p><strong>Vị trí:</strong> Cồn Sơn, Quận Bình Thủy, Thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Không gian thiên nhiên miền Tây đậm chất sông nước</strong><br>
+    Cồn Sơn là một cù lao nổi giữa dòng sông Hậu, thuộc TP. Cần Thơ. Nơi đây mang vẻ đẹp mộc mạc, giản dị của miền sông nước đồng bằng sông Cửu Long, rất phù hợp cho những ai muốn khám phá thiên nhiên xanh mát, không khí trong lành và tìm hiểu đời sống nông thôn miền Tây Nam Bộ.
+
+    <br><strong>2. Cách di chuyển khi đi tự túc</strong><br>
+    Vì cồn nằm giữa sông nên du khách không thể đi xe trực tiếp đến Cồn Sơn mà phải di chuyển bằng đò. Từ trung tâm Cần Thơ, bạn có thể đến các bến đò dân sinh tại quận Bình Thủy để sang cồn, thời gian di chuyển ngắn và thuận tiện.
+
+    <br><strong>3. Trải nghiệm đặc sắc tại Cồn Sơn</strong><br>
+    Đến với Cồn Sơn, du khách được tham gia nhiều hoạt động mang đậm nét sinh hoạt miền Tây như: tham quan bè cá trên sông, cho cá ăn, vào vườn trái cây theo mùa, trải nghiệm làm bánh dân gian và xem trình diễn cá lóc bay độc đáo.
+
+    <br><strong>4. Ẩm thực dân dã đậm chất miền Tây</strong><br>
+    Du lịch tự túc tại Cồn Sơn là dịp thưởng thức các món ăn đặc trưng như cá lóc nướng trui, bánh xèo Nam Bộ, các món lẩu cá kết hợp rau đồng quê, mang đến hương vị mộc mạc nhưng khó quên.
+
+    <br><strong>5. Lưu ý khi tham quan Cồn Sơn</strong><br>
+    Du khách nên chuẩn bị trang phục thoải mái, giày dép dễ di chuyển, mũ nón và kem chống nắng. Thời điểm lý tưởng để tham quan là buổi sáng hoặc chiều mát để cảm nhận trọn vẹn không khí trong lành và sinh hoạt đời thường của người dân trên cồn.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/conson01.jpg">
+    <img src="./image/conson02.jpg">
+    <img src="./image/conson03.jpg">
+    <img src="./image/conson04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: ConSonCanTho.com & Internet</p>
+  `,
+},
+p31: {
+  title:
+    "Cánh đồng khóm Cầu Đúc – điểm du lịch sinh thái đặc sắc ở Hậu Giang",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Thạnh Thắng, xã Hòa Tiến, thành phố Vị Thanh, tỉnh Hậu Giang.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Không gian thiên nhiên rộng lớn</strong><br>
+    Cánh đồng khóm Cầu Đúc là điểm du lịch sinh thái nổi bật của Hậu Giang với những ruộng khóm trải dài xanh mướt, tạo nên khung cảnh yên bình, mộc mạc đặc trưng của miền quê sông nước Nam Bộ. Đây là địa điểm lý tưởng để tham quan, thư giãn và chụp ảnh.
+
+    <br><strong>2. Lịch sử hình thành và tên gọi</strong><br>
+    Tên gọi “Khóm Cầu Đúc” gắn liền với cây cầu đúc bắc ngang sông tại khu vực này – nơi thương lái thường tập trung thu mua khóm từ người dân địa phương. Cây khóm đã được trồng tại đây từ nhiều thập kỷ trước và dần trở thành đặc sản nổi tiếng của Hậu Giang.
+
+    <br><strong>3. Trải nghiệm tham quan cánh đồng khóm</strong><br>
+    Đến với cánh đồng khóm Cầu Đúc, du khách có thể đi xuồng len lỏi giữa các ruộng khóm, tận hưởng không khí trong lành và quan sát nhịp sống lao động bình dị của người dân. Vào mùa thu hoạch, khung cảnh trở nên rộn ràng, mang đậm hơi thở miền quê.
+
+    <br><strong>4. Thưởng thức và mua đặc sản địa phương</strong><br>
+    Khóm Cầu Đúc nổi tiếng với vị ngọt thanh, giòn và ít xơ. Du khách có thể thưởng thức khóm tươi ngay tại vườn hoặc mua về làm quà, bên cạnh các sản phẩm chế biến từ khóm như mứt, nước ép hay rượu khóm.
+
+    <br><strong>5. Khám phá văn hóa và đời sống bản địa</strong><br>
+    Ngoài tham quan cánh đồng, du khách còn có cơ hội tìm hiểu đời sống sinh hoạt của người dân địa phương, tham gia các hoạt động dân dã như câu cá, thưởng thức ẩm thực miền Tây và cảm nhận sự hiền hòa, chân chất của vùng đất Hậu Giang.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/khomcauduc01.jpg">
+    <img src="./image/khomcauduc02.jpg">
+    <img src="./image/khomcauduc03.jpg">
+    <img src="./image/khomcauduc04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+p32: {
+  title:
+    "Khu du lịch sinh thái Mùa Xuân – điểm đến hoang sơ, yên bình ở Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Xã Tân Phước Hưng, thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Không gian thiên nhiên hoang sơ</strong><br>
+    Khu du lịch sinh thái Mùa Xuân sở hữu diện tích rộng lớn với rừng tràm xanh mát, kênh rạch đan xen và không khí trong lành. Nơi đây vẫn giữ được vẻ đẹp tự nhiên, yên bình, thích hợp cho các hoạt động tham quan, nghỉ dưỡng và trải nghiệm thiên nhiên.
+
+    <br><strong>2. Hệ sinh thái phong phú</strong><br>
+    Khu du lịch là nơi sinh sống của nhiều loài chim, cò cùng các loại động thực vật đặc trưng vùng đất ngập nước. Không gian yên tĩnh, cảnh quan tự nhiên hài hòa mang đến cảm giác thư thái cho du khách.
+
+    <br><strong>3. Trải nghiệm gắn liền với thiên nhiên</strong><br>
+    Du khách có thể đi bộ hoặc đạp xe xuyên rừng tràm, đi xuồng len lỏi qua các con kênh nhỏ, hoặc lên tháp quan sát để ngắm toàn cảnh khu sinh thái từ trên cao, cảm nhận trọn vẹn vẻ đẹp miền sông nước.
+
+    <br><strong>4. Hoạt động vui chơi và ẩm thực</strong><br>
+    Bên cạnh tham quan, khu du lịch còn tổ chức các trò chơi dân gian, hoạt động câu cá giải trí và phục vụ các món ăn mang đậm hương vị miền Tây như cá nướng, lẩu cá, bánh dân gian truyền thống.
+
+    <br><strong>5. Điểm đến nghỉ dưỡng và giáo dục</strong><br>
+    Khu du lịch sinh thái Mùa Xuân là điểm đến phù hợp cho gia đình, nhóm bạn và các chuyến tham quan học tập. Không gian xanh mát giúp du khách thư giãn, đồng thời nâng cao ý thức về bảo vệ thiên nhiên và môi trường.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/muaxuan01.jpg">
+    <img src="./image/muaxuan02.jpg">
+    <img src="./image/muaxuan03.jpg">
+    <img src="./image/muaxuan04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+
+
+        p33: {
+          title:
+            "Khu du lịch sinh thái Lung Tràm – Trải nghiệm trọn vẹn hồn quê miệt vườn Cần Thơ",
+          html: `
+          <p><strong>Vị trí:</strong> Quốc lộ 61C, ấp Nhơn Khánh, xã Nhơn Nghĩa, huyện Phong Điền, TP Cần Thơ. Cách trung tâm TP Cần Thơ khoảng 13 km.</p>
+          <p style="text-align: justify; line-height: 1.6"><strong>Tổng quát:</strong> Nếu bạn đang tìm một nơi để “trốn” khỏi phố thị ồn ào và hòa mình vào thiên nhiên trong lành của miền Tây, Khu du lịch sinh thái Lung Tràm (xã Nhơn Nghĩa, huyện Phong Điền) chính là điểm dừng chân lý tưởng.
+Với diện tích hơn 31.000 m², được bao phủ hơn 90% bởi rừng tràm và vườn cây ăn trái, Lung Tràm mang đến một không gian xanh mát, đậm chất miệt vườn sông nước Cần Thơ.
+<br><br>
+<b>🌾 Trải nghiệm không thể bỏ lỡ</b>
+<br>
+🚣 Chèo xuồng len lỏi giữa rừng tràm và kênh rạch – cảm nhận vẻ đẹp bình dị, yên ả của miền sông nước.
+<br>
+🍊 Tham quan vườn cây ăn trái theo mùa, tự tay hái và thưởng thức trái chín ngọt lành tại vườn.
+<br>
+🎯 Thử sức với các trò chơi dân gian: đi cầu khỉ, đu dây, tát mương bắt cá… – hoạt động vui nhộn cho nhóm bạn và gia đình.
+<br>
+📸 Check-in cực chất giữa khung cảnh rừng tràm, ao nước, vườn hoa và những giàn trái sum suê – cho ra đời những bức ảnh “đậm hương đồng gió nội”.
+<br><br>
+<b>🌤 Thời điểm & đối tượng phù hợp</b>
+<br>
+👨‍👩‍👧‍👦 Phù hợp với mọi lứa tuổi: gia đình, nhóm bạn trẻ, học sinh – sinh viên yêu thích khám phá thiên nhiên và văn hóa miền Tây.
+<br>
+⏰ Thời điểm lý tưởng: sáng sớm hoặc chiều muộn – khi nắng nhẹ, không khí mát lành, rất thích hợp để tham quan và chụp ảnh.
+<br>
+☀️ Mùa khô (tháng 3–8) là thời gian đẹp nhất trong năm, thuận lợi cho các hoạt động ngoài trời.
+<br> <br>
+<b>💚 Về với Lung Tràm – về với miền quê yên bình</b>
+<br>
+Đến với Lung Tràm, bạn không chỉ du lịch, mà còn được sống lại những ký ức tuổi thơ, được hòa mình vào nhịp sống hiền hòa của người dân miệt vườn.
+<br>
+Một ngày ở Lung Tràm – đủ để bạn thấy lòng mình nhẹ lại giữa thiên nhiên xanh mát và sự thân thiện của vùng đất Tây Nam Bộ. 🌾🌿
+
+
+
+</p>
+          <div class="gallery">
+            <img src="./image/lungtram00.jpg" alt="Lung Tràm">
+            <img src="./image/lungtram02.jpg" alt="Lung Tràm">
+            <img src="./image/lungtram3.webp" alt="Lung Tràm">
+            <img src="./image/lungtram01.webp" alt="Lung Tràm">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+        p34: {
+  title:
+    "Công viên giải trí Kittyd & Minnied – thiên đường giải trí phong cách châu Âu gần Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Khuôn viên Đại học Võ Trường Toản, Quốc lộ 1A, xã Thạnh Xuân, thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Không gian giải trí đậm chất châu Âu</strong><br>
+    Công viên Kittyd & Minnied là một trong những điểm vui chơi giải trí nổi bật ở khu vực Đồng bằng sông Cửu Long, mang đến cho du khách cảm giác như lạc vào một thế giới châu Âu thu nhỏ với những lâu đài nguy nga, quảng trường rộng lớn và các tiểu cảnh đẹp mắt.
+
+    <br><strong>2. Địa điểm và quy mô</strong><br>
+    Công viên nằm trong khuôn viên Đại học Võ Trường Toản, trải rộng trên diện tích hơn 20ha. Với lối thiết kế kiến trúc cổ điển phương Tây kết hợp cùng nhiều mô hình check-in hấp dẫn, nơi đây thu hút rất nhiều du khách, đặc biệt là giới trẻ và gia đình.
+
+    <br><strong>3. Trò chơi và khu trải nghiệm</strong><br>
+    Kittyd & Minnied có tổ hợp trò chơi vui nhộn phù hợp với nhiều độ tuổi, từ các trò nhẹ nhàng cho đến những trò cảm giác mạnh. Du khách có thể tận hưởng các hoạt động thú vị, vừa giải trí vừa thư giãn trong không gian rộng lớn.
+
+    <br><strong>4. Điểm check-in sống ảo</strong><br>
+    Công viên nổi bật với nhiều tiểu cảnh mang phong cách châu Âu cổ tích như quảng trường tình yêu, phố đi bộ Olympus, các lâu đài mô phỏng kiến trúc hoàng gia… tạo nên những góc sống ảo đẹp mắt và độc đáo cho du khách.
+
+    <br><strong>5. Thông tin thêm khi tham quan</strong><br>
+    Công viên mở cửa vào buổi sáng và chiều, phù hợp cho chuyến đi trong ngày hoặc cuối tuần cùng gia đình, bạn bè. Khi vui chơi tại đây, du khách nên chuẩn bị trang phục thoải mái và mang theo mũ nón, kem chống nắng để dễ dàng khám phá toàn bộ không gian rộng lớn.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/kittydminnied01.jpg">
+    <img src="./image/kittydminnied02.jpg">
+    <img src="./image/kittydminnied03.jpg">
+    <img src="./image/kittydminnied04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+
+        
+        p35: {
+          title:
+            "🌿 Cần Thơ Eco Resort – Khu nghỉ dưỡng sinh thái giữa lòng miền Tây xanh mát",
+          html: `
+          <p><strong>Vị trí:</strong> Vườn mận dọc tuyến Lộ Vòng Cung (vùng Phong Điền / Mỹ Khánh).</p>
+          <p style="text-align: justify; line-height: 1.6;"><strong>Giới thiệu chung:</strong> 
+            Nếu bạn đang tìm kiếm một nơi để tạm rời phố thị ồn ào và hòa mình vào thiên nhiên, thì Cần Thơ Eco Resort chính là lựa chọn hoàn hảo. Nằm tại trung tâm vùng sông nước Tây Nam Bộ, khu nghỉ dưỡng rộng hơn 10 ha này mang đến không gian xanh mát với vườn cây ăn trái, hồ cá và những ngôi bungalow thấp thoáng giữa tán cây – nơi bạn có thể tận hưởng trọn vẹn cảm giác yên bình, trong lành.
+            <br><br>
+            <b>🌾 Điểm nhấn nổi bật</b>
+<br>
+🏡 Kiến trúc thân thiện môi trường
+<br>
+Các bungalow và villa được xây dựng theo phong cách Indochine pha lẫn nét miền Tây, sử dụng vật liệu tự nhiên, gần gũi mà vẫn tinh tế và sang trọng.
+<br>
+🏊 Hồ bơi nước mặn giữa thiên nhiên
+<br>
+Là một trong những điểm đặc sắc nhất tại resort, hồ bơi nước mặn mang lại cảm giác thư giãn tuyệt đối, vừa hiện đại vừa gần gũi với môi trường xung quanh.
+<br>
+🍊 Khu nông trại – Eco Farm
+<br>
+Du khách có thể tham quan, tự hái trái cây theo mùa, trải nghiệm làm nông dân, cho cá ăn, thu hoạch rau… – những hoạt động vừa vui vừa mang giá trị giáo dục sinh thái.
+<br>
+🎯 Khu trò chơi & Team-building
+<br>
+Không gian rộng rãi, được thiết kế phù hợp cho hoạt động tập thể, dã ngoại và trò chơi dân gian, lý tưởng cho các nhóm bạn trẻ, công ty hoặc gia đình.
+<br>
+🐾 Vườn thú mini – Eco Safari
+<br>
+Mới đưa vào hoạt động từ năm 2024, khu vườn thú nhỏ quy tụ khoảng 20 loài động vật thân thiện, mang lại trải nghiệm vui tươi và an toàn cho trẻ nhỏ.
+<br><br>
+<b>💚 Dành cho ai và khi nào nên đến</b>
+<br>
+👨‍👩‍👧 Gia đình có trẻ em: Không gian xanh, khu vui chơi, vườn thú và hoạt động trải nghiệm giúp trẻ vừa học vừa chơi.
+<br>
+👥 Nhóm bạn, công ty: Lý tưởng cho các buổi team-building, picnic hoặc retreat cuối tuần.
+<br>
+🌿 Du khách cần nghỉ dưỡng: Thư giãn giữa thiên nhiên, giải tỏa căng thẳng và tái tạo năng lượng.
+<br>
+⏰ Thời điểm lý tưởng: Buổi sáng sớm hoặc chiều muộn để tận hưởng không khí mát lành và ánh sáng vàng dịu – cực kỳ “ăn ảnh”.
+<br>
+📅 Cuối tuần hoặc các dịp lễ ngắn ngày là lúc khu resort nhộn nhịp nhất, với nhiều hoạt động ngoài trời sôi động.
+<br>
+
+✨ Trải nghiệm nghỉ dưỡng xanh – Nâng niu từng khoảnh khắc
+<br>
+
+Cần Thơ Eco Resort không chỉ là nơi lưu trú, mà còn là một hành trình kết nối con người với thiên nhiên, giúp bạn tìm lại sự cân bằng giữa nhịp sống hiện đại và hơi thở bình yên của miền Tây sông nước.
+<br>
+Hãy đến và cảm nhận – nơi mọi trải nghiệm đều mang hơi thở “xanh”, đậm chất miền Tây, và đầy ắp năng lượng tích cực 🌿💧
+            
+            
+            
+            </p>
+          <div class="gallery">
+            <img src="./image/eco1.jpg" alt="eco">
+            <img src="./image/eco2.jpg" alt="eco">
+            <img src="./image/eco3.jpg" alt="eco">
+            <img src="./image/cabi.jpg" alt="eco">
+            </div>
+          <p class="meta">Nguồn: Nhóm tác giả & Internet</p>`,
+        },
+
+p36: {
+  title:
+    "Cồn Mỹ Phước – khu du lịch miệt vườn đẹp hoang sơ giữa lòng Sóc Trăng",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Mỹ Phước, xã Nhơn Mỹ, huyện Kế Sách, tỉnh Sóc Trăng.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Cảnh đẹp thiên nhiên và miệt vườn</strong><br>
+    Cồn Mỹ Phước là một cồn đất rộng lớn giữa dòng sông Hậu với diện tích hơn 1.020 ha, nổi bật với những vườn cây ăn trái xanh mướt và phong cảnh miệt vườn đặc trưng của miền Tây sông nước. Không gian nơi đây mang đến cảm giác thư thái, gần gũi với thiên nhiên. 
+
+    <br><strong>2. Sản vật miệt vườn mùa trái chín</strong><br>
+    Cồn Mỹ Phước có diện tích vườn cây ăn trái lớn với nhiều loại cây đặc sản như chôm chôm, sầu riêng, xoài, nhãn và măng cụt trĩu quả. Du khách đến đây có thể thưởng thức trái cây tươi ngon ngay tại vườn hoặc mua về làm quà. 
+
+    <br><strong>3. Khám phá đời sống miệt vườn</strong><br>
+    Đây là điểm đến lý tưởng để trải nghiệm các hoạt động gắn với đời sống miệt vườn như đi xuồng qua kênh rạch, tự tay hái trái cây, hoặc tìm hiểu sinh hoạt của người dân địa phương giữa không gian yên bình của cồn. 
+
+    <br><strong>4. Trò chơi dân gian và hoạt động sông nước</strong><br>
+    Du khách còn có thể tham gia các hoạt động dân gian như thả lưới bắt cá, đặt lờ, hái rau, chèo xuồng khám phá sông nước, hoặc tham gia các trò chơi thú vị khác gắn với nét văn hóa miệt vườn. 
+
+    <br><strong>5. Giá trị văn hóa và lễ hội đặc sắc</strong><br>
+    Cồn Mỹ Phước còn thu hút du khách vào dịp lễ hội sông nước miệt vườn được tổ chức hàng năm vào dịp Tết Đoan Ngọ với nhiều hoạt động sôi nổi như thi nấu ăn, trò chơi dân gian và các chương trình văn nghệ đặc sắc, góp phần giữ gìn bản sắc văn hóa vùng sông nước. 
+  </p>
+
+  <div class="gallery">
+    <img src="./image/conmyphuoc01.jpg">
+    <img src="./image/conmyphuoc02.jpg">
+    <img src="./image/conmyphuoc03.jpg">
+    <img src="./image/conmyphuoc04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+p37: {
+  title:
+    "Làng hoa Bà Bộ – điểm check-in hoa rực rỡ, truyền thống ở Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Quận Bình Thủy, thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Làng hoa truyền thống lâu đời</strong><br>
+    Làng hoa Bà Bộ, còn được gọi là làng hoa Phó Thọ – Bà Bộ, là một trong những làng hoa truyền thống lâu đời tại Cần Thơ. Nghề trồng hoa tại đây đã tồn tại qua nhiều thế hệ, góp phần tạo nên nét văn hóa đặc trưng và không gian rực rỡ sắc màu cho vùng đất Bình Thủy.
+
+    <br><strong>2. Không gian hoa kiểng đa dạng</strong><br>
+    Người dân trong làng trồng nhiều loại hoa và cây kiểng khác nhau như cúc, vạn thọ, hoa giấy, mai vàng và nhiều loại hoa trang trí theo mùa. Những vườn hoa được chăm sóc tỉ mỉ, sắp xếp hài hòa, tạo nên khung cảnh sinh động và bắt mắt.
+
+    <br><strong>3. Thời điểm lý tưởng để tham quan</strong><br>
+    Làng hoa Bà Bộ nhộn nhịp và đẹp nhất vào dịp cuối năm, đặc biệt là thời điểm giáp Tết Nguyên đán. Khi đó, hoa nở rộ khắp các khu vườn, người dân tất bật chăm sóc và chuẩn bị hoa phục vụ thị trường Tết, tạo nên không khí rộn ràng, đầy sức sống.
+
+    <br><strong>4. Điểm check-in được yêu thích</strong><br>
+    Với những lối đi nhỏ xen giữa các vườn hoa đầy màu sắc, làng hoa Bà Bộ trở thành địa điểm check-in quen thuộc của du khách và người dân địa phương. Đây là nơi lý tưởng để chụp ảnh, dạo chơi và tận hưởng không gian thanh bình, gần gũi với thiên nhiên.
+
+    <br><strong>5. Kết hợp tham quan các điểm lân cận</strong><br>
+    Nhờ vị trí không quá xa trung tâm, du khách có thể dễ dàng kết hợp tham quan làng hoa Bà Bộ cùng các điểm du lịch nổi tiếng khác tại Cần Thơ, tạo nên hành trình khám phá văn hóa và đời sống miền Tây trọn vẹn.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/langhoababo01.jpg">
+    <img src="./image/langhoababo02.jpg">
+    <img src="./image/langhoababo03.jpg">
+    <img src="./image/langhoababo04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+
+p38: {
+  title:
+    "Làng đan lưới Thơm Rơm – làng nghề truyền thống đặc sắc ở Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Ấp Tân Lợi 2, phường Thuận Hưng, quận Thốt Nốt, thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Làng nghề truyền thống lâu đời</strong><br>
+    Làng đan lưới Thơm Rơm là một trong những làng nghề truyền thống nổi bật của Cần Thơ, có lịch sử phát triển hơn 30 năm. Nghề đan lưới được người dân địa phương duy trì và phát triển, trở thành nét văn hóa đặc trưng của vùng sông nước miền Tây.
+
+    <br><strong>2. Nghề đan lưới và sản phẩm</strong><br>
+    Người thợ làng nghề đan những tấm lưới chắc chắn, bền đẹp và dễ sử dụng để đánh bắt cá, tôm và các loại thủy sản khác. Lưới Thơm Rơm nổi tiếng bởi độ bền cao, kích thước mắt lưới phù hợp và giá thành hợp lý, phục vụ nhu cầu đánh bắt của người dân địa phương và các vùng lân cận.
+
+    <br><strong>3. Mùa sản xuất nhộn nhịp</strong><br>
+    Sản xuất lưới tại làng Thơm Rơm diễn ra quanh năm nhưng đặc biệt nhộn nhịp từ tháng 3 đến tháng 11 âm lịch, khi nhu cầu sử dụng lưới tăng cao trong mùa nước nổi. Trong thời gian này, nhiều cơ sở đan lưới hoạt động hết công suất để đáp ứng đơn đặt hàng từ khắp miền Tây.
+
+    <br><strong>4. Đời sống và nghề truyền thống</strong><br>
+    Nghề đan lưới yêu cầu sự tỉ mỉ và khéo léo, nhưng kỹ thuật không quá phức tạp nên nhiều người, kể cả học sinh trong thời gian rảnh rỗi, có thể tham gia để kiếm thêm thu nhập. Nghề này góp phần đem lại cuộc sống ổn định cho người dân địa phương.
+
+    <br><strong>5. Giá trị văn hóa và du lịch</strong><br>
+    Làng đan lưới Thơm Rơm không chỉ là nơi sản xuất ngư cụ truyền thống mà còn là điểm đến thú vị cho du khách muốn tìm hiểu về làng nghề miền Tây Nam Bộ. Đến đây, du khách có thể quan sát tận mắt các công đoạn làm nghề và cảm nhận nhịp sống bình dị của người thợ thủ công.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/thomrom01.jpg">
+    <img src="./image/thomrom02.jpg">
+    <img src="./image/thomrom03.jpg">
+    <img src="./image/thomrom04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+
+p39: {
+  title:
+    "Làng nghề bánh tráng Thuận Hưng – điểm du lịch văn hóa truyền thống ở Cần Thơ",
+  html: `
+  <p><strong>Vị trí:</strong> Khu vực Tân Phú, phường Thuận Hưng, quận Thốt Nốt, thành phố Cần Thơ.</p>
+
+  <p style="text-align: justify; line-height: 1.6;">
+    <strong>Thông tin:</strong><br>
+
+    <strong>1. Lịch sử làng nghề lâu đời</strong><br>
+    Làng nghề bánh tráng Thuận Hưng có truyền thống lâu đời, kéo dài gần hai thế kỷ. Nghề làm bánh tráng nơi đây được truyền lại qua nhiều thế hệ, gắn liền với đời sống văn hóa và kinh tế của người dân địa phương.
+
+    <br><strong>2. Sản phẩm đa dạng đặc trưng</strong><br>
+    Làng nghề nổi tiếng với nhiều loại bánh tráng phong phú như bánh tráng mặn, bánh tráng lạt, bánh tráng ngọt và bánh tráng dừa. Bánh được làm từ nguyên liệu chính là gạo và muối, mang hương vị đặc trưng thơm ngon và dễ nhận biết.
+
+    <br><strong>3. Di sản văn hóa phi vật thể quốc gia</strong><br>
+    Nghề làm bánh tráng Thuận Hưng đã được Bộ Văn hóa, Thể thao và Du lịch công nhận là Di sản văn hóa phi vật thể quốc gia, khẳng định giá trị văn hóa, truyền thống và tầm quan trọng của nghề này trong bức tranh văn hóa miền Tây.
+
+    <br><strong>4. Trải nghiệm tham quan làng nghề</strong><br>
+    Du khách đến làng nghề có thể quan sát quy trình làm bánh truyền thống từ khâu xay bột đến tráng bánh và phơi trên giàn. Đây là trải nghiệm thú vị giúp hiểu hơn về nét sinh hoạt và kỹ thuật thủ công của người thợ làm bánh.
+
+    <br><strong>5. Hoạt động và thời điểm thích hợp</strong><br>
+    Thời điểm thích hợp nhất để tham quan là vào buổi sáng, khi người thợ bắt đầu công việc tráng bánh và phơi dưới ánh nắng. Ngoài ra, vào dịp cuối năm và Tết Nguyên đán, làng nghề càng nhộn nhịp hơn với nhiều hoạt động sản xuất phục vụ nhu cầu thị trường và khách du lịch.
+  </p>
+
+  <div class="gallery">
+    <img src="./image/banhtrangthuanhung01.jpg">
+    <img src="./image/banhtrangthuanhung02.jpg">
+    <img src="./image/banhtrangthuanhung03.jpg">
+    <img src="./image/banhtrangthuanhung04.jpg">
+  </div>
+
+  <p class="meta">Nguồn: Tổng hợp</p>
+  `,
+},
+
+
+
+
+
+
+
+
+
+
+      };
+      
+
+      // Modal functions
+      function openModal(id) {
+        const data = points[id];
+        if (!data) return;
+        document.getElementById("modalTitle").innerText = data.title;
+        document.getElementById("modalBody").innerHTML =
+          data.html +
+          `<p style="margin-top:12px;color:var(--muted)">Ảnh: Internet, sưu tầm</p>`;
+        document.getElementById("modalRoot").style.display = "flex";
+        document
+          .getElementById("modalRoot")
+          .setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        document.getElementById("modalRoot").style.display = "none";
+        document
+          .getElementById("modalRoot")
+          .setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+      document.getElementById("modalRoot").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modalRoot")) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      // Expose for console editing if needed
+      window.points = points;
+      window.openModal = openModal;
+      window.closeModal = closeModal;
+    </script>
+</body>
+</html>

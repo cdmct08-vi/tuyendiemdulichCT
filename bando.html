@@ -10,19 +10,6 @@
       rel="stylesheet"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./image/apple-touch-icon.png"
-    />
-    <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
 
     <style>
       body {
@@ -89,7 +76,6 @@
         flex-shrink: 0;
       }
     </style>
-    <a href="/index.html" id="bando"></a>
   </head>
   <body>
     <!-- Nhúng bản đồ QGIS -->
@@ -100,12 +86,12 @@
     ></iframe>
 
     <div class="button-container">
-      <button onclick="window.close()">⬅ Quay lại</button>
+      <button onclick="window.location.href='index.html'">
+        ⬅ Quay lại trang chủ
+      </button>
     </div>
 
-    <footer>
-      © <span id="year"></span> Lộ Vòng Cung — Trang giáo dục di sản
-    </footer>
+    <footer>© <span id="year"></span> Du lịch thành phố Cần Thơ</footer>
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
