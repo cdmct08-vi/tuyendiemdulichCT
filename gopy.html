@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1280, user-scalable=no" />
+    <title>Khảo sát ý kiến người dùng</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./image/apple-touch-icon.png"
+    />
+    <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fcfeff;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #f8f4f4;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #f56fcf;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #8c8585;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
+      button {
+        margin-top: 20px;
+        width: 100%;
+        color: rgb(255, 112, 224);
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #ffc1f6;
+      }
+      .thankyou {
+        text-align: center;
+        font-size: 18px;
+        color: green;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Khảo sát ý kiến người dùng</h1>
+      <form id="surveyForm">
+        <label for="name">Họ và tên</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email (tùy chọn)</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="rating">Mức độ hài lòng</label>
+        <select id="rating" name="rating" required>
+          <option value="">-- Chọn một mức --</option>
+          <option value="5">Rất hài lòng</option>
+          <option value="4">Hài lòng</option>
+          <option value="3">Bình thường</option>
+          <option value="2">Chưa hài lòng</option>
+        </select>
+
+        <label for="feedback">Ý kiến đóng góp</label>
+        <textarea
+          id="feedback"
+          name="feedback"
+          placeholder="Viết ý kiến tại đây..."
+        ></textarea>
+
+        <button type="submit">Gửi phản hồi</button>
+      </form>
+
+      <div class="thankyou" id="thankyouMsg">
+        Cảm ơn bạn đã gửi phản hồi! 💬
+      </div>
+    </div>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxxO7ZkdDFHzNdN2A8B8IZG6SXfn7l5WjpET6KiRJvq2MeR6OG2O7bhPWwMQAInXN7slA/exec";
+      const form = document.getElementById("surveyForm");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Gửi dữ liệu đến Google Apps Script
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            form.style.display = "none";
+            document.getElementById("thankyouMsg").style.display = "block";
+          })
+          .catch((error) => {
+            alert("Có lỗi xảy ra, vui lòng thử lại!");
+            console.error("Error!", error.message);
+          });
+      });
+    </script>
+  </body>
+</html>

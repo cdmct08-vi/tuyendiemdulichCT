@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tin tức</title>
+    <!-- Fonts & AOS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+     <link rel="shortcut icon" href="/favicon.ico" />
+     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+     <link rel="manifest" href="/site.webmanifest" />
+     <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./image/apple-touch-icon.png"
+     />
+      <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
+
+
+
+   <style>
+      :root {
+        --blue-deep: #1e40af;
+        --green-fresh: #16a34a;
+        --ivory: #f9fafb;
+        --muted: #6b7280;
+        --card-radius: 14px;
+        --container: 1200px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--blue-deep);
+        background: var(--ivory);
+        margin: 0;
+      }
+      /* NAV */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.92);
+        
+        transition: box-shadow 0.25s ease;
+      }
+      .navbar.scrolled {
+        box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+      }
+      .nav-inner {
+        max-width: var(--container);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+  width: 60px;
+  height: 60px; 
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  
+  max-width: 100%;    
+  max-height: 100%;   
+  width: auto;        
+  height: auto;      
+  object-fit: contain; 
+}
+
+      .site-name {
+        font-family: Playfair Display;
+        font-size: 16px;
+        color: var(--blue-deep);
+      }
+      .menu {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .menu a {
+        padding: 8px 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--blue-deep);
+        font-weight: 600;
+        transition: all 0.22s ease;
+      }
+      .menu a:hover {
+        background: var(--green-fresh);
+        color: white;
+        transform: translateY(-2px);
+      }
+      .cta-primary {
+        background: linear-gradient(90deg, var(--green-fresh), #10b981);
+        color: white;
+        padding: 9px 14px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.18s ease;
+      }
+      .cta-primary:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.02);
+      }
+
+      /* Main */
+      main {
+        max-width: var(--container);
+        margin: 28px auto;
+        padding: 0 20px;
+      }
+
+      .intro {
+        width: 100%;
+        height: 100%;
+      }
+      .intro .text h2 {
+        font-family: Playfair Display;
+        color: var(--blue-deep);
+        margin: 0 0 12px;
+        font-size: 26px;
+      }
+      .intro .text p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .intro .visual {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 26px rgba(16, 24, 40, 0.06);
+      }
+      .intro .visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+     <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo">
+            <img src="./image/Logo HCMUE.png" alt="HCMUE" />
+          </div>
+
+          <div>
+            <div class="site-name">Dự án nghiên cứu khoa học kỹ thuật</div>
+            <div style="font-size: 12px; color: var(--muted)">
+              Lĩnh vực Phần mềm hệ thống
+            </div>
+          </div>
+        </div>
+
+        <nav class="menu" aria-label="Main navigation">
+          
+  <a href="index.html#gioithieu">Trang chủ</a>
+  <a href="index.html#diemdi">Điểm du lịch</a>
+  <a href="solieu.html" target="_blank">Số liệu</a>
+  <a href="tintuc.html"target="_blank">Tin tức</a>
+  <a href="bando.html"target="_blank">Bản đồ</a>
+
+
+          
+          <button
+            class="cta-primary"
+            onclick="window.open('gopy.html', '_blank')"
+          >
+            Liên hệ - góp ý
+          </button>
+        </nav>
+    
+  </body>
+</html>
