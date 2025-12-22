@@ -1,0 +1,1 @@
+var json_TTDLScTrng_34 = {"type":"FeatureCollection","name":"TTDLScTrng_34","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1"},"geometry":{"type":"Point","coordinates":[105.968848445979162,9.60221067320423]}}]}

@@ -1,0 +1,1 @@
+var json_TTDLPhongin_32 = {"type":"FeatureCollection","name":"TTDLPhongin_32","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1"},"geometry":{"type":"Point","coordinates":[105.682847994719339,9.988930680745787]}}]}

@@ -1,0 +1,1 @@
+var json_TTDLVThanh_33 = {"type":"FeatureCollection","name":"TTDLVThanh_33","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1"},"geometry":{"type":"Point","coordinates":[105.478895381642573,9.786773425178568]}}]}

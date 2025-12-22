@@ -1,0 +1,1 @@
+var json_TTDLNgBy_31 = {"type":"FeatureCollection","name":"TTDLNgBy_31","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1"},"geometry":{"type":"Point","coordinates":[105.828990095990818,9.798443248990175]}}]}

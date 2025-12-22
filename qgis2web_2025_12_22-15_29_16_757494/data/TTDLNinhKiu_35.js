@@ -1,0 +1,1 @@
+var json_TTDLNinhKiu_35 = {"type":"FeatureCollection","name":"TTDLNinhKiu_35","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1"},"geometry":{"type":"Point","coordinates":[105.774860067079928,10.03264763610157]}}]}
