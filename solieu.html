@@ -259,17 +259,60 @@
 .page-hero {
   position: relative;
 }
+
 .hero-content h1 {
-  font-family: "Playfair Display", serif;
+  font-family:'Times New Roman', Times, serif ;
+}
+footer {
+        background: white;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+        color: #6b7280;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+      }
+
+      .form-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
+.form-box {
+  width: min(900px, 95%);
+  height: 90vh;
+  background: white;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
 
+.form-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 28px;
+  cursor: pointer;
+}
 
     </style>
 
     
   </head>
   <body>
+
     <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
@@ -287,7 +330,7 @@
           </div>
         </div>
 <nav class="menu" aria-label="Main navigation">
-  <a href="#gioithieu">Trang chủ</a>
+  <a href="index.html">Trang chủ</a>
   <a href="diemdulich.html">Điểm tham quan</a>
   <a href="solieu.html">Số liệu</a>
   <a href="tintuc.html">Tin tức</a>
@@ -1661,6 +1704,7 @@
       </div>
     </main>
     
+    <footer>© <span id="year"></span> Du lịch thành phố Cần Thơ</footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
@@ -1679,6 +1723,17 @@
       content.classList.add("show");
     }
   });
+</script>
+
+
+<script src="./js/modal.js"></script>
+
+<script>
+  fetch("./partials/nav.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("nav-placeholder").innerHTML = html;
+    });
 </script>
 
 

@@ -407,7 +407,16 @@
   font-family: "Playfair Display", serif;
 }
 
-
+footer {
+        background: white;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+        color: #6b7280;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+      }
 
     </style>
   </head>
@@ -456,11 +465,11 @@
     </section>
 
 <main>
-  <section class="news-layout">
+  <section class="news-layout" data-aos="fade-up">
     <!-- CỘT TRÁI: TIN TỨC -->
     <div class="news-column">
       <!--(-1)-->
-      <div class="news-card">
+      <div class="news-card" data-aos="fade-up" data-aos-delay="0">
   <div class="news-thumb">
     <img
       src="./image/tintuc-van-hoa-song-nuoc-2025.jpg"
@@ -500,7 +509,7 @@
 
       <!--0-->
 
-      <div class="news-card">
+      <div class="news-card" data-aos="fade-up" data-aos-delay="80">
   <div class="news-thumb">
     <img src="./image//ctnwe.jpg" alt="Cần Thơ bứt phá thành đầu tàu du lịch liên vùng" />
   </div>
@@ -529,7 +538,7 @@
 </div>
 
 <!--1-->
-      <div class="news-card">
+      <div class="news-card" data-aos="fade-up" data-aos-delay="160">
   <div class="news-thumb">
     <img src="./image/đuaghe8133.jpg" alt="Lễ hội Oóc Om Bóc" />
   </div>
@@ -558,7 +567,7 @@
   </div>
 </div>
 <!--2-->
-<div class="news-card">
+<div class="news-card"data-aos="fade-up" data-aos-delay="240">
   <div class="news-thumb">
     <img src="./image/dua2.jpg" alt="Đua ghe Ngo Cần Thơ" />
   </div>
@@ -585,7 +594,7 @@
 
 
 <!--3-->
-<div class="news-card">
+<div class="news-card"data-aos="fade-up" data-aos-delay="320">
   <div class="news-thumb">
     <img src="./image/123.jpg" alt="Du lịch sinh thái Cần Thơ" />
   </div>
@@ -611,7 +620,7 @@
 </div>
 
 <!--4-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="400">
   <div class="news-thumb">
     <img src="./image/picture1_949876457.jpg" alt="Vườn trái cây Vàm Xáng" />
   </div>
@@ -637,7 +646,7 @@
 </div>
 
 <!--5-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="480">
   <div class="news-thumb">
     <img
       src="./image/12d.jpg"
@@ -672,7 +681,7 @@
 
 <!--6-->
 
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="560">
   <div class="news-thumb">
     <img
       src="./image/tintuc-kich-cau-du-lich-2025.jpg"
@@ -706,7 +715,7 @@
 </div>
 
 <!--7-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="640">
   <div class="news-thumb">
     <img
       src="./image/tintuc-ooc-om-boc-2025.png"
@@ -740,7 +749,7 @@
 </div>
 
 <!--8-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="720">
   <div class="news-thumb">
     <img
       src="./image/tintuc-cho-noi.jpg"
@@ -774,7 +783,7 @@
 </div>
 
 <!--9-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="800">
   <div class="news-thumb">
     <img
       src="./image/tintuc-xuc-tien-du-lich-hue-2025.jpg"
@@ -808,7 +817,7 @@
 </div>
 
 <!--10-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="880">
   <div class="news-thumb">
     <img
       src="./image/tintuc-kich-cau-du-lich-can-tho-2025.png"
@@ -842,7 +851,7 @@
 </div>
 
 <!--11-->
-<div class="news-card">
+<div class="news-card" data-aos="fade-up" data-aos-delay="960">
   <div class="news-thumb">
     <img
       src="./image/tintuc-banh-dan-gian-nam-bo-2025.jpg"
@@ -1023,7 +1032,18 @@
   </section>
 </main>
 
+<footer>© <span id="year"></span> Du lịch thành phố Cần Thơ</footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 650,
+    easing: "ease-out-cubic",
+    once: true,          
+    offset: 90,
+    disable: "mobile"   
+  });
+</script>
 
 
 

@@ -60,19 +60,25 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 18px;
         margin-top: 28px;
+
+        
       }
       .card {
         background: white;
         border-radius: var(--card-radius);
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
-        transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1),
-          box-shadow 0.28s ease, filter 0.28s ease;
+        opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22,1,0.36,1);
+  will-change: transform;
       }
       .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
-        filter: brightness(0.92);
+        transform: translateY(-10px) scale(1.01);
+        box-shadow:  0 24px 50px rgba(2, 6, 23, 0.14);
+        
       }
       .card .thumb {
         height: 170px;
@@ -124,17 +130,37 @@
         color: white;
       }
 
+      .card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
       /* Modal */
       .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(2, 6, 23, 0.6);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        z-index: 80;
-      }
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.6);
+  display: flex;               
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+      .modal-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-backdrop.show .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
       .modal {
         background: white;
         border-radius: 12px;
@@ -143,6 +169,12 @@
         max-height: 92vh;
         overflow: auto;
         padding: 18px;
+
+        transform: translateY(30px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.3s ease;
+  will-change: transform;
       }
       .modal .modal-header {
         display: flex;
@@ -467,8 +499,32 @@
   }
 }
 
+/* ===== SECTION FLOW ===== */
+main > section {
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+main > section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 
+
+footer {
+        background: white;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+        color: #6b7280;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        flex-shrink: 0;
+      }
 
 
 
@@ -487,6 +543,8 @@
 
 </head>
 <body>
+ 
+
 <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
@@ -537,7 +595,7 @@
 
     <main>
         <!-- CARDS -->
-      <section id="diemdi">
+      <section id="diemdi" data-aos="fade-up">
         <h2 style="font-family: Playfair Display; margin-top: 30px">
           1. Di tích - di sản
         </h2>
@@ -853,7 +911,7 @@
 
 
       <!-- CARDS 2-->
-      <section>
+      <section data-aos="fade-up">
         <h2 style="font-family: Playfair Display; margin-top: 30px">
           2. Điểm tham quan
         </h2>
@@ -1111,7 +1169,7 @@
 
 
        <!-- CARDS (điểm mới) -->
-      <section>
+      <section data-aos="fade-up">
         <h2 style="font-family: Playfair Display; margin-top: 30px">
           3. Khu du lịch
         </h2>
@@ -1321,7 +1379,7 @@
 
 
       <!-- CARDS (điểm mới) -->
-      <section>
+      <section data-aos="fade-up">
         <h2 style="font-family: Playfair Display; margin-top: 30px">
           4. Làng nghề
         </h2>
@@ -1411,46 +1469,7 @@
 
 
     <!-- FOOTER -->
-    <footer
-      style="
-        width: 100%;
-        background-color: #e6f0ff;
-        border-top: 3px solid #007bff;
-        padding: 10px 0 5px;
-        text-align: center;
-        font-family: Arial, sans-serif;
-      "
-    >
-      <div
-        class="footer-inner"
-        style="
-          max-width: 1200px;
-          margin: 0 auto;
-          color: #002b5c;
-          font-weight: 600;
-          font-size: 14px;
-        "
-      >
-        © <span id="year"></span> Du lịch thành phố Cần Thơ
-      </div>
-
-      <!-- Dòng thống kê lượt truy cập -->
-      <div style="margin-top: 8px; font-size: 13px; color: #002b5c">
-        <div
-          style="
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-          "
-        >
-          <span>Đang online: <strong id="onlineCount">0</strong></span>
-          <span>Hôm nay: <strong id="todayCount">0</strong></span>
-          <span>Tháng này: <strong id="monthCount">0</strong></span>
-          <span>Tổng truy cập: <strong id="totalCount">0</strong></span>
-        </div>
-      </div>
-    </footer>
+    <footer>© <span id="year"></span> Du lịch thành phố Cần Thơ</footer>
 
     <script type="module">
       // Import Firebase
@@ -1649,7 +1668,8 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 650, once: true, easing: "ease-out-cubic" });
+      AOS.init({ 
+        duration: 600, once: true, easing: "ease-out-cubic", offset: 80, disable: "mobile" });
       document.getElementById("year").innerText = new Date().getFullYear();
 
       // navbar shadow on scroll
@@ -3259,28 +3279,35 @@ p39: {
 
       // Modal functions
       function openModal(id) {
-        const data = points[id];
-        if (!data) return;
-        document.getElementById("modalTitle").innerText = data.title;
-        document.getElementById("modalBody").innerHTML =
-          data.html +
-          `<p style="margin-top:12px;color:var(--muted)">Ảnh: Internet, sưu tầm</p>`;
-        document.getElementById("modalRoot").style.display = "flex";
-        document
-          .getElementById("modalRoot")
-          .setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-      }
-      function closeModal() {
-        document.getElementById("modalRoot").style.display = "none";
-        document
-          .getElementById("modalRoot")
-          .setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
+  const data = points[id];
+  if (!data) return;
+
+  document.getElementById("modalTitle").innerText = data.title;
+  document.getElementById("modalBody").innerHTML =
+    data.html +
+    `<p style="margin-top:12px;color:var(--muted)">Ảnh: Internet, sưu tầm</p>`;
+
+  const modal = document.getElementById("modalRoot");
+  modal.classList.add("show");
+  modal.setAttribute("aria-hidden", "false");
+
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  const modal = document.getElementById("modalRoot");
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+
+  document.body.style.overflow = "";
+}
+
+
+
       document.getElementById("modalRoot").addEventListener("click", (e) => {
         if (e.target === document.getElementById("modalRoot")) closeModal();
       });
+
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
       });
@@ -3290,5 +3317,58 @@ p39: {
       window.openModal = openModal;
       window.closeModal = closeModal;
     </script>
+
+    <script>
+/* ===== SECTION OBSERVER ===== */
+const sections = document.querySelectorAll("main > section");
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+
+sections.forEach(section => sectionObserver.observe(section));
+
+/* ===== CARD OBSERVER (STAGGER THEO CỘT) ===== */
+const cards = document.querySelectorAll(".card");
+
+const cardObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+cards.forEach((card, index) => {
+  // 3 cột → tạo nhịp trái → phải
+  card.style.transitionDelay = `${(index % 3) * 120}ms`;
+  cardObserver.observe(card);
+});
+</script>
+
+
+<script src="./js/modal.js"></script>
+
+<script>
+  fetch("./partials/nav.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("nav-placeholder").innerHTML = html;
+    });
+</script>
+
 </body>
 </html>

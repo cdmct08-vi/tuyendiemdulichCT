@@ -666,6 +666,8 @@
     </style>
   </head>
   <body>
+    
+
     <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
@@ -1251,5 +1253,16 @@
       window.openModal = openModal;
       window.closeModal = closeModal;
     </script>
+
+    <script src="./js/modal.js"></script>
+
+<script>
+  fetch("./partials/nav.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("nav-placeholder").innerHTML = html;
+    });
+</script>
+
   </body>
 </html>
