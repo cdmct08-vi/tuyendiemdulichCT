@@ -126,7 +126,13 @@
   <body>
     <div class="container">
       <h1>Khảo sát ý kiến người dùng</h1>
-      <form id="surveyForm">
+      <form
+        id="surveyForm"
+        action="https://script.google.com/macros/s/AKfycbzXVTtbK8BHz1wHxm2F1qua5ecS4fxiMf0NY3sN3CCwZ_XdSfnvZvNjNkFhO9pqgc5d2w/exec"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="submitted=true;"
+      >
         <label for="name">Họ và tên</label>
         <input type="text" id="name" name="name" required />
 
@@ -157,25 +163,19 @@
       </div>
     </div>
 
+    <iframe
+      name="hidden_iframe"
+      style="display: none"
+      onload="if(submitted)showThankYou();"
+    ></iframe>
+
     <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbwVqi9_4Td-Jf-ZPhbN3RKT3kGoAhL7bd5I4LN-nWx6QB27JR3U8PI11pDmmnG3vrqi/exec";
-      const form = document.getElementById("surveyForm");
+      let submitted = false;
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Gửi dữ liệu đến Google Apps Script
-        fetch(scriptURL, { method: "POST", body: new FormData(form) })
-          .then((response) => {
-            form.style.display = "none";
-            document.getElementById("thankyouMsg").style.display = "block";
-          })
-          .catch((error) => {
-            alert("Có lỗi xảy ra, vui lòng thử lại!");
-            console.error("Error!", error.message);
-          });
-      });
+      function showThankYou() {
+        document.getElementById("surveyForm").style.display = "none";
+        document.getElementById("thankyouMsg").style.display = "block";
+      }
     </script>
   </body>
 </html>

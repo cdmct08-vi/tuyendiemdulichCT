@@ -317,6 +317,14 @@
       width: 100%;
         height: 100%;
       }
+
+      /* Thụt đầu dòng */
+      
+      .intro p {
+        text-indent: 30px;
+
+      }
+      
       .intro .text h2 {
         font-family: Playfair Display;
         color: var(--blue-deep);
@@ -324,8 +332,11 @@
         font-size: 26px;
       }
       .intro .text p {
-        color: var(--muted);
-        line-height: 1.6;
+        color: #1f2937;;
+        line-height: 1.7;
+  margin: 10px 0 14px;
+  font-size: 15.5px;
+
       }
       .intro .visual {
         border-radius: 16px;
@@ -506,11 +517,7 @@
         outline: 3px solid rgba(30, 64, 175, 0.12);
       }
 
-      /* Thụt đầu dòng */
-      .intro h2,
-      .intro p {
-        text-indent: 30px;
-      }
+     
       /* === Căn chỉnh khung video YouTube === */
       .video-group {
         display: flex;
@@ -730,7 +737,7 @@
       <!-- INTRO -->
       <section class="intro" id="gioithieu">
         <div class="text" data-aos="fade-right">
-          <h2>1. GIỚI THIỆU CHUNG</h2>
+          <h2 class="main-title">1. GIỚI THIỆU CHUNG</h2>
           <p style="text-align: justify">
             Thành phố Cần Thơ là trung tâm của vùng Đồng bằng sông Cửu Long. Với
             vị trí địa kinh tế – địa chiến lược đặc biệt quan trọng, Cần Thơ từ
@@ -809,30 +816,37 @@
             nâng cao sức hấp dẫn điểm đến và thúc đẩy ngành du lịch phát triển
             mạnh mẽ trong giai đoạn mới.
           </p>
-          
+          <br>
           <div style="text-align: center;">
-          <img
-        src="./image/BD_HANH CHINH.png"
-        loading="lazy"
-        style="max-width:50%; height:auto;"
-        alt="Hình 1. Bản đồ hành chính thành phố Cần Thơ
+  <img
+    src="./image/BD_HANH CHINH.png"
+    loading="lazy"
+    alt="Hình 1. Bản đồ hành chính thành phố Cần Thơ"
+    style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
+  />
 
-        "
-      />
-      <p style="text-align: center; color: black">
-        <b
-          >Hình 1. Bản đồ hành chính thành phố Cần Thơ
+  <p style="text-align: center; color: black; margin: 8px 0 2px;">
+    <b>Hình 1. Bản đồ hành chính thành phố Cần Thơ</b>
+  </p>
 
-        </b>
-      </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
-        <i>(Nguồn: Tác giả biên tập)</i>
-      </p> 
-    </div>
+  <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
+    <i>(Nguồn: Tác giả biên tập)</i>
+  </p>
+</div>
+
+
 
           <h2>2. TÀI NGUYÊN DU LỊCH</h2>
           <i><b>2.1. Tài nguyên du lịch tự nhiên</b></i>
-          <br>
+          <br><br>
           <u><i>a. Địa hình</i></u>
           <p style="text-align: justify">
             Thành phố Cần Thơ nằm ở vị trí trung tâm vùng Đồng bằng sông Cửu
@@ -862,47 +876,63 @@
             quanh năm.
           </p>
 
-
+<br>
 
 
           <div style="text-align: center;">
           <img
         src="./image/Ảnh màn hình 2025-12-18 lúc 16.11.27.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 2. Nhiệt độ trung bình theo tháng ở thành phố Cần Thơ năm 2024
 
 
         "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
         <b
           >Hình 2. Nhiệt độ trung bình theo tháng ở thành phố Cần Thơ năm 2024
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Luft Time)</i>
       </p> 
     </div>
 
 
-
+<br><br>
 
 
     <div style="text-align: center;">
           <img
         src="./image/Ảnh màn hình 2025-12-18 lúc 16.23.24.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 3. Lượng mưa trung bình theo tháng ở thành phố Cần Thơ năm 2024
 
 
 
         "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
         <b
           >Hình 3. Lượng mưa trung bình theo tháng ở thành phố Cần Thơ năm 2024
 
@@ -910,14 +940,14 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Luft Time)</i>
       </p> 
     </div>
 
 
 
-
+<br><br>
 
 
 
@@ -925,7 +955,15 @@
           <img
         src="./image/Ảnh màn hình 2025-12-18 lúc 16.37.23.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 4. Thời điểm du lịch thích hợp trong năm ở thành phố Cần Thơ
 
 
@@ -933,7 +971,8 @@
 
         "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 4. Thời điểm du lịch thích hợp trong năm ở thành phố Cần Thơ
 
@@ -942,13 +981,13 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Luft Time)</i>
       </p> 
     </div>
 
 
-
+<br>
 
 
           <u><i>c. Nguồn nước </i></u>
@@ -964,26 +1003,37 @@
            
            
           </p>
+
+          <br>
            <div style="text-align: center;">
           <img
         src="./image/du-lich-con-son-can-tho-1.jpg.webp"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 5. Cồn Sơn trên sông Hậu"
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 5. Cồn Sơn trên sông Hậu
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+     <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
 
 
-
+<br>
 
 
 
@@ -1024,19 +1074,30 @@
 
 
             </p>
+
+            <br><br>
            <div style="text-align: center;">
           <img
               src="./image/Khu-bao-ton-lung-ngoc-hoang.jpg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 6. Khu bảo tồn thiên nhiên Lung Ngọc Hoàng"
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 6. Khu bảo tồn thiên nhiên Lung Ngọc Hoàng
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
@@ -1044,7 +1105,7 @@
 
 
 
-
+<br>
 
 
 
@@ -1074,27 +1135,36 @@
           <p style="text-align: justify">
             Sau khi sáp nhập, thành phố Cần Thơ không chỉ mở rộng không gian lãnh thổ về phía đất liền mà còn tiếp cận trực tiếp không gian biển, hình thành vùng biển và ven biển có vai trò ngày càng quan trọng trong phát triển kinh tế – xã hội nói chung và du lịch nói riêng. Thành phố hiện có đường bờ biển dài khoảng 72 km, chiếm khoảng 2,21% tổng chiều dài bờ biển cả nước (chủ yếu thuộc địa bàn tỉnh Sóc Trăng cũ). Khu vực này sở hữu các bãi biển hoang sơ chưa bị con người khai thác quá mức như Mỏ Ó (xã Trần Đề) và Hồ Bể (xã Vĩnh Châu), mang đặc trưng cảnh quan biển – vịnh cửa sông của vùng hạ lưu Đồng bằng sông Cửu Long, có tiềm năng phát triển các loại hình du lịch nghỉ dưỡng, du lịch sinh thái và du lịch trải nghiệm văn hóa biển.
           </p>
-
+<br>
           <div style="text-align: center;">
           <img
               src="./image/bienhobe.jpg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 7. Bãi biển Hồ Bể"
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 7. Bãi biển Hồ Bể
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
 
 
-
+<br>
 
 
 
@@ -1102,35 +1172,44 @@
           <p style="text-align: justify;"> Bên cạnh tài nguyên cảnh quan biển, hệ thống hạ tầng giao thông và liên kết tuyến điểm du lịch biển đảo cũng tạo lợi thế quan trọng cho thành phố trong khai thác không gian du lịch biển. Việc đưa vào khai thác tuyến tàu cao tốc Ninh Kiều (Cần Thơ) – Trần Đề (Sóc Trăng) – Côn Đảo (TP.HCM) góp phần tăng cường khả năng kết nối giữa trung tâm đô thị Cần Thơ với khu vực ven biển và các điểm du lịch biển đảo trọng điểm. Tuyến giao thông này không chỉ mở rộng không gian du lịch của thành phố theo hướng “sông – biển – đảo” mà còn tạo điều kiện thuận lợi để đa dạng hóa sản phẩm du lịch, nâng cao sức hấp dẫn của điểm đến và từng bước khẳng định vai trò của Cần Thơ trong mạng lưới du lịch biển của khu vực Nam Bộ.
 </p>
           <i><b>2.2. Tài nguyên du lịch văn hoá</b></i>
-          <br>
+          <br><br>
           <u><i>a. Di tích lịch sử văn hóa</i> </u>
           <br>
            <p style="text-align: justify">Thành phố Cần Thơ có nhiều di tích lịch sử văn hóa, kiến trúc nghệ thuật và danh lam thắng cảnh; trong đó có 103 di tích đã được xếp hạng (01 di tích lịch sử đặc biệt cấp quốc gia, 32 di tích lịch sử cấp quốc gia và 72 di tích lịch sử cấp thành phố), có 13 di sản văn hóa phi vật thể quốc gia và 4 hiện vật được Thủ tướng Chính phủ công nhận là bảo vật quốc gia. Thành phố Cần Thơ đang tập trung khai thác hiệu quả các di tích lịch sử cùng nền văn hóa lâu đời, đậm đà bản sắc dân tộc đảm bảo gắn kết nhiệm vụ bảo tồn và phát huy giá trị di sản cùng với phát triển du lịch bền vững tại địa phương.
             
             
-            
+            <br>
             <div style="text-align: center;">
           <img
               src="./image/BD_XEP HANG DTLS.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 8. Bản đồ di tích lịch sử, điểm du lịch theo cấp xếp hạng
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 8. Bản đồ di tích lịch sử, điểm du lịch theo cấp xếp hạng
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Tác giả biên tập)</i>
       </p> 
     </div>
 
 
 
-
+<br>
 
            </p>
            <u><i>b. Làng nghề</i></u>
@@ -1141,29 +1220,38 @@
 
 
 
-
+<br><br>
             <div style="text-align: center;">
           <img
               src="./image/BD_XEP HANG TUOI.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 9. Bản đồ di tích lịch sử, điểm du lịch theo nhóm tuổi
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 9. Bản đồ di tích lịch sử, điểm du lịch theo nhóm tuổi
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Tác giả biên tập)</i>
       </p> 
     </div>
 
-
+<br>
 
 
 
@@ -1181,28 +1269,39 @@
 
              <p style="text-align: justify;">Hệ thống lễ hội tại Cần Thơ mang đậm dấu ấn giao thoa văn hóa của ba cộng đồng dân tộc Kinh, Khmer và Hoa, thể hiện rõ nét sự đa dạng và thống nhất trong đời sống văn hóa vùng. Người Kinh duy trì các lễ hội truyền thống như Tết Nguyên Tiêu, Lễ Vu Lan, Nghinh Ông và Kỳ Yên, Lễ dâng hoa, dâng hương tại Đền thờ Bác Hồ gắn với tín ngưỡng nông nghiệp và sinh hoạt cộng đồng; Đối với đồng bào Khmer, các lễ hội tiêu biểu gồm Chôl Chnăm Thmây, Óc Om Bóc, Đua ghe Ngo, trong khi đó, cộng đồng người Hoa có hệ thống lễ hội riêng mang đậm màu sắc tín ngưỡng dân gian và văn hóa truyền thống, tiêu biểu là Lễ vía Bà Thiên Hậu, Lễ hội Quan Thánh Đế Quân và các lễ hội tại các hội quán, chùa miếu.</p>
              
+
+             <br>
              <div style="text-align: center;">
           <img
               src="./image/chua-ong-can-tho-diem-den-tam-linh-khong-the-bo-qua-khi-den-mien-tay-751750496952.jpg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 10. Chùa Ông (Quảng Triệu Hội Quán)
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 10. Chùa Ông (Quảng Triệu Hội Quán)
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+     <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
-             
+             <br>
              
              <p style="text-align: justify;">Bên cạnh các lễ hội truyền thống, với lợi thế là đô thị trung tâm của vùng Đồng bằng sông Cửu Long, có hệ thống cơ sở hạ tầng kỹ thuật phát triển và mạng lưới giao thông thuận tiện, thành phố Cần Thơ thường xuyên đăng cai tổ chức các sự kiện văn hóa, thể thao và du lịch quy mô vùng và quốc gia. Tiêu biểu là Lễ hội Bánh dân gian Nam Bộ, Ngày hội Du lịch Đồng bằng sông Cửu Long, Lễ hội văn hoá sông nước Cần Thơ,... và nhiều sự kiện chuyên đề khác, góp phần đa dạng hóa sản phẩm du lịch sự kiện và nâng cao vị thế của Cần Thơ trong không gian văn hóa – du lịch vùng.</p>
              <u><i>d. Ẩm thực</i></u>
@@ -1214,55 +1313,78 @@
 
              </p>
 
+
+
+             <br>
             <div style="text-align: center;">
           <img
               src="./image/banh-pia-ngon-8.jpg.webp"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 11. Đặc sản bánh pía
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 11. Đặc sản bánh pía
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
-
+<br>
              <p style="text-align: justify;">Ẩm thực Cần Thơ còn gây ấn tượng bởi sự phong phú của các món ăn dân dã và các biến tấu sáng tạo từ nguyên liệu bản địa như cháo lòng Cái Tắc, xáo măng vịt, lẩu gà đồng, cá thát lát rút xương, cá lau kiếng, dừa non, đọt choại và sâm đất. Ngoài ra, các đặc sản vùng như bánh cống, bún nước lèo, bánh pía – lạp xưởng Vũng Thơm, hành tím Vĩnh Châu, xá pấu Ngã Năm và mắm cá rô không xương, cùng với các thương hiệu ẩm thực truyền thống như Tân Huê Viên, Quảng Trân và Công Lập Thành, góp phần khẳng định giá trị ẩm thực và đa dạng hóa sản phẩm du lịch của thành phố Cần Thơ.
 
              </p>
              <u><i>e. Công trình lao động sáng tạo của con người</i></u>
              <p style="text-align: justify;">Thành phố Cần Thơ là trung tâm đô thị lớn của vùng Đồng bằng sông Cửu Long, sở hữu nhiều địa điểm tham quan, vui chơi, giải trí và học tập có giá trị văn hóa, lịch sử và cảnh quan. Tiêu biểu là hệ thống Bảo tàng Cần Thơ, Thư viện thành phố Cần Thơ, Sân vận động Cần Thơ, Công viên Lưu Hữu Phước, Công viên Tao Đàn, Công viên Văn hóa Sông Hậu, Bến Ninh Kiều, cầu Cần Thơ và cầu Vàm Cống – những công trình gắn liền với hình ảnh đô thị sông nước hiện đại. Bên cạnh đó, các cơ sở nghiên cứu và đào tạo như Trường Đại học Cần Thơ, Viện Lúa Đồng bằng sông Cửu Long và Nông trường Sông Hậu không chỉ có giá trị khoa học – giáo dục mà còn là điểm tham quan tìm hiểu đặc trưng nông nghiệp và tri thức của vùng.
 
+<br>
+              <br>
               <div style="text-align: center;">
           <img
               src="./image//cau-can-tho_19-09-2022_518946729.jpg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
-        alt="Hình 13. Cầu Cần Thơ
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
+        alt="Hình 12. Cầu Cần Thơ
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 12. Cầu Cần Thơ
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
-
+<br>
              </p>
              <p style="text-align: justify;">Sau khi sáp nhập, không gian du lịch của thành phố Cần Thơ tiếp tục được mở rộng với nhiều công trình văn hóa, tâm linh và giải trí hiện đại, góp phần làm phong phú thêm sản phẩm du lịch. Nổi bật có Thiền viện Trúc Lâm Hậu Giang, Thiền viện Trúc Lâm Sóc Trăng, Bảo tàng Khmer, Liên hoa bảo tháp, Hồ nước ngọt, cùng các không gian vui chơi – giải trí như Công viên Ánh sáng Kỳ quan cổ đại, Công viên Chiến Thắng và Công viên Kittyd & Minnied. Hệ thống công trình đa dạng này không chỉ đáp ứng nhu cầu tham quan, nghỉ dưỡng và trải nghiệm của du khách mà còn góp phần quảng bá hình ảnh thành phố Cần Thơ năng động, hiện đại, giàu bản sắc văn hóa trong tiến trình phát triển và hội nhập.
 
@@ -1275,74 +1397,102 @@
              <p style="text-align: justify;">Du lịch sinh thái là một trong những loại hình chủ đạo của thành phố Cần Thơ, gắn liền với đặc trưng đô thị sông nước của vùng Đồng bằng sông Cửu Long. Thành phố có hệ thống sông ngòi, kênh rạch chằng chịt với trục chính là sông Hậu, cùng nhiều cù lao, cồn và vùng đất ngập nước có cảnh quan tự nhiên đặc sắc. Các sản phẩm du lịch sinh thái tiêu biểu gồm du lịch miệt vườn tại Phong Điền, du lịch sông nước tại cù lao Tân Lộc, cồn Sơn, chợ nổi Cái Răng và các tuyến du lịch đường sông kết hợp tham quan di tích, làng nghề truyền thống. Sau sáp nhập, hệ thống du lịch sinh thái tiếp tục được mở rộng với các điểm nổi bật như Khu bảo tồn thiên nhiên Lung Ngọc Hoàng, rừng tràm Vị Thủy, rừng bần Cù Lao Dung, góp phần đa dạng hóa sản phẩm du lịch gắn với bảo tồn thiên nhiên.
              
              </p>
-
+<br>
 
                 <div style="text-align: center;">
           <img
               src="./image/IMG-1216-1-1692586795.jpg.webp"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 13. Làng nghề truyền thống bánh tráng Thuận Hưng
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 13. Làng nghề truyền thống bánh tráng Thuận Hưng
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
-
+<br>
 
 
               <i><b>3.2. Du lịch nông nghiệp, du lịch cộng đồng</b></i>
              <p style="text-align: justify;">Du lịch nông nghiệp và du lịch cộng đồng được phát triển trên nền tảng cảnh quan canh tác đặc trưng và đời sống sinh hoạt của cư dân vùng sông nước. Các vườn cây ăn trái, làng nghề truyền thống và khu dân cư ven sông tạo điều kiện thuận lợi cho các hoạt động trải nghiệm như tham quan vườn, thu hoạch nông sản, thưởng thức ẩm thực địa phương và lưu trú homestay. Nhiều mô hình du lịch cộng đồng đã bước đầu hình thành tại Phong Điền, Mỹ Tú, Kế Sách, Cù Lao Dung, gắn với xây dựng nông thôn mới, phát huy giá trị văn hóa bản địa và nâng cao sinh kế cho người dân.
 
              </p>
-
+<br>
 
              <div style="text-align: center;">
           <img
               src="./image/ava-1_653d1cfb81915.png"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 14. Du lịch cộng đồng khóm Cầu Đúc
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 14. Du lịch cộng đồng khóm Cầu Đúc
 
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
-
-
+<br>
 
              <i><b>3.3. Du lịch văn hóa, du lịch tâm linh</b></i>
              <p style="text-align: justify;">Thành phố Cần Thơ sở hữu hệ thống di tích lịch sử – văn hóa, công trình kiến trúc và cơ sở tín ngưỡng đa dạng của ba dân tộc Kinh, Khmer và Hoa. Các điểm tham quan tiêu biểu gồm đình Bình Thủy, chùa Nam Nhã, chùa Ông, Khám Lớn Cần Thơ, Khu di tích Giàn Gừa, Thiền viện Trúc Lâm Phương Nam cùng nhiều ngôi chùa Khmer đặc sắc như chùa Dơi, chùa Đất Sét, chùa Chén Kiểu, chùa Som Rong. Bên cạnh đó, các lễ hội truyền thống như Oóc Om Bóc – Đua ghe Ngo, Nghinh Ông, Kỳ Yên, Chol Chnam Thmay… góp phần tạo nên sức hút lớn cho loại hình du lịch văn hóa – tâm linh gắn với giáo dục truyền thống và trải nghiệm bản sắc địa phương.
-<div style="text-align: center;">
+
+<br><br>
+              <div style="text-align: center;">
           <img
               src="./image/chuachenkieu-1.jpg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 15. Chùa Sro Lon (Chùa Chén Kiểu)
 
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 15. Chùa Sro Lon (Chùa Chén Kiểu)
 
@@ -1350,28 +1500,42 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
+
+
+<br>
+
+
              </p>
              <i><b>3.4. Du lịch biển</b></i>
              <p style="text-align: justify;">Sau sáp nhập, thành phố Cần Thơ có đường bờ biển dài khoảng 72 km, mở ra tiềm năng phát triển du lịch biển. Các điểm du lịch tiêu biểu như bãi biển Mỏ Ó (xã Trần Đề), biển Hồ Bể (xã Vĩnh Châu) vẫn giữ được nét hoang sơ, kết hợp với rừng bần ven biển và các hoạt động trải nghiệm đời sống ngư dân. Tuyến tàu cao tốc Cần Thơ – Trần Đề – Côn Đảo là lợi thế quan trọng, góp phần kết nối không gian du lịch biển – đảo, tạo động lực phát triển du lịch biển gắn với nghỉ dưỡng và khám phá sinh thái ven biển.
 
              </p>
-
+<br>
 
              <div style="text-align: center;">
           <img
               src="./image/tham-quan-khu-du-lich-sinh-thai-ho-be.webp"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 16. Khu du lich bãi biển Mỏ Ó
 
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 16. Khu du lich bãi biển Mỏ Ó
 
@@ -1379,11 +1543,11 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
-
+<br>
 
 
              <i><b>3.5. Du lịch đô thị</b></i>
@@ -1391,18 +1555,27 @@
 
              </p>
 
-
+<br>
               <div style="text-align: center;">
           <img
               src="./image/7.jpeg"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 17. Bến Ninh Kiều - cầu đi bộ
 
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 17. Bến Ninh Kiều - cầu đi bộ
 
@@ -1410,30 +1583,41 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+      <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
 
-
+<br>
 
              <i><b>3.6. Du lịch kết hợp hội nghị, hội thảo, triển lãm, sự kiện (Du lịch MICE)</b></i>
              <p style="text-align: justify;">Với vai trò là trung tâm vùng Đồng bằng sông Cửu Long, thành phố Cần Thơ có điều kiện thuận lợi để phát triển du lịch MICE nhờ hệ thống hạ tầng đồng bộ, giao thông thuận tiện và cơ sở lưu trú chất lượng cao. Các địa điểm như bến Ninh Kiều, công viên Lưu Hữu Phước, sân vận động Cần Thơ cùng các trung tâm hội nghị, khách sạn và trung tâm thương mại hiện đại đáp ứng tốt nhu cầu tổ chức hội nghị, hội thảo, triển lãm, lễ hội và sự kiện quy mô lớn. Du lịch MICE được định hướng phát triển gắn với du lịch đô thị và du lịch sinh thái, góp phần nâng cao vị thế của thành phố Cần Thơ trên bản đồ du lịch quốc gia và khu vực.
 
              </p>
 
+
+             <br>
              <div style="text-align: center;">
           <img
               src="./image/base64-1765544987560891738984.png.webp"
         loading="lazy"
-        style="max-width:50%; height:auto;"
+        style="
+      max-width: 65%;
+      height: auto;
+      border: 3px solid #1e40af;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+      padding: 5px;
+      background: #ffffff;
+    "
         alt="Hình 18. Chương trình Lễ hội văn hoá sông nước Cần Thơ năm 2025
 
 
 
 "
       />
-      <p style="text-align: center; color: black">
+      <p style="text-align: center; color: black; margin: 8px 0 2px;">
+
         <b
           >Hình 18. Chương trình Lễ hội văn hoá sông nước Cần Thơ năm 2025
 
@@ -1442,11 +1626,11 @@
 
         </b>
       </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
+     <p style="text-align: center; color: #444; margin: 0; font-size: 13px;">
         <i>(Nguồn: Internet)</i>
       </p> 
     </div>
-
+<br>
           
           </div>
     </main>

@@ -12,20 +12,19 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-     <!-- Favicon -->
-     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-     <link rel="shortcut icon" href="/favicon.ico" />
-     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-     <link rel="manifest" href="/site.webmanifest" />
-     <link
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./image/apple-touch-icon.png"
-     />
-      <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
-
+    />
+    <link rel="apple-touch-icon" href="./image/apple-touch-icon.png" />
 
     <style>
       :root {
@@ -139,7 +138,6 @@
         max-width: var(--container);
         margin: 28px auto;
         padding: 0 20px;
-        
       }
 
       .intro {
@@ -153,8 +151,11 @@
         font-size: 26px;
       }
       .intro .text p {
-        color: var(--muted);
-        line-height: 1.6;
+        color: #1f2937;
+        line-height: 1.7;
+        margin: 10px 0 14px;
+        font-size: 15.5px;
+        text-indent: 30px;
       }
       .intro .visual {
         border-radius: 16px;
@@ -176,94 +177,94 @@
       }
 
       .table-wrap {
-  max-height: 600px;
-  overflow-y: auto;
-}
-[data-aos] {
-  will-change: transform, opacity;
-}
+        max-height: 600px;
+        overflow-y: auto;
+      }
+      [data-aos] {
+        will-change: transform, opacity;
+      }
 
-/* HERO MINI */
-.page-hero {
-  height: 335px;               
-  background:
-    linear-gradient(
-      rgba(0, 77, 64, 0.55),
-      rgba(0, 77, 64, 0.55)
-    ),
-    url("./image/dbscl-4604.jpg") center / cover no-repeat;
+      /* HERO MINI */
+      .page-hero {
+        height: 335px;
+        background: linear-gradient(
+            rgba(0, 77, 64, 0.55),
+            rgba(0, 77, 64, 0.55)
+          ),
+          url("./image/dbscl-4604.jpg") center / cover no-repeat;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-  margin-bottom: 24px;
-}
+        margin-bottom: 24px;
+      }
 
-/* Nội dung trong hero */
-.hero-content h1 {
-  color: #fff;
-  font-size: 32px;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
+      /* Nội dung trong hero */
+      .hero-content h1 {
+        color: #fff;
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 0.5px;
+      }
 
-.page-hero {
-  animation: fadeDown 0.8s ease;
-}
+      .page-hero {
+        animation: fadeDown 0.8s ease;
+      }
 
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-.page-content {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
+      .page-content {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
 
-.page-content.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+      .page-content.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-.scroll-hint {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+      .scroll-hint {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
 
-  font-size: 28px;
-  color: rgba(255, 255, 255, 0.85);
+        font-size: 28px;
+        color: rgba(255, 255, 255, 0.85);
 
-  animation: bounce 1.5s infinite;
-  pointer-events: none;
-}
+        animation: bounce 1.5s infinite;
+        pointer-events: none;
+      }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, 8px);
-  }
-}
-.page-hero {
-  position: relative;
-}
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, 8px);
+        }
+      }
+      .page-hero {
+        position: relative;
+      }
 
-.hero-content h1 {
-  font-family:'Times New Roman', Times, serif ;
-}
-footer {
+      .hero-content h1 {
+        font-family: "Times New Roman", Times, serif;
+      }
+      footer {
         background: white;
         width: 100%;
         text-align: center;
@@ -275,44 +276,40 @@ footer {
       }
 
       .form-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
 
-.form-box {
-  width: min(900px, 95%);
-  height: 90vh;
-  background: white;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-}
+      .form-box {
+        width: min(900px, 95%);
+        height: 90vh;
+        background: white;
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+      }
 
-.form-box iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+      .form-box iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 14px;
+        font-size: 28px;
+        cursor: pointer;
+      }
     </style>
-
-    
   </head>
   <body>
-
     <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner">
@@ -323,65 +320,84 @@ footer {
 
           <div>
             <div class="site-name">Ngành Địa lý học, khoá 34 (2023 - 2025)</div>
-<div class="site-sub">
-  Học viên: Nguyễn Thành Đạt (DLHO834004)
-</div>
-
+            <div class="site-sub">Học viên: Nguyễn Thành Đạt (DLHO834004)</div>
           </div>
         </div>
-<nav class="menu" aria-label="Main navigation">
-  <a href="index.html">Trang chủ</a>
-  <a href="diemdulich.html">Điểm tham quan</a>
-  <a href="solieu.html">Số liệu</a>
-  <a href="tintuc.html">Tin tức</a>
-  <a href="bando.html">Bản đồ</a>
+        <nav class="menu" aria-label="Main navigation">
+          <a href="index.html">Trang chủ</a>
+          <a href="diemdulich.html">Điểm tham quan</a>
+          <a href="solieu.html">Số liệu</a>
+          <a href="tintuc.html">Tin tức</a>
+          <a href="bando.html">Bản đồ</a>
 
-  <button
-    class="cta-primary"
-    onclick="window.open('gopy.html', '_blank')"
-  >
-    Liên hệ - góp ý
-  </button>
-</nav>
-
+          <button
+            class="cta-primary"
+            onclick="window.open('gopy.html', '_blank')"
+          >
+            Liên hệ - góp ý
+          </button>
+        </nav>
       </div>
     </header>
 
     <!-- HERO MINI -->
     <section class="page-hero">
-    <div class="hero-content">
-    <h1>Số liệu du lịch thành phố Cần Thơ</h1>
-    </div>
+      <div class="hero-content">
+        <h1>Số liệu du lịch thành phố Cần Thơ</h1>
+      </div>
 
-    <!-- GỢI Ý KÉO XUỐNG -->
-  <div class="scroll-hint">⌄</div>
+      <!-- GỢI Ý KÉO XUỐNG -->
+      <div class="scroll-hint">⌄</div>
     </section>
 
-    
-
     <main class="page-content" id="solieu">
-      
-    <div style="text-align: center">
-      <img
-        
-        src="./image/Ảnh-màn-hình-2025-12-19-lúc-21.24.36.webp"
-        loading="lazy"
-        style="max-width:50%; height:auto;"
-        alt="Biểu đồ thể hiện số lượt khách du lịch và doanh thu du lịch thành phố Cần Thơ, 
+      <section class="intro" data-aos="fade-right">
+        <div class="text">
+          <p style="text-align: justify">
+            Trong giai đoạn 2019–2025, ngành du lịch thành phố Cần Thơ giữ vai
+            trò quan trọng trong cơ cấu kinh tế – dịch vụ của đô thị trung tâm
+            vùng Đồng bằng sông Cửu Long. Du lịch thành phố tập trung khai thác
+            các giá trị đặc trưng của sông nước miệt vườn, chợ nổi, văn hóa bản
+            địa và hệ thống cơ sở lưu trú ngày càng được đầu tư, hoàn thiện.
+            Trải qua những khó khăn chung của bối cảnh kinh tế – xã hội, du lịch
+            Cần Thơ từng bước phục hồi, mở rộng quy mô hoạt động và nâng cao
+            chất lượng dịch vụ, qua đó khẳng định vị thế là điểm đến hấp dẫn,
+            đóng góp tích cực vào tăng trưởng kinh tế và quảng bá hình ảnh của
+            thành phố trong giai đoạn này.
+          </p>
+        </div>
+      </section>
+
+      <div style="text-align: center">
+        <img
+          src="./image/Ảnh-màn-hình-2025-12-19-lúc-21.24.36.webp"
+          loading="lazy"
+          style="
+            max-width: 65%;
+            height: auto;
+            border: 3px solid #1e40af;
+            border-radius: 10px;
+            box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+            padding: 5px;
+            background: #ffffff;
+          "
+          alt="Biểu đồ thể hiện số lượt khách du lịch và doanh thu du lịch thành phố Cần Thơ, 
         giai đoạn 2019 – 2025
         "
-      />
-      <p style="text-align: center; color: black">
-        <b
-          >Số lượt khách du lịch và doanh thu du lịch thành phố Cần Thơ, giai
-          đoạn 2019 – 2025
-        </b>
-      </p>
-      <p style="text-align: right; padding-right: 200px; color: black">
-        <i>(Nguồn: Cục Du lịch Quốc gia Việt Nam, 2025)</i>
-      </p>
+        />
+        <p style="text-align: center; color: black; margin: 8px 0 2px">
+          <b
+            >Hình 1. Số lượt khách du lịch và doanh thu du lịch thành phố Cần
+            Thơ, giai đoạn 2019 – 2025
+          </b>
+        </p>
+        <p style="text-align: center; color: #444; margin: 0; font-size: 13px">
+          <i>(Nguồn: Cục Du lịch Quốc gia Việt Nam, 2025)</i>
+        </p>
+      </div>
+      <br />
       <section class="intro" data-aos="fade-right">
-        <div class="text" >
+        <div class="text">
           <p style="text-align: justify">
             Năm 2019, ngành du lịch thành phố Cần Thơ ghi nhận giai đoạn tăng
             trưởng tích cực với tổng doanh thu đạt 4.435 tỉ đồng và 8,8 triệu
@@ -475,6 +491,33 @@ footer {
             hơn trong giai đoạn mới.
           </p>
         </div>
+        <br />
+        <div style="text-align: center">
+          <img
+            src="./image/BD_DIEM DL.png"
+            loading="lazy"
+            style="
+              max-width: 65%;
+              height: auto;
+              border: 3px solid #1e40af;
+              border-radius: 10px;
+              box-shadow: 0 8px 18px rgba(30, 64, 175, 0.2);
+              padding: 5px;
+              background: #ffffff;
+            "
+            alt="Bản đồ các điểm du lịch thành phố Cần Thơ 2025
+        "
+          />
+          <p style="text-align: center; color: black; margin: 8px 0 2px">
+            <b>Hình 2. Bản đồ các điểm du lịch thành phố Cần Thơ năm 2025 </b>
+          </p>
+          <p
+            style="text-align: center; color: #444; margin: 0; font-size: 13px"
+          >
+            <i>(Nguồn: Tác giả biên tập)</i>
+          </p>
+        </div>
+        <br />
         <p style="text-align: center; color: black">
           <b
             >Danh sách các điểm du lịch, di tích lịch sử thành phố Cần Thơ năm
@@ -484,1258 +527,1253 @@ footer {
       </section>
       <div style="text-align: center">
         <div class="table-wrap">
-        <table border="1" style="color: black">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Điểm du lịch / Di tích</th>
-              <th>Năm thành lập</th>
-              <th>Đơn vị hành chính</th>
-              <th>Cấp xếp hạng</th>
-              <th>Ghi chú</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Vườn trái cây Mỹ Khánh</td>
-              <td>1996</td>
-              <td>Phường An Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Thiền viện Trúc Lâm Phương Nam</td>
-              <td>2014</td>
-              <td>Phường An Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Làng du lịch Mỹ Khánh</td>
-              <td>1996</td>
-              <td>Phường An Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Di tích lịch sử Lộ Vòng Cung</td>
-              <td>2024</td>
-              <td>Phường An Bình</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Làng du lịch sinh thái Ông Đề</td>
-              <td>2018</td>
-              <td>Phường An Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Lò hủ tiếu Sáu Hoài</td>
-              <td>1985</td>
-              <td>Phường An Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Du lịch sinh thái cộng đồng Cồn Sơn</td>
-              <td>2015</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Đình Bình Thuỷ</td>
-              <td>1844</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Mộ Thủ Khoa Bùi Hữu Nghĩa</td>
-              <td>1872</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Chùa Nam Nhã</td>
-              <td>1895</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Đền thờ Vua Hùng</td>
-              <td>2023</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>Nhà thờ họ Dương</td>
-              <td>1870</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td>Chùa Hội Linh</td>
-              <td>1904</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td>Cơ quan Đặc uỷ An Nam Cộng Sản Đảng Hậu Giang</td>
-              <td>1991</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td>Bè cá Bảy Bon</td>
-              <td>2015</td>
-              <td>Phường Bình Thuỷ</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>16</td>
-              <td>Cồn Khương</td>
-              <td>2004</td>
-              <td>Phường Cái Khế</td>
-              <td>Chưa xếp hạng</td>
-              <td>Thắng cảnh</td>
-            </tr>
-            <tr>
-              <td>17</td>
-              <td>Bãi tắm Cần Thơ</td>
-              <td>2014</td>
-              <td>Phường Cái Khế</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>18</td>
-              <td>Công viên Sông Hậu</td>
-              <td>2011</td>
-              <td>Phường Cái Khế</td>
-              <td>Chưa xếp hạng</td>
-              <td>Thắng cảnh</td>
-            </tr>
-            <tr>
-              <td>19</td>
-              <td>Hiệp Thiên Cung</td>
-              <td>1856</td>
-              <td>Phường Cái Răng</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>20</td>
-              <td>Chợ nổi Cái Răng</td>
-              <td>1900</td>
-              <td>Phường Cái Răng</td>
-              <td>Cấp quốc gia</td>
-              <td>Di sản văn hoá phi vật thể</td>
-            </tr>
-            <tr>
-              <td>21</td>
-              <td>Di tích lịch sử trận Lê Bình</td>
-              <td>1945</td>
-              <td>Phường Cái Răng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>22</td>
-              <td>Di tích Đình Thường Thạnh</td>
-              <td>1852</td>
-              <td>Phường Cái Răng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>23</td>
-              <td>Di tích chiến thắng rạch Ông Cửu</td>
-              <td>1968</td>
-              <td>Phường Cái Răng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>24</td>
-              <td>Khu du lịch Bảo Gia Trang Viên</td>
-              <td>2016</td>
-              <td>Phường Cái Răng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>25</td>
-              <td>Can Tho Ecolodge</td>
-              <td>2019</td>
-              <td>Phường Cái Răng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>26</td>
-              <td>Legacy Mekong - Cồn Ấu</td>
-              <td>2000</td>
-              <td>Phường Hưng Phú</td>
-              <td>Chưa xếp hạng</td>
-              <td>Thắng cảnh</td>
-            </tr>
-            <tr>
-              <td>27</td>
-              <td>Cầu Cần Thơ</td>
-              <td>2010</td>
-              <td>Phường Hưng Phú</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>28</td>
-              <td>Căn cứ Vườn Mận</td>
-              <td>1965</td>
-              <td>Phường Long Tuyền</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>29</td>
-              <td>Làng hoa Bà Bộ</td>
-              <td>1920</td>
-              <td>Phường Long Tuyền</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>30</td>
-              <td>Chùa Long Quang</td>
-              <td>1966</td>
-              <td>Phường Long Tuyền</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>31</td>
-              <td>Bến Ninh Kiều</td>
-              <td>1958</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Thắng cảnh</td>
-            </tr>
-            <tr>
-              <td>32</td>
-              <td>Chùa Ông (Quảng Triệu Hội Quán)</td>
-              <td>1894</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>33</td>
-              <td>Thới Long Cổ Tự</td>
-              <td>1844</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>34</td>
-              <td>Di tích Khám Lớn Cần Thơ</td>
-              <td>1878</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>35</td>
-              <td>Cầu đi bộ Cần Thơ</td>
-              <td>2016</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>36</td>
-              <td>Bảo tàng thành phố Cần Thơ</td>
-              <td>1976</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>37</td>
-              <td>Bảo tàng Quân khu 9</td>
-              <td>1979</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>38</td>
-              <td>Công viên Lưu Hữu Phước</td>
-              <td>2015</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Thắng cảnh</td>
-            </tr>
-            <tr>
-              <td>39</td>
-              <td>Nhà lồng chợ Cần Thơ</td>
-              <td>1915</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>40</td>
-              <td>Di tích Địa điểm thành lập Chi bộ An Hoà</td>
-              <td>1967</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>41</td>
-              <td>Đình Thới Bình</td>
-              <td>1852</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>42</td>
-              <td>Chợ đêm Ninh Kiều</td>
-              <td>2016</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>43</td>
-              <td>Chùa Pitu Khosa Rangsay (Chùa Viễn Quang)</td>
-              <td>1948</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>44</td>
-              <td>Chùa Munir Ansay</td>
-              <td>1948</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>45</td>
-              <td>Nhà thờ Chánh toà Cần Thơ</td>
-              <td>1886</td>
-              <td>Phường Ninh Kiều</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>46</td>
-              <td>Đình Thới An</td>
-              <td>1852</td>
-              <td>Phường Ô Môn</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>47</td>
-              <td>Chùa Pothisomron</td>
-              <td>1735</td>
-              <td>Phường Ô Môn</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>48</td>
-              <td>Chùa Cảm Thiên Đại Đế</td>
-              <td>1890</td>
-              <td>Phường Ô Môn</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>49</td>
-              <td>Đình Tân Lộc Đông</td>
-              <td>1787</td>
-              <td>Phường Tân Lộc</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>50</td>
-              <td>Linh Sơn Cổ Miếu</td>
-              <td>1890</td>
-              <td>Phường Thới Long</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>51</td>
-              <td>Làng đan lợp Thới Long</td>
-              <td>1997</td>
-              <td>Phường Thới Long</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>52</td>
-              <td>Đình Phú Luông</td>
-              <td>1852</td>
-              <td>Phường Thới Long</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>53</td>
-              <td>Làng đan lưới Thơm Rơm</td>
-              <td>1977</td>
-              <td>Phường Thới Long</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>54</td>
-              <td>Vườn cò Bằng Lăng</td>
-              <td>1983</td>
-              <td>Phường Thốt Nốt</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>55</td>
-              <td>Đình Thạnh Hoà</td>
-              <td>1852</td>
-              <td>Phường Thốt Nốt</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>56</td>
-              <td>Đình Thới Thuận</td>
-              <td>1852</td>
-              <td>Phường Thốt Nốt</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>57</td>
-              <td>Thất Phu Võ Miếu</td>
-              <td>1886</td>
-              <td>Phường Thốt Nốt</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>58</td>
-              <td>Làng bánh tráng Thuận Hưng</td>
-              <td>1850</td>
-              <td>Phường Thuận Hưng</td>
-              <td>Cấp quốc gia</td>
-              <td>Di sản văn hoá phi vật thể</td>
-            </tr>
-            <tr>
-              <td>59</td>
-              <td>Đình Thuận Hưng</td>
-              <td>1952</td>
-              <td>Phường Thuận Hưng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>60</td>
-              <td>Mộ soạn giả Mộc Quán - Nguyễn Trọng Quyền</td>
-              <td>2018</td>
-              <td>Phường Thuận Hưng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>61</td>
-              <td>Di tích lịch sử An Nam Cộng Sản Đảng</td>
-              <td>1929</td>
-              <td>Xã Cờ Đỏ</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>62</td>
-              <td>Khu di tích Giàn Gừa</td>
-              <td>2013</td>
-              <td>Xã Nhơn Ái</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>63</td>
-              <td>Địa điểm khảo cổ học Nhơn Thành</td>
-              <td>TK V - VII</td>
-              <td>Xã Nhơn Ái</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích khảo cổ</td>
-            </tr>
-            <tr>
-              <td>64</td>
-              <td>Khu du lịch sinh thái Lung Tràm</td>
-              <td>2018</td>
-              <td>Xã Nhơn Ái</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>65</td>
-              <td>Khu du lịch sinh thái Lung Cột Cầu</td>
-              <td>2015</td>
-              <td>Xã Nhơn Ái</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>66</td>
-              <td>Can Tho Eco Resort</td>
-              <td>2019</td>
-              <td>Xã Nhơn Ái</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>67</td>
-              <td>Vườn trái cây Vàm Xáng</td>
-              <td>2012</td>
-              <td>Xã Phong Điền</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>68</td>
-              <td>Mộ nhà thơ Phan Văn Trị</td>
-              <td>1991</td>
-              <td>Xã Phong Điền</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>69</td>
-              <td>Di tích thảm sát đồng bào vô tội Cầu Nhiếm</td>
-              <td>1966</td>
-              <td>Xã Phong Điền</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>70</td>
-              <td>Vườn du lịch sinh thái Phi Yến</td>
-              <td>2021</td>
-              <td>Xã Phong Điền</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>71</td>
-              <td>Khu sinh thái Sông Hậu Farm</td>
-              <td>1979</td>
-              <td>Xã Thới Hưng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>72</td>
-              <td>Khu di tích Chiến thắng Ông Hào</td>
-              <td>2012</td>
-              <td>Xã Trường Long</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>73</td>
-              <td>Viện lúa Đồng bằng sông Cửu Long</td>
-              <td>1977</td>
-              <td>Xã Trường Thành</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>74</td>
-              <td>Khu di tích Chiến thắng Ông Đưa</td>
-              <td>1960</td>
-              <td>Xã Trường Thành</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>75</td>
-              <td>Căn cứ Lò Mo</td>
-              <td>1971</td>
-              <td>Xã Trường Thành</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>76</td>
-              <td>Đình Vĩnh Trinh</td>
-              <td>1852</td>
-              <td>Xã Vĩnh Trinh</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>77</td>
-              <td>Già Lam Cổ Tự</td>
-              <td>1940</td>
-              <td>Phường Đại Thành</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>78</td>
-              <td>Vườn hoa Đại Thành</td>
-              <td>2023</td>
-              <td>Phường Đại Thành</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>79</td>
-              <td>Vườn trái cây Bảy Liễu</td>
-              <td>2015</td>
-              <td>Phường Đại Thành</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>80</td>
-              <td>Thiền viện Trúc Lâm Hậu Giang</td>
-              <td>2018</td>
-              <td>Phường Long Bình</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>81</td>
-              <td>Nhà thờ Họ đạo Trà Lồng</td>
-              <td>1916</td>
-              <td>Phường Long Phú 1</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>82</td>
-              <td>Vườn dâu cao sản Thiên Ân</td>
-              <td>2015</td>
-              <td>Phường Ngã Bảy</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>83</td>
-              <td>Di tích Uỷ ban Liên hợp đình chiến Nam Bộ</td>
-              <td>1954</td>
-              <td>Phường Ngã Bảy</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử văn hoá</td>
-            </tr>
-            <tr>
-              <td>84</td>
-              <td>Công viên Kênh xáng Xà No</td>
-              <td>1903</td>
-              <td>Phường Ngã Bảy</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>85</td>
-              <td>Di tích lịch sử Chiến thắng Chương Thiện</td>
-              <td>2014</td>
-              <td>Phường Vị Tân</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử đặc biệt</td>
-            </tr>
-            <tr>
-              <td>86</td>
-              <td>Công viên Ánh sáng kỳ quan cổ đại</td>
-              <td>2020</td>
-              <td>Phường Vị Tân</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>87</td>
-              <td>Công viên Chiến Thắng</td>
-              <td>2020</td>
-              <td>Phường Vị Tân</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>88</td>
-              <td>Chùa Sasanarangsay</td>
-              <td>1946</td>
-              <td>Phường Vị Tân</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>89</td>
-              <td>Chùa Phổ Minh</td>
-              <td>1908</td>
-              <td>Phường Vị Tân</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>90</td>
-              <td>Nhà thờ Vị Hưng</td>
-              <td>1890</td>
-              <td>Phường Vị Tân</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>91</td>
-              <td>Khu di tích chiến thắng Vàm Cái Sình</td>
-              <td>2007</td>
-              <td>Phường Vị Thanh</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>92</td>
-              <td>Khu trù mật Vị Thanh - Hoả Lựu</td>
-              <td>1960</td>
-              <td>Phường Vị Thanh</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>93</td>
-              <td>Miếu Quan Đề Vị</td>
-              <td>1970</td>
-              <td>Phường Vị Thanh</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>94</td>
-              <td>Chợ Vị Thanh</td>
-              <td>2010</td>
-              <td>Phường Vị Thanh</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>95</td>
-              <td>Chùa Aranhut (Chùa Wat Cho)</td>
-              <td>1632</td>
-              <td>Xã Đông Phước</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>96</td>
-              <td>Khu du lịch cộng đồng khóm Cầu Đúc</td>
-              <td>1930</td>
-              <td>Xã Hoả Lựu</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>97</td>
-              <td>Đền thờ Bác Hồ Hậu Giang</td>
-              <td>1969</td>
-              <td>Xã Lương Tâm</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử văn hoá</td>
-            </tr>
-            <tr>
-              <td>98</td>
-              <td>Khu du lịch sinh thái Mùa Xuân (Lung Ngọc Hoàng)</td>
-              <td>2017</td>
-              <td>Xã Tân Phước Hưng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>99</td>
-              <td>Khu di tích Căn cứ tỉnh uỷ Cần Thơ</td>
-              <td>1968</td>
-              <td>Xã Phương Bình</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>100</td>
-              <td>Khu văn hoá đa năng Hưng Đạo</td>
-              <td>2020</td>
-              <td>Xã Tân Hoà</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>101</td>
-              <td>Trang trại dê sữa Ngọc Đào</td>
-              <td>2010</td>
-              <td>Xã Tân Hoà</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>102</td>
-              <td>Vườn tre Tư Sang</td>
-              <td>2023</td>
-              <td>Xã Thạnh Hoà</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>103</td>
-              <td>Miếu Bà chúa xứ Cây lộc vừng</td>
-              <td>1710</td>
-              <td>Xã Thạnh Hoà</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>104</td>
-              <td>Khu di tích chiến thắng Tầm Vu</td>
-              <td>2012</td>
-              <td>Xã Thạnh Xuân</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>105</td>
-              <td>Công viên Kittyd & Minnied</td>
-              <td>2018</td>
-              <td>Xã Thạnh Xuân</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>106</td>
-              <td>Khu du lịch sinh thái Rừng tràm chim Vị Thuỷ</td>
-              <td>2007</td>
-              <td>Xã Vĩnh Tường</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>107</td>
-              <td>Khu văn hoá lịch sử Long Mỹ</td>
-              <td>2011</td>
-              <td>Xã Vĩnh Viễn</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử</td>
-            </tr>
-            <tr>
-              <td>108</td>
-              <td>Đình thần Nguyễn Trung Trực</td>
-              <td>1960</td>
-              <td>Phường Kế Sách</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>109</td>
-              <td>Nhà bia ghi danh liệt sĩ Giầy Lăng</td>
-              <td>1996</td>
-              <td>Phường Khánh Hoà</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>110</td>
-              <td>Đình thần Khánh Hoà</td>
-              <td>1808</td>
-              <td>Phường Khánh Hoà</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>111</td>
-              <td>Miếu bà chúa xứ Mỹ Đông</td>
-              <td>1930</td>
-              <td>Phường Mỹ Quới</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>112</td>
-              <td>Thánh Thất Minh Tiên</td>
-              <td>1930</td>
-              <td>Phường Mỹ Quới</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>113</td>
-              <td>Chùa Sro Lon (Chùa Chén Kiểu)</td>
-              <td>1815</td>
-              <td>Phường Mỹ Xuyên</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>114</td>
-              <td>Đình thần Mỹ Xuyên</td>
-              <td>1852</td>
-              <td>Phường Mỹ Xuyên</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>115</td>
-              <td>Chùa Chroi Tim Chas (Chùa Trà Tim)</td>
-              <td>1456</td>
-              <td>Phường Mỹ Xuyên</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>116</td>
-              <td>Ba Thắc Cổ Miếu</td>
-              <td>1927</td>
-              <td>Phường Mỹ Xuyên</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>117</td>
-              <td>Chợ nổi Ngã Năm</td>
-              <td>1910</td>
-              <td>Phường Ngã Năm</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>118</td>
-              <td>Địa điểm Chiến thắng Chi khu Ngã Năm</td>
-              <td>2004</td>
-              <td>Phường Ngã Năm</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>119</td>
-              <td>Chùa Giác Hương</td>
-              <td>1910</td>
-              <td>Phường Ngã Năm</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>120</td>
-              <td>Chùa Mahatup (Chùa Dơi – Chùa Mã Tộc)</td>
-              <td>1569</td>
-              <td>Phường Phú Lợi</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>121</td>
-              <td>Thiền viện Trúc Lâm Sóc Trăng</td>
-              <td>2020</td>
-              <td>Phường Phú Lợi</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>122</td>
-              <td>Chùa Ông Bổn (Hoà An Hội Quán)</td>
-              <td>1875</td>
-              <td>Phường Phú Lợi</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>123</td>
-              <td>Bảo tàng Khmer</td>
-              <td>1938</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>124</td>
-              <td>Chùa Botum Vong Sa Som Rong (Chùa Som Rong)</td>
-              <td>1785</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>125</td>
-              <td>Chùa La Hán</td>
-              <td>1952</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>126</td>
-              <td>Chùa Kh'leang</td>
-              <td>1532</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>127</td>
-              <td>Bửu Sơn Tự (Chùa Đất Sét)</td>
-              <td>1939</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử - văn hoá</td>
-            </tr>
-            <tr>
-              <td>128</td>
-              <td>Hồ Nước Ngọt</td>
-              <td>2000</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>129</td>
-              <td>Chùa Peam Buol Thmay</td>
-              <td>1964</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>130</td>
-              <td>Khu di tích Trường Taberd</td>
-              <td>1912</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
+          <table border="1" style="color: black">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Điểm du lịch / Di tích</th>
+                <th>Năm thành lập</th>
+                <th>Đơn vị hành chính</th>
+                <th>Cấp xếp hạng</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Vườn trái cây Mỹ Khánh</td>
+                <td>1996</td>
+                <td>Phường An Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Thiền viện Trúc Lâm Phương Nam</td>
+                <td>2014</td>
+                <td>Phường An Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Làng du lịch Mỹ Khánh</td>
+                <td>1996</td>
+                <td>Phường An Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Di tích lịch sử Lộ Vòng Cung</td>
+                <td>2024</td>
+                <td>Phường An Bình</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Làng du lịch sinh thái Ông Đề</td>
+                <td>2018</td>
+                <td>Phường An Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Lò hủ tiếu Sáu Hoài</td>
+                <td>1985</td>
+                <td>Phường An Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Du lịch sinh thái cộng đồng Cồn Sơn</td>
+                <td>2015</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Đình Bình Thuỷ</td>
+                <td>1844</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Mộ Thủ Khoa Bùi Hữu Nghĩa</td>
+                <td>1872</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Chùa Nam Nhã</td>
+                <td>1895</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>Đền thờ Vua Hùng</td>
+                <td>2023</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>Nhà thờ họ Dương</td>
+                <td>1870</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>Chùa Hội Linh</td>
+                <td>1904</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>Cơ quan Đặc uỷ An Nam Cộng Sản Đảng Hậu Giang</td>
+                <td>1991</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>Bè cá Bảy Bon</td>
+                <td>2015</td>
+                <td>Phường Bình Thuỷ</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td>Cồn Khương</td>
+                <td>2004</td>
+                <td>Phường Cái Khế</td>
+                <td>Chưa xếp hạng</td>
+                <td>Thắng cảnh</td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td>Bãi tắm Cần Thơ</td>
+                <td>2014</td>
+                <td>Phường Cái Khế</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>Công viên Sông Hậu</td>
+                <td>2011</td>
+                <td>Phường Cái Khế</td>
+                <td>Chưa xếp hạng</td>
+                <td>Thắng cảnh</td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td>Hiệp Thiên Cung</td>
+                <td>1856</td>
+                <td>Phường Cái Răng</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>Chợ nổi Cái Răng</td>
+                <td>1900</td>
+                <td>Phường Cái Răng</td>
+                <td>Cấp quốc gia</td>
+                <td>Di sản văn hoá phi vật thể</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>Di tích lịch sử trận Lê Bình</td>
+                <td>1945</td>
+                <td>Phường Cái Răng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>Di tích Đình Thường Thạnh</td>
+                <td>1852</td>
+                <td>Phường Cái Răng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>Di tích chiến thắng rạch Ông Cửu</td>
+                <td>1968</td>
+                <td>Phường Cái Răng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>24</td>
+                <td>Khu du lịch Bảo Gia Trang Viên</td>
+                <td>2016</td>
+                <td>Phường Cái Răng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>Can Tho Ecolodge</td>
+                <td>2019</td>
+                <td>Phường Cái Răng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>26</td>
+                <td>Legacy Mekong - Cồn Ấu</td>
+                <td>2000</td>
+                <td>Phường Hưng Phú</td>
+                <td>Chưa xếp hạng</td>
+                <td>Thắng cảnh</td>
+              </tr>
+              <tr>
+                <td>27</td>
+                <td>Cầu Cần Thơ</td>
+                <td>2010</td>
+                <td>Phường Hưng Phú</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>Căn cứ Vườn Mận</td>
+                <td>1965</td>
+                <td>Phường Long Tuyền</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>29</td>
+                <td>Làng hoa Bà Bộ</td>
+                <td>1920</td>
+                <td>Phường Long Tuyền</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>30</td>
+                <td>Chùa Long Quang</td>
+                <td>1966</td>
+                <td>Phường Long Tuyền</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>31</td>
+                <td>Bến Ninh Kiều</td>
+                <td>1958</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Thắng cảnh</td>
+              </tr>
+              <tr>
+                <td>32</td>
+                <td>Chùa Ông (Quảng Triệu Hội Quán)</td>
+                <td>1894</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>33</td>
+                <td>Thới Long Cổ Tự</td>
+                <td>1844</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>34</td>
+                <td>Di tích Khám Lớn Cần Thơ</td>
+                <td>1878</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>35</td>
+                <td>Cầu đi bộ Cần Thơ</td>
+                <td>2016</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>36</td>
+                <td>Bảo tàng thành phố Cần Thơ</td>
+                <td>1976</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>37</td>
+                <td>Bảo tàng Quân khu 9</td>
+                <td>1979</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>38</td>
+                <td>Công viên Lưu Hữu Phước</td>
+                <td>2015</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Thắng cảnh</td>
+              </tr>
+              <tr>
+                <td>39</td>
+                <td>Nhà lồng chợ Cần Thơ</td>
+                <td>1915</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>40</td>
+                <td>Di tích Địa điểm thành lập Chi bộ An Hoà</td>
+                <td>1967</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>41</td>
+                <td>Đình Thới Bình</td>
+                <td>1852</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>42</td>
+                <td>Chợ đêm Ninh Kiều</td>
+                <td>2016</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>43</td>
+                <td>Chùa Pitu Khosa Rangsay (Chùa Viễn Quang)</td>
+                <td>1948</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>44</td>
+                <td>Chùa Munir Ansay</td>
+                <td>1948</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>45</td>
+                <td>Nhà thờ Chánh toà Cần Thơ</td>
+                <td>1886</td>
+                <td>Phường Ninh Kiều</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>46</td>
+                <td>Đình Thới An</td>
+                <td>1852</td>
+                <td>Phường Ô Môn</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>47</td>
+                <td>Chùa Pothisomron</td>
+                <td>1735</td>
+                <td>Phường Ô Môn</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>48</td>
+                <td>Chùa Cảm Thiên Đại Đế</td>
+                <td>1890</td>
+                <td>Phường Ô Môn</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>49</td>
+                <td>Đình Tân Lộc Đông</td>
+                <td>1787</td>
+                <td>Phường Tân Lộc</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>50</td>
+                <td>Linh Sơn Cổ Miếu</td>
+                <td>1890</td>
+                <td>Phường Thới Long</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>51</td>
+                <td>Làng đan lợp Thới Long</td>
+                <td>1997</td>
+                <td>Phường Thới Long</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>52</td>
+                <td>Đình Phú Luông</td>
+                <td>1852</td>
+                <td>Phường Thới Long</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>53</td>
+                <td>Làng đan lưới Thơm Rơm</td>
+                <td>1977</td>
+                <td>Phường Thới Long</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>54</td>
+                <td>Vườn cò Bằng Lăng</td>
+                <td>1983</td>
+                <td>Phường Thốt Nốt</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>55</td>
+                <td>Đình Thạnh Hoà</td>
+                <td>1852</td>
+                <td>Phường Thốt Nốt</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>56</td>
+                <td>Đình Thới Thuận</td>
+                <td>1852</td>
+                <td>Phường Thốt Nốt</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>57</td>
+                <td>Thất Phu Võ Miếu</td>
+                <td>1886</td>
+                <td>Phường Thốt Nốt</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>58</td>
+                <td>Làng bánh tráng Thuận Hưng</td>
+                <td>1850</td>
+                <td>Phường Thuận Hưng</td>
+                <td>Cấp quốc gia</td>
+                <td>Di sản văn hoá phi vật thể</td>
+              </tr>
+              <tr>
+                <td>59</td>
+                <td>Đình Thuận Hưng</td>
+                <td>1952</td>
+                <td>Phường Thuận Hưng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>60</td>
+                <td>Mộ soạn giả Mộc Quán - Nguyễn Trọng Quyền</td>
+                <td>2018</td>
+                <td>Phường Thuận Hưng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>61</td>
+                <td>Di tích lịch sử An Nam Cộng Sản Đảng</td>
+                <td>1929</td>
+                <td>Xã Cờ Đỏ</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>62</td>
+                <td>Khu di tích Giàn Gừa</td>
+                <td>2013</td>
+                <td>Xã Nhơn Ái</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>63</td>
+                <td>Địa điểm khảo cổ học Nhơn Thành</td>
+                <td>TK V - VII</td>
+                <td>Xã Nhơn Ái</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích khảo cổ</td>
+              </tr>
+              <tr>
+                <td>64</td>
+                <td>Khu du lịch sinh thái Lung Tràm</td>
+                <td>2018</td>
+                <td>Xã Nhơn Ái</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>65</td>
+                <td>Khu du lịch sinh thái Lung Cột Cầu</td>
+                <td>2015</td>
+                <td>Xã Nhơn Ái</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>66</td>
+                <td>Can Tho Eco Resort</td>
+                <td>2019</td>
+                <td>Xã Nhơn Ái</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>67</td>
+                <td>Vườn trái cây Vàm Xáng</td>
+                <td>2012</td>
+                <td>Xã Phong Điền</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>68</td>
+                <td>Mộ nhà thơ Phan Văn Trị</td>
+                <td>1991</td>
+                <td>Xã Phong Điền</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>69</td>
+                <td>Di tích thảm sát đồng bào vô tội Cầu Nhiếm</td>
+                <td>1966</td>
+                <td>Xã Phong Điền</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>70</td>
+                <td>Vườn du lịch sinh thái Phi Yến</td>
+                <td>2021</td>
+                <td>Xã Phong Điền</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>71</td>
+                <td>Khu sinh thái Sông Hậu Farm</td>
+                <td>1979</td>
+                <td>Xã Thới Hưng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>72</td>
+                <td>Khu di tích Chiến thắng Ông Hào</td>
+                <td>2012</td>
+                <td>Xã Trường Long</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>73</td>
+                <td>Viện lúa Đồng bằng sông Cửu Long</td>
+                <td>1977</td>
+                <td>Xã Trường Thành</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>74</td>
+                <td>Khu di tích Chiến thắng Ông Đưa</td>
+                <td>1960</td>
+                <td>Xã Trường Thành</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>75</td>
+                <td>Căn cứ Lò Mo</td>
+                <td>1971</td>
+                <td>Xã Trường Thành</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>76</td>
+                <td>Đình Vĩnh Trinh</td>
+                <td>1852</td>
+                <td>Xã Vĩnh Trinh</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>77</td>
+                <td>Già Lam Cổ Tự</td>
+                <td>1940</td>
+                <td>Phường Đại Thành</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>78</td>
+                <td>Vườn hoa Đại Thành</td>
+                <td>2023</td>
+                <td>Phường Đại Thành</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>79</td>
+                <td>Vườn trái cây Bảy Liễu</td>
+                <td>2015</td>
+                <td>Phường Đại Thành</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>80</td>
+                <td>Thiền viện Trúc Lâm Hậu Giang</td>
+                <td>2018</td>
+                <td>Phường Long Bình</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>81</td>
+                <td>Nhà thờ Họ đạo Trà Lồng</td>
+                <td>1916</td>
+                <td>Phường Long Phú 1</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>82</td>
+                <td>Vườn dâu cao sản Thiên Ân</td>
+                <td>2015</td>
+                <td>Phường Ngã Bảy</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>83</td>
+                <td>Di tích Uỷ ban Liên hợp đình chiến Nam Bộ</td>
+                <td>1954</td>
+                <td>Phường Ngã Bảy</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử văn hoá</td>
+              </tr>
+              <tr>
+                <td>84</td>
+                <td>Công viên Kênh xáng Xà No</td>
+                <td>1903</td>
+                <td>Phường Ngã Bảy</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>85</td>
+                <td>Di tích lịch sử Chiến thắng Chương Thiện</td>
+                <td>2014</td>
+                <td>Phường Vị Tân</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử đặc biệt</td>
+              </tr>
+              <tr>
+                <td>86</td>
+                <td>Công viên Ánh sáng kỳ quan cổ đại</td>
+                <td>2020</td>
+                <td>Phường Vị Tân</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>87</td>
+                <td>Công viên Chiến Thắng</td>
+                <td>2020</td>
+                <td>Phường Vị Tân</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>88</td>
+                <td>Chùa Sasanarangsay</td>
+                <td>1946</td>
+                <td>Phường Vị Tân</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>89</td>
+                <td>Chùa Phổ Minh</td>
+                <td>1908</td>
+                <td>Phường Vị Tân</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>90</td>
+                <td>Nhà thờ Vị Hưng</td>
+                <td>1890</td>
+                <td>Phường Vị Tân</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>91</td>
+                <td>Khu di tích chiến thắng Vàm Cái Sình</td>
+                <td>2007</td>
+                <td>Phường Vị Thanh</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>92</td>
+                <td>Khu trù mật Vị Thanh - Hoả Lựu</td>
+                <td>1960</td>
+                <td>Phường Vị Thanh</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>93</td>
+                <td>Miếu Quan Đề Vị</td>
+                <td>1970</td>
+                <td>Phường Vị Thanh</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>94</td>
+                <td>Chợ Vị Thanh</td>
+                <td>2010</td>
+                <td>Phường Vị Thanh</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>95</td>
+                <td>Chùa Aranhut (Chùa Wat Cho)</td>
+                <td>1632</td>
+                <td>Xã Đông Phước</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>96</td>
+                <td>Khu du lịch cộng đồng khóm Cầu Đúc</td>
+                <td>1930</td>
+                <td>Xã Hoả Lựu</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>97</td>
+                <td>Đền thờ Bác Hồ Hậu Giang</td>
+                <td>1969</td>
+                <td>Xã Lương Tâm</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử văn hoá</td>
+              </tr>
+              <tr>
+                <td>98</td>
+                <td>Khu du lịch sinh thái Mùa Xuân (Lung Ngọc Hoàng)</td>
+                <td>2017</td>
+                <td>Xã Tân Phước Hưng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>99</td>
+                <td>Khu di tích Căn cứ tỉnh uỷ Cần Thơ</td>
+                <td>1968</td>
+                <td>Xã Phương Bình</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>100</td>
+                <td>Khu văn hoá đa năng Hưng Đạo</td>
+                <td>2020</td>
+                <td>Xã Tân Hoà</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>101</td>
+                <td>Trang trại dê sữa Ngọc Đào</td>
+                <td>2010</td>
+                <td>Xã Tân Hoà</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>102</td>
+                <td>Vườn tre Tư Sang</td>
+                <td>2023</td>
+                <td>Xã Thạnh Hoà</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>103</td>
+                <td>Miếu Bà chúa xứ Cây lộc vừng</td>
+                <td>1710</td>
+                <td>Xã Thạnh Hoà</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>104</td>
+                <td>Khu di tích chiến thắng Tầm Vu</td>
+                <td>2012</td>
+                <td>Xã Thạnh Xuân</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>105</td>
+                <td>Công viên Kittyd & Minnied</td>
+                <td>2018</td>
+                <td>Xã Thạnh Xuân</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>106</td>
+                <td>Khu du lịch sinh thái Rừng tràm chim Vị Thuỷ</td>
+                <td>2007</td>
+                <td>Xã Vĩnh Tường</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>107</td>
+                <td>Khu văn hoá lịch sử Long Mỹ</td>
+                <td>2011</td>
+                <td>Xã Vĩnh Viễn</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử</td>
+              </tr>
+              <tr>
+                <td>108</td>
+                <td>Đình thần Nguyễn Trung Trực</td>
+                <td>1960</td>
+                <td>Phường Kế Sách</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>109</td>
+                <td>Nhà bia ghi danh liệt sĩ Giầy Lăng</td>
+                <td>1996</td>
+                <td>Phường Khánh Hoà</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>110</td>
+                <td>Đình thần Khánh Hoà</td>
+                <td>1808</td>
+                <td>Phường Khánh Hoà</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>111</td>
+                <td>Miếu bà chúa xứ Mỹ Đông</td>
+                <td>1930</td>
+                <td>Phường Mỹ Quới</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>112</td>
+                <td>Thánh Thất Minh Tiên</td>
+                <td>1930</td>
+                <td>Phường Mỹ Quới</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>113</td>
+                <td>Chùa Sro Lon (Chùa Chén Kiểu)</td>
+                <td>1815</td>
+                <td>Phường Mỹ Xuyên</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>114</td>
+                <td>Đình thần Mỹ Xuyên</td>
+                <td>1852</td>
+                <td>Phường Mỹ Xuyên</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>115</td>
+                <td>Chùa Chroi Tim Chas (Chùa Trà Tim)</td>
+                <td>1456</td>
+                <td>Phường Mỹ Xuyên</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>116</td>
+                <td>Ba Thắc Cổ Miếu</td>
+                <td>1927</td>
+                <td>Phường Mỹ Xuyên</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>117</td>
+                <td>Chợ nổi Ngã Năm</td>
+                <td>1910</td>
+                <td>Phường Ngã Năm</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>118</td>
+                <td>Địa điểm Chiến thắng Chi khu Ngã Năm</td>
+                <td>2004</td>
+                <td>Phường Ngã Năm</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>119</td>
+                <td>Chùa Giác Hương</td>
+                <td>1910</td>
+                <td>Phường Ngã Năm</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>120</td>
+                <td>Chùa Mahatup (Chùa Dơi – Chùa Mã Tộc)</td>
+                <td>1569</td>
+                <td>Phường Phú Lợi</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>121</td>
+                <td>Thiền viện Trúc Lâm Sóc Trăng</td>
+                <td>2020</td>
+                <td>Phường Phú Lợi</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>122</td>
+                <td>Chùa Ông Bổn (Hoà An Hội Quán)</td>
+                <td>1875</td>
+                <td>Phường Phú Lợi</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>Bảo tàng Khmer</td>
+                <td>1938</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>124</td>
+                <td>Chùa Botum Vong Sa Som Rong (Chùa Som Rong)</td>
+                <td>1785</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>125</td>
+                <td>Chùa La Hán</td>
+                <td>1952</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>126</td>
+                <td>Chùa Kh'leang</td>
+                <td>1532</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>127</td>
+                <td>Bửu Sơn Tự (Chùa Đất Sét)</td>
+                <td>1939</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử - văn hoá</td>
+              </tr>
+              <tr>
+                <td>128</td>
+                <td>Hồ Nước Ngọt</td>
+                <td>2000</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>129</td>
+                <td>Chùa Peam Buol Thmay</td>
+                <td>1964</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>130</td>
+                <td>Khu di tích Trường Taberd</td>
+                <td>1912</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
 
-            <tr>
-              <td>131</td>
-              <td>Di tích địa điểm chiến thắng Bố Thảo</td>
-              <td>1946</td>
-              <td>Phường Sóc Trăng</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>132</td>
-              <td>Chùa Secrey Cro Sang (Chùa Cà Săng)</td>
-              <td>1576</td>
-              <td>Phường Vĩnh Châu</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>133</td>
-              <td>Miếu Thiên Hậu Thánh Mẫu</td>
-              <td>1893</td>
-              <td>Phường Vĩnh Châu</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc</td>
-            </tr>
-            <tr>
-              <td>134</td>
-              <td>Chùa Ông Bổn (Thanh Minh Cổ Miếu)</td>
-              <td>1923</td>
-              <td>Phường Vĩnh Châu</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>135</td>
-              <td>Di tích chiến thắng Xẻo Me</td>
-              <td>1951</td>
-              <td>Phường Vĩnh Phước</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>136</td>
-              <td>Liên Hoa bảo tháp</td>
-              <td>2024</td>
-              <td>Xã An Ninh</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>137</td>
-              <td>Đền thờ Bác Hồ Cù lao Dung</td>
-              <td>1969</td>
-              <td>Xã An Thạnh</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử văn hoá</td>
-            </tr>
-            <tr>
-              <td>138</td>
-              <td>Đình Rạch Giồng</td>
-              <td>1902</td>
-              <td>Xã An Thạnh</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>139</td>
-              <td>Di tích lưu niệm AHLLVTND Thiều Văn Chỏi</td>
-              <td>2000</td>
-              <td>Xã Đại Hải</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lưu niệm AHLS</td>
-            </tr>
-            <tr>
-              <td>140</td>
-              <td>Di tích Chùa Quan Âm</td>
-              <td>1872</td>
-              <td>Xã Đại Ngãi</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
+              <tr>
+                <td>131</td>
+                <td>Di tích địa điểm chiến thắng Bố Thảo</td>
+                <td>1946</td>
+                <td>Phường Sóc Trăng</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>132</td>
+                <td>Chùa Secrey Cro Sang (Chùa Cà Săng)</td>
+                <td>1576</td>
+                <td>Phường Vĩnh Châu</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>133</td>
+                <td>Miếu Thiên Hậu Thánh Mẫu</td>
+                <td>1893</td>
+                <td>Phường Vĩnh Châu</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc</td>
+              </tr>
+              <tr>
+                <td>134</td>
+                <td>Chùa Ông Bổn (Thanh Minh Cổ Miếu)</td>
+                <td>1923</td>
+                <td>Phường Vĩnh Châu</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>135</td>
+                <td>Di tích chiến thắng Xẻo Me</td>
+                <td>1951</td>
+                <td>Phường Vĩnh Phước</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>136</td>
+                <td>Liên Hoa bảo tháp</td>
+                <td>2024</td>
+                <td>Xã An Ninh</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>137</td>
+                <td>Đền thờ Bác Hồ Cù lao Dung</td>
+                <td>1969</td>
+                <td>Xã An Thạnh</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử văn hoá</td>
+              </tr>
+              <tr>
+                <td>138</td>
+                <td>Đình Rạch Giồng</td>
+                <td>1902</td>
+                <td>Xã An Thạnh</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>139</td>
+                <td>Di tích lưu niệm AHLLVTND Thiều Văn Chỏi</td>
+                <td>2000</td>
+                <td>Xã Đại Hải</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lưu niệm AHLS</td>
+              </tr>
+              <tr>
+                <td>140</td>
+                <td>Di tích Chùa Quan Âm</td>
+                <td>1872</td>
+                <td>Xã Đại Ngãi</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
 
-            <tr>
-              <td>141</td>
-              <td>Đình Hoà Tú</td>
-              <td>1852</td>
-              <td>Xã Hoà Tú</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>142</td>
-              <td>Nhà tưởng niệm bác sĩ nông học Lương Định Của</td>
-              <td>2012</td>
-              <td>Xã Long Phú</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lưu niệm danh nhân</td>
-            </tr>
-            <tr>
-              <td>143</td>
-              <td>Chùa Serey Phothi Pruk Ta An (Chùa Tà Ân)</td>
-              <td>1678</td>
-              <td>Xã Mỹ Hương</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>144</td>
-              <td>Khu di tích Căn cứ tỉnh uỷ Sóc Trăng</td>
-              <td>1969</td>
-              <td>Xã Mỹ Phước</td>
-              <td>Cấp quốc gia</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>145</td>
-              <td>Khu du lịch sinh thái Cồn Mỹ Phước</td>
-              <td>2019</td>
-              <td>Xã Nhơn Mỹ</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>146</td>
-              <td>Đường hoa kèn hồng</td>
-              <td>2012</td>
-              <td>Xã Phú Tâm</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>147</td>
-              <td>Vườn cò Tân Long</td>
-              <td>1995</td>
-              <td>Xã Tân Long</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-            <tr>
-              <td>148</td>
-              <td>Chùa Buol Pres Phek (Chùa Bốn Mặt)</td>
-              <td>1537</td>
-              <td>Xã Thuận Hoà</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích kiến trúc nghệ thuật</td>
-            </tr>
-            <tr>
-              <td>149</td>
-              <td>Lăng Ông Nam Hải</td>
-              <td>1992</td>
-              <td>Xã Trần Đề</td>
-              <td>Cấp thành phố</td>
-              <td>Di tích lịch sử cách mạng</td>
-            </tr>
-            <tr>
-              <td>150</td>
-              <td>Khu du lịch sinh thái Hồ Bể</td>
-              <td>2022</td>
-              <td>Xã Vĩnh Hải</td>
-              <td>Chưa xếp hạng</td>
-              <td>Điểm tham quan</td>
-            </tr>
-          </tbody>
-        </table>
+              <tr>
+                <td>141</td>
+                <td>Đình Hoà Tú</td>
+                <td>1852</td>
+                <td>Xã Hoà Tú</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>142</td>
+                <td>Nhà tưởng niệm bác sĩ nông học Lương Định Của</td>
+                <td>2012</td>
+                <td>Xã Long Phú</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lưu niệm danh nhân</td>
+              </tr>
+              <tr>
+                <td>143</td>
+                <td>Chùa Serey Phothi Pruk Ta An (Chùa Tà Ân)</td>
+                <td>1678</td>
+                <td>Xã Mỹ Hương</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>144</td>
+                <td>Khu di tích Căn cứ tỉnh uỷ Sóc Trăng</td>
+                <td>1969</td>
+                <td>Xã Mỹ Phước</td>
+                <td>Cấp quốc gia</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>145</td>
+                <td>Khu du lịch sinh thái Cồn Mỹ Phước</td>
+                <td>2019</td>
+                <td>Xã Nhơn Mỹ</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>146</td>
+                <td>Đường hoa kèn hồng</td>
+                <td>2012</td>
+                <td>Xã Phú Tâm</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>147</td>
+                <td>Vườn cò Tân Long</td>
+                <td>1995</td>
+                <td>Xã Tân Long</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+              <tr>
+                <td>148</td>
+                <td>Chùa Buol Pres Phek (Chùa Bốn Mặt)</td>
+                <td>1537</td>
+                <td>Xã Thuận Hoà</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích kiến trúc nghệ thuật</td>
+              </tr>
+              <tr>
+                <td>149</td>
+                <td>Lăng Ông Nam Hải</td>
+                <td>1992</td>
+                <td>Xã Trần Đề</td>
+                <td>Cấp thành phố</td>
+                <td>Di tích lịch sử cách mạng</td>
+              </tr>
+              <tr>
+                <td>150</td>
+                <td>Khu du lịch sinh thái Hồ Bể</td>
+                <td>2022</td>
+                <td>Xã Vĩnh Hải</td>
+                <td>Chưa xếp hạng</td>
+                <td>Điểm tham quan</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>
-    
+
     <footer>© <span id="year"></span> Du lịch thành phố Cần Thơ</footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 600,
-    easing: "ease-out-cubic",
-    once: true,
-    offset: 120
-  });
+    <script>
+      AOS.init({
+        duration: 600,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 120,
+      });
 
+      const content = document.querySelector(".page-content");
 
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          content.classList.add("show");
+        }
+      });
+    </script>
 
-  const content = document.querySelector(".page-content");
+    <script src="./js/modal.js"></script>
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      content.classList.add("show");
-    }
-  });
-</script>
-
-
-<script src="./js/modal.js"></script>
-
-<script>
-  fetch("./partials/nav.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("nav-placeholder").innerHTML = html;
-    });
-</script>
-
-
+    <script>
+      fetch("./partials/nav.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("nav-placeholder").innerHTML = html;
+        });
+    </script>
   </body>
 </html>
