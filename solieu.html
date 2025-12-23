@@ -307,6 +307,17 @@
         font-size: 28px;
         cursor: pointer;
       }
+
+      .cap {
+        display: block;
+        font-weight: 600;
+      }
+
+      table th:nth-child(6),
+      table td:nth-child(6) {
+        min-width: 260px;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -1774,6 +1785,18 @@
         .then((html) => {
           document.getElementById("nav-placeholder").innerHTML = html;
         });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("td").forEach((td) => {
+          const text = td.textContent.trim();
+
+          if (text.startsWith("Cấp ")) {
+            td.innerHTML = `Cấp<br>${text.slice(4)}`;
+          }
+        });
+      });
     </script>
   </body>
 </html>
